@@ -24,7 +24,7 @@ def run(x):
     b = 5000
     m = 100
     eps = .2
-    df = 1.
+    df = 0.
     ds = 1.
     w = np.ones((N,D))
     S = Society(w=w, gamma=gamma, beta=beta, rho=rho, eps=eps)
@@ -51,14 +51,14 @@ def save_data(data_list):
     for k, v in data.items():
         data[k] = np.vstack(v)
 
-    with open(SAVE_DIR+'statistics.csv', 'w') as file_:
+    with open(SAVE_DIR+'statistics2.csv', 'w') as file_:
         df = pd.DataFrame(data["statistics"], columns=explain)
         df.to_csv(file_, mode='a', index=False, index_label=False)
 
-    with open(SAVE_DIR+'adjacency.npy', 'w') as file_:
+    with open(SAVE_DIR+'adjacency2.npy', 'w') as file_:
         np.save(file_, data["adjacency"])
 
-    with open(SAVE_DIR+'state.npy', 'w') as file_:
+    with open(SAVE_DIR+'state2.npy', 'w') as file_:
         np.save(file_, data["state"])
 
 
