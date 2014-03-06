@@ -1,0 +1,361 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thin Sectioned Essay
+% LaTeX Template
+% Version 1.0 (3/8/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original Author:
+% Nicolas Diaz (nsdiaz@uc.cl) with extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%------------------------------------------------------------------------------
+
+\documentclass[a4paper, 11pt]{article} % Font size (can be 10pt, 11pt or 12pt) 
+                                       % and paper size (remove a4paper for US 
+                                       % letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage[utf8]{inputenc} % Allows all utf-8 caracters
+\usepackage{amsmath}
+
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\linespread{1.05} % Change line spacing here, Palatino benefits from a slight 
+                  % increase by default of the publication
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each
+                                         % bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the 
+                                     % itemize and enumerate environments and 
+                                     % the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author
+                           % name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{50pt} % Some vertical space between the title and author name
+
+{\large\@author} % Author name
+\\\@date % Date
+
+\vspace{40pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%------------------------------------------------------------------------------
+%	TITLE
+%------------------------------------------------------------------------------
+
+\title{\textbf{Equações de Campo Médio}}%\\ % Title
+% Focused and Deliciously Witty Subtitle} % Subtitle
+
+% \author{\textsc{Ford Prefect} % Author
+% \\{\textit{Interstellar University}}} % Institution
+
+%  \date{\today} % Date
+
+%------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+%------------------------------------------------------------------------------
+%	ABSTRACT AND KEYWORDS
+%------------------------------------------------------------------------------
+
+% \renewcommand{\abstractname}{Summary} % Uncomment to change the name of the 
+                                       % abstract to something else
+
+% \begin{abstract}
+% Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris lacinia lorem, ac congue leo felis eu turpis. Sed nec nunc pellentesque, gravida eros at, porttitor ipsum. Praesent consequat urna a lacus lobortis ultrices eget ac metus. In tempus hendrerit rhoncus. Mauris dignissim turpis id sollicitudin lacinia. Praesent libero tellus, fringilla nec ullamcorper at, ultrices id nulla. Phasellus placerat a tellus a malesuada.
+% \end{abstract}
+
+% Keywords
+% \hspace*{3,6mm}\textit{Keywords:} lorem , ipsum , dolor , sit amet , lectus 
+\vspace{30pt} % Some vertical space between the abstract and first section
+
+%------------------------------------------------------------------------------
+%	ESSAY BODY
+%------------------------------------------------------------------------------
+
+\section*{O Modelo}
+
+Queremos descrever a interação de dois grupos de agentes que trocam informação
+sobre duas possíveis questões. Sejam $ \omega^{\mu}=\{\omega_r^{\mu}\} $ com 
+$ \mu \in \{1,2\} $ e $r \in \{1,\ldots, N_{\mu}\}$ as configurações dos grupos
+$1$ e $2$, com $\omega_r^{\mu} \in \mathbb{R}^D$ o vetor cognitivo do agente $r$
+do grupo $\mu$ para algum $D$, e $N^{\mu}$ o número de agentes no grupo $\mu$.
+Vamos denotar a configuração global por
+$\underline \omega = \omega^1 \cup \omega^2$. Para representar os
+dois assuntos discutidos, considere os vetores $x^1,\;x^2 \in \mathbb{R}^D$ e
+considere que todos os vetores estão normalizados, ou seja, 
+$|\omega^{\mu}_r|=|x^{\rho}|=1$. A informação que um agente passa (recebe) sobre 
+um dos assuntos é definida pelo produto escalar entre seu vetor cognitivo e o 
+dado assunto. Sejam, portanto, os campos 
+$h_r^{\mu\rho}=\omega_r^{\mu} \cdot x^{\rho}$.  
+
+A troca de informação é tal que os agentes tentam minimizar os "erros" que
+cometem em relação com seus vizinhos. A dinâmica resultante pode ser vista como
+uma descida pelo gradiente de uma função "Energia" do sistema. A evolução de um
+agente quando recebe um exemplo é dada pela equação
+
+\begin{equation}
+    \omega^{\mu}_r(t+1)=\omega^{\mu}_r(t)+\eta F(h^{\mu\rho}_r,\sigma, x^{\rho})
+    \sigma x^{\rho}
+\end{equation}
+
+onde $F$ é a função de modulação, $\sigma$ é a opinião do interlocutor sobre o
+assunto $x^{\rho}$ no instante $t$. Podemos escrever a função de modulação como o
+gradiente de um potencial $ F = -\nabla V $, com
+
+\begin{equation}\label{subject-potential}
+    V^{\mu\nu,\;\rho}_{rs} = -\frac{1+\delta}{2}h_r^{\mu\rho}h_s^{\nu\rho}
+                      +\frac{1-\delta}{2}|h_r^{\mu\rho}h_s^{\nu\rho}|
+\end{equation}
+
+Esse potentcial assegura que a função de modulação da um peso $\delta \in [0,1]$
+para informação corroborativa e peso $1$ para novidade, ou seja, os agentes
+aprendem mais quando discordam do que quando concordam e, dado que eles aprendem
+no sentido de corrigir os erros, espera-se que num cenário em que existe apenas
+um assunto e um grupo, o consensu seja atingido como função do parâmetro
+$\delta$. Esse potencial é interpretado como o custo da discordância entre os
+agentes $r$ e $s$ dos grupos $\mu$ e $\nu$ sobre o assunto $\rho$. Podemos
+simplificar um pouco definido o custo da discordância sobre todos os assuntos
+entre dois agentes fazendo 
+
+\begin{equation}\label{pair-potential}
+    V^{\mu\nu}_{rs} = \sum_{\rho=1,2} V^{\mu\nu,\;\rho}_{rs}
+\end{equation}
+
+Com isso, podemos escrever o custo total da discordância na sociedade como sendo
+a soma dos custos entre cada agente. Mas queremos estudar a diferença entre os
+grupos então vamos criar parâmetros que distinguem as interações intra-grupo e
+inter-grupos. Sejam $J>0$ e $K>0$ as escalas de energia da interação entre
+indivíduos de grupos distintos e entre indivíduos de mesmo grupo,
+respectivamente. A energia total do sistema é dada pelo hamiltoniano
+
+\begin{equation}
+    \mathcal{H} = -\frac{J}{2N}\sum_{\mu \ne \nu}\sum_{rs}V_{rs}^{\mu\nu}
+                 +\frac{K}{2N}\sum_{\mu=\nu}\sum_{r\ne s}V_{rs}^{\mu\nu}
+\end{equation}
+
+onde $N = N^1 + N^2$ é o número total de agentes. Note que esse hamiltoniano
+penaliza a discordância entre agentes de um mesmo grupo a concordância entre
+agentes de grupos diferentes. Desse modo, esperamos que no equilíbrio, haja dois
+grupos bem formados do ponto de vista das opiniões.
+
+É razoável supor que o valor
+esperado do hamiltoniano seja uma informação relavante, de modo que, por máxima
+entropia, a probabilidade de observar uma certa configuração $\underline \omega$
+é dada pela distribuição de Boltzmann 
+
+\[P(\underline \omega) = \frac{1}{Z}e^{-\beta \mathcal{H}}\]
+
+com $ Z = \sum_{\underline \omega} e^{-\beta \mathcal{H}} $ a função de
+partição.
+
+%------------------------------------------------
+
+\section*{Campo Médio}
+
+Para prosseguir, vamos tentar uma aproximação de campo médio para o sistema.
+Isso é feito a partir da aproximação da distribuição de probabilidades $P$ dada
+acima por uma família de distribuições que se fatora entre agentes
+independentes. Isto é, queremos aproximar $P \approx P_{MF} =
+\prod_{\substack{rs\\\mu\ne\nu}}P^{\mu}_rP^{\nu}_s $. A melhor aproximação possível para essa família
+de distribuições é aquela que minimiza a divergência de Kullback-Liebler entre
+$P$ e $P_{MF}$, definida por 
+
+\begin{equation}
+    S[P_{MF}||P] = -\int
+    \mathrm{d}\mu(\underline\omega)P_{MF}\mathrm{ln}(\frac{P_{MF}}{P})
+    -\sum_{\mu,r}\lambda_r^{\mu}\left<P^{\mu}_r-1\right>_{\omega^{\mu}_r} 
+    - \beta\left<P_{MF}\mathcal{H} - E\right>_{\underline\omega}
+\end{equation}
+
+onde as constantes $\lambda$ e $\beta$ repesentam os vínculos de normalização e
+valor esperado do hamiltoniano. Vamos tomar variações de $S[P_{MF}||P]$ em
+relação a $P^{\mu}_r$. Vamos ver como a $S$ se fatora em termos dessas
+distribuições
+
+\begin{equation}
+    \begin{split}
+        S[P_{MF}||P] & = -\int
+    \mathrm{d}\mu(\underline\omega)P_{MF}\mathrm{ln}(\frac{P_{MF}}{P})
+    -\sum_{\mu,r}\lambda_r^{\mu}\left<P^{\mu}_r-1\right>_{\omega^{\mu}_r} 
+    - \beta\left<P_{MF}\mathcal{H} - E\right>_{\underline\omega} \\
+    % step 1
+    & =  -\int
+    \prod_{rs}\mathrm{d}\mu(\omega^{\mu}_r)\mathrm{d}\mu(\omega^{\nu}_s)
+    P^{\mu}_rP^{\nu}_s\mathrm{ln}(\frac{\prod_{rs}P^{\mu}_rP^{\nu}_s}
+    {P}) \\
+    &\quad -\sum_{\mu,r}\lambda_r^{\mu}\left[\int \mathrm{d}\mu(\omega^{\mu}_r)
+        P^{\mu}_r-1\right] \\
+    &\quad - \beta\left[\int\prod_{rs}\mathrm{d}\mu(\omega^{\mu}_r)
+        \mathrm{d}\mu(\omega^{\nu}_s)P^{\mu}_rP^{\nu}_s\mathcal{H}-E\right]\\
+    % step 2
+    & =  -\sum_{\mu\nu}\sum_{rs}\int
+        \mathrm{d}\mu(\omega^{\mu}_r)\mathrm{d}\mu(\omega^{\nu}_s)
+    P^{\mu}_rP^{\nu}_s\mathrm{ln}(\frac{P^{\mu}_rP^{\nu}_s}
+    {P}) \\
+    &\quad -\sum_{\mu,r}\lambda_r^{\mu}\left[\int \mathrm{d}\mu(\omega^{\mu}_r)
+        P^{\mu}_r-1\right] \\
+    &\quad - \beta\left[\sum_{\mu\nu}\sum_{rs}\int\mathrm{d}\mu(\omega^{\mu}_r)
+    \mathrm{d}\mu(\omega^{\nu}_s)P^{\mu}_rP^{\nu}_sA_{rs}^{\mu\nu}
+    V_{rs}^{\mu\nu}-E\right]
+    \end{split}
+\end{equation}
+
+onde $A_{rs}^{\mu\nu} = \frac{K}{N}\delta_{\mu\nu}(1-\delta_{rs}) - 
+\frac{J}{N}(1-\delta_{\mu\nu})$
+discrimina agentes num mesmo grupo de agentes em grupos diferentes. Agora,
+tomando variações $\frac{\delta S}{\delta{P^{\mu}_r}} = 0$ termos
+
+\begin{equation}\label{mean-field-p}
+    \begin{split}
+        0 & = \frac{\delta S}{\delta P^{\mu}_r} \\
+          & = 1 - \mathrm{ln}P^{\mu}_r - \lambda_r^{\mu} 
+        - \beta\sum_{s,\nu}A_{rs}^{\mu\nu}\int\mathrm{d}\mu(\omega^{\nu}_s)
+            P^{\nu}_sV_{rs}^{\mu\nu} \\
+        \implies & P_r^{\mu} \propto exp\left(
+        - \beta\sum_{s,\nu}A_{rs}^{\mu\nu}\int\mathrm{d}\mu(\omega^{\nu}_s)
+    P^{\nu}_sV_{rs}^{\mu\nu} \right)
+    \end{split}
+\end{equation}
+
+Com isso, basta integrar $V_{rs}^{\mu\nu}$ para determinar as distribuição de
+campo médio do sistema. Vejamos como podemos lidar com isso. Chamando
+$D\omega_s^{\nu}=d\mu(\omega_s^{\nu})P_s^{\nu}$, temos
+
+\begin{equation}
+    \begin{split}
+        \int D\omega_s^{\nu}V_{rs}^{\mu\nu} & = \\
+        & = \int D\omega_s^{\nu}\sum_{\rho}
+        \left[-\frac{1+\delta}{2}h_r^{\mu\rho}h_s^{\nu\rho}
+                      +\frac{1-\delta}{2}|h_r^{\mu\rho}h_s^{\nu\rho}|\right] \\ 
+        & = \sum_{\rho}\int D\omega_s^{\nu}
+        \left[-\frac{1+\delta}{2}h_r^{\mu\rho}h_s^{\nu\rho}
+                      +\frac{1-\delta}{2}|h_r^{\mu\rho}h_s^{\nu\rho}|\right] \\ 
+        & = \sum_{\rho}
+        \left[-\frac{1+\delta}{2}h_r^{\mu\rho}m^{\nu\rho}
+                      +\frac{1-\delta}{2}|h_r^{\mu\rho}|r^{\nu\rho}\right] \\ 
+    \end{split}
+\end{equation}
+
+onde definimos os parâmetros de ordem
+
+\begin{equation}\label{order-parameter-m}
+    m^{\nu\rho} = \int D\omega_s^{\nu} \omega_s^{\nu} \cdot x^{\rho}
+\end{equation}
+
+
+\begin{equation}\label{order-parameter-r}
+    r^{\nu\rho} = \int D\omega_s^{\nu} |\omega_s^{\nu} \cdot x^{\rho}|
+\end{equation}
+
+Note que, visto que estamos trabalhando com dois assuntos e dois grupos, temos
+$8$ parâmetros de ordem no total. Note também que a dependência dos parâmetros
+de ordem sobre o subíndice, que representa o índice dos agentes, foi removido
+sobre a hipótese de homogeneidade da distribuição de campo médio. Ou seja, os
+agentes não são necessariamente idênticos, mas são identicamente distribuídos.
+
+Para finalizar, o termo nas exponencial da equação~\ref{mean-field-p} pode ser
+escrito
+
+\begin{equation}
+    \begin{split}
+        - \beta\sum_{s,\nu}A_{rs}^{\mu\nu}\int D\omega_s^{\nu}
+        V_{rs}^{\mu\nu} \right) & = \\
+                                         & = -
+        \beta\sum_{s,\nu}A_{rs}^{\mu\nu}\sum_{\rho}\left[
+        -ah_r^{\mu\rho}m^{\nu\rho}+b|h_r^{\mu\rho}|r^{\nu\rho}\right]\\
+        & =
+        -\beta\sum_{\rho}\left[
+        -a\left(\frac{K(N^{\mu}-1)}{2N}\right)h_r^{\mu\rho}m^{\mu\rho}
+        +b\left(\frac{K(N^{\mu}-1)}{2N}\right)|h_r^{\mu\rho}|r^{\mu\rho}\\
+        &  
+        -a\left(-\frac{JN^{\nu}}{2N}\right)h_r^{\mu\rho}m^{\nu\rho}
+   \left+b\left(-\frac{JN^{\nu}}{2N}\right)|h_r^{\mu\rho}|r^{\nu\rho} \right]
+    \end{split}
+\end{equation}
+
+com $a=\frac{1+\delta}{2}$ e $b=\frac{1-\delta}{2}$. No limite termodinâmico, 
+$N \to \infty$ com $\frac{N_{\mu}}{N} = \textit{cte}$,
+os podemos fazer $n^{\mu} = \frac{N_{\mu}}{N}$ e reescrever a equação acima
+
+\begin{equation}
+    \begin{split}
+        & -\beta\sum_{\rho}\left[
+        -a\left(\frac{K(N^{\mu}-1)}{2N}\right)h_r^{\mu\rho}m^{\mu\rho}
+        +b\left(\frac{K(N^{\mu}-1)}{2N}\right)|h_r^{\mu\rho}|r^{\mu\rho}\\
+        &\qquad \qquad 
+        -a\left(-\frac{JN^{\nu}}{2N}\right)h_r^{\mu\rho}m^{\nu\rho}
+   \left+b\left(-\frac{JN^{\nu}}{2N}\right)|h_r^{\mu\rho}|r^{\nu\rho} \right]\\
+        & = 
+         -\beta\sum_{\rho}\left[
+        -a\left(\frac{Kn^{\mu}}{2}\right)h_r^{\mu\rho}m^{\mu\rho}
+        +b\left(\frac{Kn^{\mu}}{2}\right)|h_r^{\mu\rho}|r^{\mu\rho}\\
+        &\qquad \qquad 
+        -a\left(-\frac{Jn^{\nu}}{2}\right)h_r^{\mu\rho}m^{\nu\rho}
+   \left+b\left(-\frac{Jn^{\nu}}{2}\right)|h_r^{\mu\rho}|r^{\nu\rho} \right]\\
+        & =
+         \beta\sum_{\rho}\left[
+        a\left(\frac{Kn^{\mu}}{2}m^{\mu\rho}-\frac{Jn^{\nu}}{2}m^{\nu\rho}
+        \right)h_r^{\mu\rho}
+        -b\left(\frac{Kn^{\mu}}{2}r^{\mu\rho}-\frac{Jn^{\nu}}{2}r^{\nu\rho}
+        \right)|h_r^{\mu\rho}| \right]
+        &\qquad \qquad 
+    \end{split}
+\end{equation}
+
+e, chamando $M^{\mu\nu\rho} =
+\frac{Kn^{\mu}}{2}m^{\mu\rho}-\frac{Jn^{\nu}}{2}m^{\nu\rho} $ e $R^{\mu\nu\rho}
+= \frac{Kn^{\mu}}{2}r^{\mu\rho}-\frac{Jn^{\nu}}{2}r^{\nu\rho}$, podemos escrever
+o resultado final da seguinte formados
+
+\begin{equation}
+    P_r^{\mu} = \frac{1}{Z_r^{\mu}} \mathrm{exp} \left(
+    {\beta\sum_{\rho}\left[aM^{\mu\nu\rho}h_r^{\mu\rho}-
+bR^{\mu\nu\rho}|h_r^{\mu\rho}|\right]} \right)
+\end{equation}
+
+%------------------------------------------------
+
+% \section*{Conclusion}
+
+% \begin{enumerate}
+% \item First numbered list item
+% \item Second numbered list item
+% \end{enumerate}
+
+% \begin{wrapfigure}{l}{0.4\textwidth} % Inline image example
+% \begin{center}
+% \includegraphics[width=0.38\textwidth]{fish.png}
+% \end{center}
+% \caption{Fish}
+% \end{wrapfigure}
+
+%------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%------------------------------------------------------------------------------
+
+% \bibliographystyle{unsrt}
+
+% \bibliography{sample}
+
+%------------------------------------------------------------------------------
+
+\end{document}
