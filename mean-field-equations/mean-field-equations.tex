@@ -329,12 +329,12 @@ Agora a integral de $\pot$ pode ser reescrita em termos dos parâmetros de ordem
     \begin{split}
         \sum_{\mu\nu}\sum_{rs}A^{\mu\nu}_{rs}\int D\agent{s}{\nu} \pot & = \\
         & = 
-        \sum_{\mu\nu}\sum_{rs}A^{\mu\nu}_{rs}\sum_{\rho}\ins{
+        \sum_{\mu\nu}\sum_{rs}A^{\mu\nu}_{rs}\sum_{\rho}\ins{%
         -a\opn{r}{\mu}\mh{\nu}+b|\opn{r}{\mu}|\rh{\nu}}\\
         & =
         \sum_{\rho}\ins{%
         -a\inp{\frac{K(N^{\mu}-1)}{2N}}\opn{r}{\mu}\mh{\mu}
-        +b\inp{\frac{K(N^{\mu}-1)}{2N}}|\opn{r}{\mu\rho}|\rh{\mu}\\
+        +b\inp{\frac{K(N^{\mu}-1)}{2N}}|\opn{r}{\mu}|\rh{\mu}\\
         &  
         -a\inp{-\frac{JN^{\nu}}{2N}}\opn{r}{\mu}\mh{\nu}
    \left+b\inp{-\frac{JN^{\nu}}{2N}}|\opn{r}{\mu}|\rh{\nu}} \\
@@ -342,7 +342,7 @@ Agora a integral de $\pot$ pode ser reescrita em termos dos parâmetros de ordem
         -a\inp{\frac{K(N^{\mu}-1)}{2N}-\frac{JN^{\nu}}{2N}}\opn{r}{\mu}\mh{\mu}\\
         &
         \quad+b\inp{\frac{K(N^{\mu}-1)}{2N}-\frac{JN^{\nu}}{2N}}|
-        \opn{r}{\mu\rho}|\rh{\mu}\\
+        \opn{r}{\mu}|\rh{\mu}\\
     \end{split}
 \end{equation}
 
@@ -357,7 +357,7 @@ os podemos fazer $n^{\mu} = \frac{N_{\mu}}{N}$ e reescrever a equação acima
         -a\inp{\frac{Kn^{\mu}}{2}-\frac{Jn^{\nu}}{2}}\opn{r}{\mu}\mh{\mu}\\
         &
         +b\inp{\frac{Kn^{\mu}}{2}-\frac{Jn^{\nu}}{2}}|
-        \opn{r}{\mu\rho}|\rh{\mu}\\
+        \opn{r}{\mu}|\rh{\mu}\\
     \end{split}
 \end{equation}
 
@@ -366,9 +366,119 @@ e, chamando $\Mh{\mu} =
 = \frac{Kn^{\mu}}{2}r^{\mu\rho}-\frac{Jn^{\nu}}{2}r^{\nu\rho}$, podemos escrever
 o resultado final da seguinte forma
 
-\begin{equation}
-    P_r^{\mu} = \frac{1}{Z_r^{\mu}} \mathrm{exp} \inp{%
-        \beta\sum_{\rho}\ins{a\Mh{\mu}\opn{r}{\mu}-b\Rh{\mu}|\opn{r}{\mu}|}}
+\begin{equation}\label{mean-field-P}
+    P_r^{\mu} = \frac{1}{Z_r^{\mu}} \mathrm{exp} \ins{%
+        \beta\sum_{\rho}\inp{a\Mh{\mu}\opn{r}{\mu}-b\Rh{\mu}|\opn{r}{\mu}|}}
+\end{equation}
+
+Com esse resultado, podemos entender as equações~\ref{order-parameter-m} 
+e~\ref{order-parameter-r} como equações de auto-consistência da aproximação de
+campo médio e suas soluções indicam os possíveis valores dos parâmetros de
+ordem. 
+
+%------------------------------------------------
+
+\section*{Equações de Auto-Consistência}
+
+Os resultados da seção anterior são válidos para qualquer dimensão $D$ dos
+vetores cognitivos dos agentes. Para avançã um pouco mais, vamos nos restringir
+ao caso $D=5$, de acordo com a Teoria dos Fundamentos Morais. Para simplificar a
+notação, note que a distribuição de campo médio obtida depende do grupo do
+agente, mas não de cada agente no grupo. Então, vamos omitir o índice refente ao
+agente (até então $r$ ou $s$) e vamos baixar o índice de grupo, $\mu$ ou $\nu$.
+Com isso, a equação~\ref{mean-field-P} escreve-se 
+
+\newcommand{\hf}[2]{%
+    h_{#1}^{#2}}
+
+\begin{equation} 
+    P_{\mu} = \frac{1}{Z_{\mu}} \mathrm{exp} \ins{%
+    \beta \sum_{\rho} \inp{a\Mh{\mu}\hf{\mu}{\rho} - b\Rh{\mu}|\hf{\mu}{\rho}|}}
+\end{equation}
+
+Para escrever as integrais~\ref{order-parameter-m} e~\ref{order-parameter-r}
+vamos usar coordenadas esféricas em $D=5$. Se $q_{i}$, $i \in {1,\ldots,5}$, 
+são coordenadas cartesianas, a parametrização esférica é dada por 
+
+\newcommand{\cos}{\mathrm{cos}}
+\newcommand{\sen}{\mathrm{sen}}
+
+\begin{equation*}
+    \begin{align}
+        q_1 = r \cos \theta _1 \\
+        q_2 = r \sen \theta _1 \cos \theta _2 \\
+        q_3 = r \sen \theta _1 \sen \theta _2 \cos \theta _3 \\
+        q_4 = r \sen \theta _1 \sen \theta _2 \sen \theta _3 \cos \theta _4 \\
+        q_5 = r \sen \theta _1 \sen \theta _2 \sen \theta _3 \sen \theta _4
+    \end{align}
+\end{equation*}
+
+e o jacobiano da transformação é 
+
+\begin{equation*}
+    d^D v = r^4 \sen ^3 \theta _1 \sen ^2 \theta _2 \sen \theta _3 
+    drd\theta_1d\theta_2d\theta_3d\theta_4
+\end{equation*}
+
+Como todos os vetores cognitivos dos agentes e os vetores dos assuntos estão
+normalizados, as integrais são feitas sobre a superfície da esfera unitária, ou
+seja $r=1$. Considere que $x^1 \cdot x^2 = \cos \gamma$, escolha $q_1 =
+x^1$ e $ x^2 = q_1\cos \gamma  + q_2\sen \gamma $, e chame $\theta_1 = \theta$ e
+$\theta_2 = \phi$. Com isso, as integrais sobre $\theta_3$ e $\theta_4$ são
+apenas constantes e podem ser absorvidas na função de partição, e as únicas
+integrais a serem feitas são sobre $\theta$ e $\phi$, ambas no intervalo
+$[0,\pi]$. 
+
+Podemos reescrever a opinião de um agente em relação aos assuntos $1$ ou $2$ de
+acordo com angulos $\theta,\phi$ e $\gamma$:
+
+\[
+    g\inp{\theta,\phi,\gamma} = \hf{\mu}{\rho} = 
+    \begin{cases} 
+        \cos \theta & \textit{ , caso $\rho=1$ } \\
+        \sen \gamma \sen \theta \cos \phi + \cos \theta \cos \gamma &
+        \textit{, caso $\rho=2$}
+    \end{cases}
+\]
+
+e a medida sobre o vetor cognitivo de um agente escreve-se 
+
+\[
+    \msr{\agent{r}{\mu}} = \sen ^3 \theta \sen ^2 \phi d\theta d\phi
+\]
+
+Note que a função $g\inp{\theta,\phi,\gamma}$ produz $h^1_{\mu}$ para $\gamma=0$
+e $h^2_{\mu}$ para $\gamma \ne 0$, e chamando $g_{\rho}=\begin{cases}
+    g(\theta,\phi,0) &
+,\rho=1 \\ g(\theta,\phi,\gamma) & ,\rho=2 \end{cases}$, podemos escrever as
+equações~\ref{order-parameter-m} e~\ref{order-parameter-r} da seguinte forma
+
+\begin{equation} \label{self-consistent-m}
+    \mh{\mu} = \frac{1}{Z_{\mu}}
+    \int_0^{\pi} d\theta \; d\phi \; \sen^3 \theta \; \sen^2 \phi \; 
+    g_{\rho} \mathrm{exp} 
+    \ins{\beta \sum_{\rho} \inp{a\Mh{\mu}g_{\rho} \\
+    & -b\Rh{\mu}|g_{\rho}|}}
+\end{equation}
+
+
+\begin{equation} \label{self-consistent-r}
+    \rh{\mu} = \frac{1}{Z_{\mu}}
+    \int_0^{\pi} d\theta \; d\phi \; \sen^3 \theta \; \sen^2 \phi \; 
+    |g_{\rho}| \mathrm{exp} 
+    \ins{\beta \sum_{\rho} \inp{a\Mh{\mu}g_{\rho} \\
+    & -b\Rh{\mu}|g_{\rho}|}}
+\end{equation}
+
+com a função de partição dada por
+
+
+\begin{equation} \label{self-consistent-Z}
+    Z_{\mu} = 
+    \int_0^{\pi} d\theta \; d\phi \; \sen^3 \theta \; \sen^2 \phi \; 
+    \mathrm{exp} 
+    \ins{\beta \sum_{\rho} \inp{a\Mh{\mu}g_{\rho} \\
+    & -b\Rh{\mu}|g_{\rho}|}}
 \end{equation}
 
 %------------------------------------------------
