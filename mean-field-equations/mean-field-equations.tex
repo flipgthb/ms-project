@@ -55,6 +55,58 @@
 }
 
 %------------------------------------------------------------------------------
+%   MACROS
+%------------------------------------------------------------------------------
+
+\newcommand{\msr}[1]{\ensuremath{\displaystyle%
+    \mathrm{d}\mu\left(#1\right)}}
+
+\newcommand{\agent}[2]{%
+    \omega^{#2}_{#1}}
+
+\newcommand{\conf}{%
+    \underline \omega}
+
+\newcommand{\subpot}{\ensuremath{\displaystyle%
+    V_{rs}^{\mu \nu,\; \rho}}}
+
+\newcommand{\pot}{\ensuremath{\displaystyle%
+    V_{rs}^{\mu \nu}}}
+
+\newcommand{\opn}[2]{\ensuremath{\displaystyle%
+    h^{#2,\;\rho}_{#1}}}
+
+\renewcommand{\H}{%
+    \mathcal{H}}
+
+\newcommand{\ln}{%
+    \mathrm{ln}}
+
+\newcommand{\mh}[1]{\ensuremath{\displaystyle%
+    m^{\rho}_{#1}}}
+
+\newcommand{\rh}[1]{\ensuremath{\displaystyle%
+    r^{\rho}_{#1}}}
+
+\newcommand{\Mh}[1]{\ensuremath{\displaystyle%
+    M^{\rho}_{#1}}}
+
+\newcommand{\Rh}[1]{\ensuremath{\displaystyle%
+    R^{\rho}_{#1}}}
+
+\newcommand{\inp}[1]{\ensuremath{\displaystyle%
+    \left(#1\right)}}
+
+\newcommand{\ina}[1]{\ensuremath{\displaystyle%
+    \left<#1\right>}}
+
+\newcommand{\ins}[1]{\ensuremath{\displaystyle%
+    \left[#1\right]}}
+
+\newcommand{\inc}[1]{\ensuremath{\displaystyle%
+    \left{#1\right}}}
+
+%------------------------------------------------------------------------------
 %	TITLE
 %------------------------------------------------------------------------------
 
@@ -94,18 +146,18 @@
 \section*{O Modelo}
 
 Queremos descrever a interação de dois grupos de agentes que trocam informação
-sobre duas possíveis questões. Sejam $ \omega^{\mu}=\{\omega_r^{\mu}\} $ com 
+sobre duas possíveis questões. Sejam $ \omega^{\mu}=\{\agent{r}{\mu}\} $ com 
 $ \mu \in \{1,2\} $ e $r \in \{1,\ldots, N_{\mu}\}$ as configurações dos grupos
-$1$ e $2$, com $\omega_r^{\mu} \in \mathbb{R}^D$ o vetor cognitivo do agente $r$
+$1$ e $2$, com $\agent{r}{\mu} \in \mathbb{R}^D$ o vetor cognitivo do agente $r$
 do grupo $\mu$ para algum $D$, e $N^{\mu}$ o número de agentes no grupo $\mu$.
 Vamos denotar a configuração global por
-$\underline \omega = \omega^1 \cup \omega^2$. Para representar os
+$\conf = \omega^1 \cup \omega^2$. Para representar os
 dois assuntos discutidos, considere os vetores $x^1,\;x^2 \in \mathbb{R}^D$ e
 considere que todos os vetores estão normalizados, ou seja, 
-$|\omega^{\mu}_r|=|x^{\rho}|=1$. A informação que um agente passa (recebe) sobre 
+$|\agent{r}{\mu}|=|x^{\rho}|=1$. A informação que um agente passa (recebe) sobre 
 um dos assuntos é definida pelo produto escalar entre seu vetor cognitivo e o 
 dado assunto. Sejam, portanto, os campos 
-$h_r^{\mu\rho}=\omega_r^{\mu} \cdot x^{\rho}$.  
+$\opn{r}{\mu}=\agent{r}{\mu} \cdot x^{\rho}$.  
 
 A troca de informação é tal que os agentes tentam minimizar os "erros" que
 cometem em relação com seus vizinhos. A dinâmica resultante pode ser vista como
@@ -113,7 +165,7 @@ uma descida pelo gradiente de uma função "Energia" do sistema. A evolução de
 agente quando recebe um exemplo é dada pela equação
 
 \begin{equation}
-    \omega^{\mu}_r(t+1)=\omega^{\mu}_r(t)+\eta F(h^{\mu\rho}_r,\sigma, x^{\rho})
+    \agent{r}{\mu}(t+1)=\agent{r}{\mu}(t)+\eta F(\opn{r}{\mu},\sigma, x^{\rho})
     \sigma x^{\rho}
 \end{equation}
 
@@ -122,22 +174,22 @@ assunto $x^{\rho}$ no instante $t$. Podemos escrever a função de modulação c
 gradiente de um potencial $ F = -\nabla V $, com
 
 \begin{equation}\label{subject-potential}
-    V^{\mu\nu,\;\rho}_{rs} = -\frac{1+\delta}{2}h_r^{\mu\rho}h_s^{\nu\rho}
-                      +\frac{1-\delta}{2}|h_r^{\mu\rho}h_s^{\nu\rho}|
+    \subpot = -\frac{1+\delta}{2}\opn{r}{\mu}\opn{s}{\nu}
+                      +\frac{1-\delta}{2}|\opn{r}{\mu}\opn{s}{\nu}|
 \end{equation}
 
 Esse potentcial assegura que a função de modulação da um peso $\delta \in [0,1]$
 para informação corroborativa e peso $1$ para novidade, ou seja, os agentes
 aprendem mais quando discordam do que quando concordam e, dado que eles aprendem
 no sentido de corrigir os erros, espera-se que num cenário em que existe apenas
-um assunto e um grupo, o consensu seja atingido como função do parâmetro
+um assunto e um grupo, o consenso seja atingido como função do parâmetro
 $\delta$. Esse potencial é interpretado como o custo da discordância entre os
 agentes $r$ e $s$ dos grupos $\mu$ e $\nu$ sobre o assunto $\rho$. Podemos
 simplificar um pouco definido o custo da discordância sobre todos os assuntos
 entre dois agentes fazendo 
 
 \begin{equation}\label{pair-potential}
-    V^{\mu\nu}_{rs} = \sum_{\rho=1,2} V^{\mu\nu,\;\rho}_{rs}
+    \pot = \sum_{\rho=1,2} \subpot
 \end{equation}
 
 Com isso, podemos escrever o custo total da discordância na sociedade como sendo
@@ -148,8 +200,8 @@ indivíduos de grupos distintos e entre indivíduos de mesmo grupo,
 respectivamente. A energia total do sistema é dada pelo hamiltoniano
 
 \begin{equation}
-    \mathcal{H} = -\frac{J}{2N}\sum_{\mu \ne \nu}\sum_{rs}V_{rs}^{\mu\nu}
-                 +\frac{K}{2N}\sum_{\mu=\nu}\sum_{r\ne s}V_{rs}^{\mu\nu}
+    \H = -\frac{J}{2N}\sum_{\mu \ne \nu}\sum_{rs}\pot
+                 +\frac{K}{2N}\sum_{\mu=\nu}\sum_{r\ne s}\pot
 \end{equation}
 
 onde $N = N^1 + N^2$ é o número total de agentes. Note que esse hamiltoniano
@@ -159,12 +211,12 @@ grupos bem formados do ponto de vista das opiniões.
 
 É razoável supor que o valor
 esperado do hamiltoniano seja uma informação relavante, de modo que, por máxima
-entropia, a probabilidade de observar uma certa configuração $\underline \omega$
+entropia, a probabilidade de observar uma certa configuração $\conf$
 é dada pela distribuição de Boltzmann 
 
-\[P(\underline \omega) = \frac{1}{Z}e^{-\beta \mathcal{H}}\]
+\[P(\conf) = \frac{1}{Z}e^{-\beta \H}\]
 
-com $ Z = \sum_{\underline \omega} e^{-\beta \mathcal{H}} $ a função de
+com $ Z = \sum_{\conf} e^{-\beta \H} $ a função de
 partição.
 
 %------------------------------------------------
@@ -175,15 +227,15 @@ Para prosseguir, vamos tentar uma aproximação de campo médio para o sistema.
 Isso é feito a partir da aproximação da distribuição de probabilidades $P$ dada
 acima por uma família de distribuições que se fatora entre agentes
 independentes. Isto é, queremos aproximar $P \approx P_{MF} =
-\prod_{\substack{rs\\\mu\ne\nu}}P^{\mu}_rP^{\nu}_s $. A melhor aproximação possível para essa família
+\prod_{\mu,\;r}P^{\mu}_r $. A melhor aproximação possível para essa família
 de distribuições é aquela que minimiza a divergência de Kullback-Liebler entre
 $P$ e $P_{MF}$, definida por 
 
 \begin{equation}
     S[P_{MF}||P] = -\int
-    \mathrm{d}\mu(\underline\omega)P_{MF}\mathrm{ln}(\frac{P_{MF}}{P})
-    -\sum_{\mu,r}\lambda_r^{\mu}\left<P^{\mu}_r-1\right>_{\omega^{\mu}_r} 
-    - \beta\left<P_{MF}\mathcal{H} - E\right>_{\underline\omega}
+    \msr{\conf}P_{MF}\mathrm{ln}\inp{\frac{P_{MF}}{P}}
+    -\sum_{\mu,r}\lambda_r^{\mu}\ina{P^{\mu}_r-1}_{\agent{r}{\mu}} 
+    - \beta\ina{P_{MF}\H - E}_{\conf}
 \end{equation}
 
 onde as constantes $\lambda$ e $\beta$ repesentam os vínculos de normalização e
@@ -194,28 +246,27 @@ distribuições
 \begin{equation}
     \begin{split}
         S[P_{MF}||P] & = -\int
-    \mathrm{d}\mu(\underline\omega)P_{MF}\mathrm{ln}(\frac{P_{MF}}{P})
-    -\sum_{\mu,r}\lambda_r^{\mu}\left<P^{\mu}_r-1\right>_{\omega^{\mu}_r} 
-    - \beta\left<P_{MF}\mathcal{H} - E\right>_{\underline\omega} \\
+        \msr{\conf}P_{MF}\ln\inp{\frac{P_{MF}}{P}}
+        -\sum_{\mu,r}\lambda_r^{\mu}\ina{P^{\mu}_r-1}_{\agent{r}{\mu}} 
+        - \beta\ina{P_{MF}\mathcal{H} - E}_{\conf} \\
     % step 1
     & =  -\int
-    \prod_{rs}\mathrm{d}\mu(\omega^{\mu}_r)\mathrm{d}\mu(\omega^{\nu}_s)
-    P^{\mu}_rP^{\nu}_s\mathrm{ln}(\frac{\prod_{rs}P^{\mu}_rP^{\nu}_s}
-    {P}) \\
-    &\quad -\sum_{\mu,r}\lambda_r^{\mu}\left[\int \mathrm{d}\mu(\omega^{\mu}_r)
-        P^{\mu}_r-1\right] \\
-    &\quad - \beta\left[\int\prod_{rs}\mathrm{d}\mu(\omega^{\mu}_r)
-        \mathrm{d}\mu(\omega^{\nu}_s)P^{\mu}_rP^{\nu}_s\mathcal{H}-E\right]\\
+        \prod_{\mu,\;r}\msr{\agent{r}{\mu}}P^{\mu}_r
+        \ln \inp{\frac{\prod_{\mu,\;r}P^{\mu}_r}{P}}\\
+        &\quad -\sum_{\mu,r}\lambda_r^{\mu}\ins{\int \msr{\agent{r}{\mu}}
+        P^{\mu}_r-1} \\
+        &\quad -
+        \beta\ins{\int\prod_{rs}\msr{\agent{r}{\mu}}\msr{\agent{s}{\nu}}
+        P^{\mu}_rP^{\nu}_s\H-E}\\
     % step 2
-    & =  -\sum_{\mu\nu}\sum_{rs}\int
-        \mathrm{d}\mu(\omega^{\mu}_r)\mathrm{d}\mu(\omega^{\nu}_s)
-    P^{\mu}_rP^{\nu}_s\mathrm{ln}(\frac{P^{\mu}_rP^{\nu}_s}
-    {P}) \\
-    &\quad -\sum_{\mu,r}\lambda_r^{\mu}\left[\int \mathrm{d}\mu(\omega^{\mu}_r)
-        P^{\mu}_r-1\right] \\
-    &\quad - \beta\left[\sum_{\mu\nu}\sum_{rs}\int\mathrm{d}\mu(\omega^{\mu}_r)
-    \mathrm{d}\mu(\omega^{\nu}_s)P^{\mu}_rP^{\nu}_sA_{rs}^{\mu\nu}
-    V_{rs}^{\mu\nu}-E\right]
+    & =  -
+        \sum_{\mu,\;r}\int\msr{\agent{r}{\mu}}P^{\mu}_r
+        \ln \inp{\frac{P^{\mu}_r}{P}}\\
+        &\quad -\sum_{\mu,r}\lambda_r^{\mu}\ins{\int \msr{\agent{r}{\mu}}
+        P^{\mu}_r-1} \\
+        &\quad -
+        \beta\ins{\sum_{\mu\nu}\sum_{rs}\int\msr{\agent{r}{\mu}}
+            \msr{\agent{s}{\nu}}P^{\mu}_rP^{\nu}_sA^{\mu\nu}_{rs}\pot-E}\\
     \end{split}
 \end{equation}
 
@@ -227,43 +278,43 @@ tomando variações $\frac{\delta S}{\delta{P^{\mu}_r}} = 0$ termos
 \begin{equation}\label{mean-field-p}
     \begin{split}
         0 & = \frac{\delta S}{\delta P^{\mu}_r} \\
-          & = 1 - \mathrm{ln}P^{\mu}_r - \lambda_r^{\mu} 
-        - \beta\sum_{s,\nu}A_{rs}^{\mu\nu}\int\mathrm{d}\mu(\omega^{\nu}_s)
-            P^{\nu}_sV_{rs}^{\mu\nu} \\
-        \implies & P_r^{\mu} \propto exp\left(
-        - \beta\sum_{s,\nu}A_{rs}^{\mu\nu}\int\mathrm{d}\mu(\omega^{\nu}_s)
-    P^{\nu}_sV_{rs}^{\mu\nu} \right)
+          & = 1 - \ln P^{\mu}_r - \lambda_r^{\mu} 
+        - \beta\sum_{s,\nu}A_{rs}^{\mu\nu}\int \msr{\agent{s}{\nu}}
+        P^{\nu}_s \pot \\
+        \implies & P_r^{\mu} \propto exp \inp{%
+        - \beta\sum_{s,\nu}A_{rs}^{\mu\nu}\int \msr{\agent{s}{\nu}}
+    P^{\nu}_s \pot }
     \end{split}
 \end{equation}
 
-Com isso, basta integrar $V_{rs}^{\mu\nu}$ para determinar as distribuição de
+Com isso, basta integrar $\pot$ para determinar as distribuição de
 campo médio do sistema. Vejamos como podemos lidar com isso. Chamando
-$D\omega_s^{\nu}=d\mu(\omega_s^{\nu})P_s^{\nu}$, temos
+$D\agent{s}{\nu}=\msr{\agent{s}{\nu}}$, temos
 
 \begin{equation}
     \begin{split}
-        \int D\omega_s^{\nu}V_{rs}^{\mu\nu} & = \\
-        & = \int D\omega_s^{\nu}\sum_{\rho}
-        \left[-\frac{1+\delta}{2}h_r^{\mu\rho}h_s^{\nu\rho}
-                      +\frac{1-\delta}{2}|h_r^{\mu\rho}h_s^{\nu\rho}|\right] \\ 
-        & = \sum_{\rho}\int D\omega_s^{\nu}
-        \left[-\frac{1+\delta}{2}h_r^{\mu\rho}h_s^{\nu\rho}
-                      +\frac{1-\delta}{2}|h_r^{\mu\rho}h_s^{\nu\rho}|\right] \\ 
+        \int D\agent{s}{\nu} \pot & = \\
+        & = \int D\agent{s}{\nu} \sum_{\rho}
+        \ins{-\frac{1+\delta}{2}\opn{r}{\mu}\opn{s}{\nu}
+        +\frac{1-\delta}{2}|\opn{r}{\mu}\opn{s}{\nu}|} \\ 
+        & = \sum_{\rho}\int D\agent{s}{\nu}
+        \ins{-\frac{1+\delta}{2} \opn{r}{\mu}\opn{s}{\nu}
+        +\frac{1-\delta}{2}|\opn{r}{\mu}\opn{s}{\nu}|} \\ 
         & = \sum_{\rho}
-        \left[-\frac{1+\delta}{2}h_r^{\mu\rho}m^{\nu\rho}
-                      +\frac{1-\delta}{2}|h_r^{\mu\rho}|r^{\nu\rho}\right] \\ 
+        \ins{-\frac{1+\delta}{2}\opn{r}{\mu} \mh{\nu}
+            +\frac{1-\delta}{2}|\opn{r}{\mu}| \rh{\nu}} \\ 
     \end{split}
 \end{equation}
 
 onde definimos os parâmetros de ordem
 
 \begin{equation}\label{order-parameter-m}
-    m^{\nu\rho} = \int D\omega_s^{\nu} \omega_s^{\nu} \cdot x^{\rho}
+    \mh{\nu} = \int \msr{\agent{s}{\nu}}P^{\nu}_r \agent{s}{\nu} \cdot x^{\rho}
 \end{equation}
 
 
 \begin{equation}\label{order-parameter-r}
-    r^{\nu\rho} = \int D\omega_s^{\nu} |\omega_s^{\nu} \cdot x^{\rho}|
+    \rh{\nu} = \int\msr{\agent{s}{\nu}}P^{\nu}_r |\omega_s^{\nu} \cdot x^{\rho}|
 \end{equation}
 
 Note que, visto que estamos trabalhando com dois assuntos e dois grupos, temos
@@ -272,23 +323,26 @@ de ordem sobre o subíndice, que representa o índice dos agentes, foi removido
 sobre a hipótese de homogeneidade da distribuição de campo médio. Ou seja, os
 agentes não são necessariamente idênticos, mas são identicamente distribuídos.
 
-Para finalizar, o termo nas exponencial da equação~\ref{mean-field-p} pode ser
-escrito
+Agora a integral de $\pot$ pode ser reescrita em termos dos parâmetros de ordem:
 
 \begin{equation}
     \begin{split}
-        - \beta\sum_{s,\nu}A_{rs}^{\mu\nu}\int D\omega_s^{\nu}
-        V_{rs}^{\mu\nu} \right) & = \\
-                                         & = -
-        \beta\sum_{s,\nu}A_{rs}^{\mu\nu}\sum_{\rho}\left[
-        -ah_r^{\mu\rho}m^{\nu\rho}+b|h_r^{\mu\rho}|r^{\nu\rho}\right]\\
+        \sum_{\mu\nu}\sum_{rs}A^{\mu\nu}_{rs}\int D\agent{s}{\nu} \pot & = \\
+        & = 
+        \sum_{\mu\nu}\sum_{rs}A^{\mu\nu}_{rs}\sum_{\rho}\ins{
+        -a\opn{r}{\mu}\mh{\nu}+b|\opn{r}{\mu}|\rh{\nu}}\\
         & =
-        -\beta\sum_{\rho}\left[
-        -a\left(\frac{K(N^{\mu}-1)}{2N}\right)h_r^{\mu\rho}m^{\mu\rho}
-        +b\left(\frac{K(N^{\mu}-1)}{2N}\right)|h_r^{\mu\rho}|r^{\mu\rho}\\
+        \sum_{\rho}\ins{%
+        -a\inp{\frac{K(N^{\mu}-1)}{2N}}\opn{r}{\mu}\mh{\mu}
+        +b\inp{\frac{K(N^{\mu}-1)}{2N}}|\opn{r}{\mu\rho}|\rh{\mu}\\
         &  
-        -a\left(-\frac{JN^{\nu}}{2N}\right)h_r^{\mu\rho}m^{\nu\rho}
-   \left+b\left(-\frac{JN^{\nu}}{2N}\right)|h_r^{\mu\rho}|r^{\nu\rho} \right]
+        -a\inp{-\frac{JN^{\nu}}{2N}}\opn{r}{\mu}\mh{\nu}
+   \left+b\inp{-\frac{JN^{\nu}}{2N}}|\opn{r}{\mu}|\rh{\nu}} \\
+        & =
+        -a\inp{\frac{K(N^{\mu}-1)}{2N}-\frac{JN^{\nu}}{2N}}\opn{r}{\mu}\mh{\mu}\\
+        &
+        \quad+b\inp{\frac{K(N^{\mu}-1)}{2N}-\frac{JN^{\nu}}{2N}}|
+        \opn{r}{\mu\rho}|\rh{\mu}\\
     \end{split}
 \end{equation}
 
@@ -298,38 +352,23 @@ os podemos fazer $n^{\mu} = \frac{N_{\mu}}{N}$ e reescrever a equação acima
 
 \begin{equation}
     \begin{split}
-        & -\beta\sum_{\rho}\left[
-        -a\left(\frac{K(N^{\mu}-1)}{2N}\right)h_r^{\mu\rho}m^{\mu\rho}
-        +b\left(\frac{K(N^{\mu}-1)}{2N}\right)|h_r^{\mu\rho}|r^{\mu\rho}\\
-        &\qquad \qquad 
-        -a\left(-\frac{JN^{\nu}}{2N}\right)h_r^{\mu\rho}m^{\nu\rho}
-   \left+b\left(-\frac{JN^{\nu}}{2N}\right)|h_r^{\mu\rho}|r^{\nu\rho} \right]\\
-        & = 
-         -\beta\sum_{\rho}\left[
-        -a\left(\frac{Kn^{\mu}}{2}\right)h_r^{\mu\rho}m^{\mu\rho}
-        +b\left(\frac{Kn^{\mu}}{2}\right)|h_r^{\mu\rho}|r^{\mu\rho}\\
-        &\qquad \qquad 
-        -a\left(-\frac{Jn^{\nu}}{2}\right)h_r^{\mu\rho}m^{\nu\rho}
-   \left+b\left(-\frac{Jn^{\nu}}{2}\right)|h_r^{\mu\rho}|r^{\nu\rho} \right]\\
-        & =
-         \beta\sum_{\rho}\left[
-        a\left(\frac{Kn^{\mu}}{2}m^{\mu\rho}-\frac{Jn^{\nu}}{2}m^{\nu\rho}
-        \right)h_r^{\mu\rho}
-        -b\left(\frac{Kn^{\mu}}{2}r^{\mu\rho}-\frac{Jn^{\nu}}{2}r^{\nu\rho}
-        \right)|h_r^{\mu\rho}| \right]
-        &\qquad \qquad 
+        \sum_{\mu\nu}\sum_{rs}A^{\mu\nu}_{rs}\int D\agent{s}{\nu} \pot & = \\
+        & 
+        -a\inp{\frac{Kn^{\mu}}{2}-\frac{Jn^{\nu}}{2}}\opn{r}{\mu}\mh{\mu}\\
+        &
+        +b\inp{\frac{Kn^{\mu}}{2}-\frac{Jn^{\nu}}{2}}|
+        \opn{r}{\mu\rho}|\rh{\mu}\\
     \end{split}
 \end{equation}
 
-e, chamando $M^{\mu\nu\rho} =
-\frac{Kn^{\mu}}{2}m^{\mu\rho}-\frac{Jn^{\nu}}{2}m^{\nu\rho} $ e $R^{\mu\nu\rho}
+e, chamando $\Mh{\mu} =
+\frac{Kn^{\mu}}{2}m^{\mu\rho}-\frac{Jn^{\nu}}{2}m^{\nu\rho} $ e $\Rh{\mu}
 = \frac{Kn^{\mu}}{2}r^{\mu\rho}-\frac{Jn^{\nu}}{2}r^{\nu\rho}$, podemos escrever
-o resultado final da seguinte formados
+o resultado final da seguinte forma
 
 \begin{equation}
-    P_r^{\mu} = \frac{1}{Z_r^{\mu}} \mathrm{exp} \left(
-    {\beta\sum_{\rho}\left[aM^{\mu\nu\rho}h_r^{\mu\rho}-
-bR^{\mu\nu\rho}|h_r^{\mu\rho}|\right]} \right)
+    P_r^{\mu} = \frac{1}{Z_r^{\mu}} \mathrm{exp} \inp{%
+        \beta\sum_{\rho}\ins{a\Mh{\mu}\opn{r}{\mu}-b\Rh{\mu}|\opn{r}{\mu}|}}
 \end{equation}
 
 %------------------------------------------------
