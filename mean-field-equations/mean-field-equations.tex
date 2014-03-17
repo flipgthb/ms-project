@@ -169,9 +169,9 @@ agente quando recebe um exemplo é dada pela equação
     \sigma x^{\rho}
 \end{equation}
 
-onde $F$ é a função de modulação, $\sigma$ é a opinião do interlocutor sobre o
-assunto $x^{\rho}$ no instante $t$. Podemos escrever a função de modulação como o
-gradiente de um potencial $ F = -\nabla V $, com
+onde $F$ é a função de modulação, $\sigma$ é a opinião do locutor sobre o
+assunto $x^{\rho}$ no instante $t$. Podemos escrever a função de modulação como 
+o gradiente de um potencial $ F = -\nabla V $, com
 
 \begin{equation}\label{subject-potential}
     \subpot = -\frac{1+\delta}{2}\opn{r}{\mu}\opn{s}{\nu}
@@ -219,7 +219,7 @@ entropia, a probabilidade de observar uma certa configuração $\conf$
 com $ Z = \sum_{\conf} e^{-\beta \H} $ a função de
 partição.
 
-%------------------------------------------------
+%------------------------------------------------------------------------------
 
 \section*{Campo Médio}
 
@@ -339,31 +339,43 @@ Agora a integral de $\pot$ pode ser reescrita em termos dos parâmetros de ordem
         -a\inp{-\frac{JN^{\nu}}{2N}}\opn{r}{\mu}\mh{\nu}
    \left+b\inp{-\frac{JN^{\nu}}{2N}}|\opn{r}{\mu}|\rh{\nu}} \\
         & =
-        -a\inp{\frac{K(N^{\mu}-1)}{2N}-\frac{JN^{\nu}}{2N}}\opn{r}{\mu}\mh{\mu}\\
+        -a\inp{\frac{K(N^{\mu}-1)}{2N}\mh{\mu}-\frac{JN^{\nu}}{2N}\mh{\nu}}
+        \opn{r}{\mu}\\
         &
-        \quad+b\inp{\frac{K(N^{\mu}-1)}{2N}-\frac{JN^{\nu}}{2N}}|
-        \opn{r}{\mu}|\rh{\mu}\\
+        \quad+b\inp{\frac{K(N^{\mu}-1)}{2N}\rh{\mu}-\frac{JN^{\nu}}{2N}\rh{\nu}}
+        |\opn{r}{\mu}|\\
     \end{split}
 \end{equation}
 
 com $a=\frac{1+\delta}{2}$ e $b=\frac{1-\delta}{2}$. No limite termodinâmico, 
-$N \to \infty$ com $\frac{N_{\mu}}{N} = \textit{cte}$,
-os podemos fazer $n^{\mu} = \frac{N_{\mu}}{N}$ e reescrever a equação acima
+$N \to \infty$ com $\frac{N_{\mu}}{N} = \textit{cte} = n_{\mu}$, 
+podemos reescrever a equação acima
 
 \begin{equation}
     \begin{split}
         \sum_{\mu\nu}\sum_{rs}A^{\mu\nu}_{rs}\int D\agent{s}{\nu} \pot & = \\
         & 
-        -a\inp{\frac{Kn^{\mu}}{2}-\frac{Jn^{\nu}}{2}}\opn{r}{\mu}\mh{\mu}\\
+        -a\inp{\frac{Kn_{\mu}}{2}\mh{\mu}-\frac{Jn_{\nu}}{2}\mh{\nu}}
+        \opn{r}{\mu}\\
         &
-        +b\inp{\frac{Kn^{\mu}}{2}-\frac{Jn^{\nu}}{2}}|
-        \opn{r}{\mu}|\rh{\mu}\\
+        +b\inp{\frac{Kn_{\mu}}{2}\rh{\mu}-\frac{Jn_{\nu}}{2}\rh{\nu}}|
+        \opn{r}{\mu}|\\
     \end{split}
 \end{equation}
 
-e, chamando $\Mh{\mu} =
-\frac{Kn^{\mu}}{2}m^{\mu\rho}-\frac{Jn^{\nu}}{2}m^{\nu\rho} $ e $\Rh{\mu}
-= \frac{Kn^{\mu}}{2}r^{\mu\rho}-\frac{Jn^{\nu}}{2}r^{\nu\rho}$, podemos escrever
+e, chamando 
+
+\begin{equation}
+    \Mh{\mu} = \frac{1}{2}\inp{Kn_{\mu}\mh{\mu}-Jn_{\nu}\mh{\nu}} 
+\end{equation}
+
+e 
+
+\begin{equation}
+    \Rh{\mu} = \frac{1}{2}\inp{Kn_{\mu}\rh{\mu}-Jn_{\nu}\rh{\nu}}
+\end{equation}
+
+(subentendido que $\nu\ne \mu$), podemos escrever
 o resultado final da seguinte forma
 
 \begin{equation}\label{mean-field-P}
@@ -376,17 +388,18 @@ e~\ref{order-parameter-r} como equações de auto-consistência da aproximação
 campo médio e suas soluções indicam os possíveis valores dos parâmetros de
 ordem. 
 
-%------------------------------------------------
+%------------------------------------------------------------------------------
 
 \section*{Equações de Auto-Consistência}
 
 Os resultados da seção anterior são válidos para qualquer dimensão $D$ dos
-vetores cognitivos dos agentes. Para avançã um pouco mais, vamos nos restringir
-ao caso $D=5$, de acordo com a Teoria dos Fundamentos Morais. Para simplificar a
-notação, note que a distribuição de campo médio obtida depende do grupo do
-agente, mas não de cada agente no grupo. Então, vamos omitir o índice refente ao
-agente (até então $r$ ou $s$) e vamos baixar o índice de grupo, $\mu$ ou $\nu$.
-Com isso, a equação~\ref{mean-field-P} escreve-se 
+vetores cognitivos dos agentes. Para avançar um pouco mais, vamos nos restringir
+ao caso $D=5$, de acordo com a Teoria dos Fundamentos Morais. 
+
+Note que os parâmetros $\Mh{\mu}$ e $\Rh{\mu}$ independem do índice do agente 
+(até então $r$ ou $s$), de tal modo que a distribuição depende apenas do grupo 
+de agentes, mas não de cada agente num grupo. Então, vamos omitir $r$ e  baixar 
+o índice de grupo, $\mu$. Com isso, a equação~\ref{mean-field-P} escreve-se 
 
 \newcommand{\hf}[2]{%
     h_{#1}^{#2}}
@@ -416,28 +429,27 @@ são coordenadas cartesianas, a parametrização esférica é dada por
 e o jacobiano da transformação é 
 
 \begin{equation*}
-    d^D v = r^4 \sen ^3 \theta _1 \sen ^2 \theta _2 \sen \theta _3 
+    d^5 v = r^4 \sen ^3 \theta _1 \sen ^2 \theta _2 \sen \theta _3 
     drd\theta_1d\theta_2d\theta_3d\theta_4
 \end{equation*}
 
 Como todos os vetores cognitivos dos agentes e os vetores dos assuntos estão
 normalizados, as integrais são feitas sobre a superfície da esfera unitária, ou
 seja $r=1$. Considere que $x^1 \cdot x^2 = \cos \gamma$, escolha $q_1 =
-x^1$ e $ x^2 = q_1\cos \gamma  + q_2\sen \gamma $, e chame $\theta_1 = \theta$ e
-$\theta_2 = \phi$. Com isso, as integrais sobre $\theta_3$ e $\theta_4$ são
-apenas constantes e podem ser absorvidas na função de partição, e as únicas
-integrais a serem feitas são sobre $\theta$ e $\phi$, ambas no intervalo
-$[0,\pi]$. 
+x^1$ e $ x^2 = \hat{q_1}\cos \gamma  + \hat{q_2}\sen \gamma $, e 
+chame $\theta_1 = \theta$ e $\theta_2 = \phi$. Com isso, as integrais sobre
+$\theta_3$ e $\theta_4$ são apenas constantes e podem ser absorvidas na função
+de partição, e as únicas integrais a serem feitas são sobre $\theta$ e $\phi$, 
+ambas no intervalo $[0,\pi]$. 
 
 Podemos reescrever a opinião de um agente em relação aos assuntos $1$ ou $2$ de
-acordo com angulos $\theta,\phi$ e $\gamma$:
+acordo com ângulos $\theta,\phi$ e $\gamma$:
 
 \[
     g\inp{\theta,\phi,\gamma} = \hf{\mu}{\rho} = 
     \begin{cases} 
-        \cos \theta & \textit{ , caso $\rho=1$ } \\
-        \sen \gamma \sen \theta \cos \phi + \cos \theta \cos \gamma &
-        \textit{, caso $\rho=2$}
+        \cos \theta &  ,\;\rho=1 \\
+        \sen \gamma \sen \theta \cos \phi + \cos \theta \cos \gamma & ,\;\rho=2
     \end{cases}
 \]
 
@@ -447,27 +459,32 @@ e a medida sobre o vetor cognitivo de um agente escreve-se
     \msr{\agent{r}{\mu}} = \sen ^3 \theta \sen ^2 \phi d\theta d\phi
 \]
 
-Note que a função $g\inp{\theta,\phi,\gamma}$ produz $h^1_{\mu}$ para $\gamma=0$
-e $h^2_{\mu}$ para $\gamma \ne 0$, e chamando $g_{\rho}=\begin{cases}
-    g(\theta,\phi,0) &
-,\rho=1 \\ g(\theta,\phi,\gamma) & ,\rho=2 \end{cases}$, podemos escrever as
-equações~\ref{order-parameter-m} e~\ref{order-parameter-r} da seguinte forma
+Note que $g\inp{\theta,\phi,0} = h^1_{\mu}$ e $g\inp{\theta,\phi,\gamma\ne0} = 
+h^2_{\mu}$. Portanto, chamando 
+
+\[g^{\rho}=\begin{cases}
+    g(\theta,\phi,0) & ,\rho=1 \\ 
+    g(\theta,\phi,\gamma) & ,\rho=2 \end{cases}
+\]
+        
+podemos escrever as equações~\ref{order-parameter-m} e~\ref{order-parameter-r} 
+da seguinte forma
 
 \begin{equation} \label{self-consistent-m}
     \mh{\mu} = \frac{1}{Z_{\mu}}
-    \int_0^{\pi} d\theta \; d\phi \; \sen^3 \theta \; \sen^2 \phi \; 
-    g_{\rho} \mathrm{exp} 
-    \ins{\beta \sum_{\rho} \inp{a\Mh{\mu}g_{\rho} \\
-    & -b\Rh{\mu}|g_{\rho}|}}
+    \int_0^{\pi} \int_0^{\pi} d\theta \; d\phi \; \sen^3 \theta \; \sen^2 \phi\; 
+    g^{\rho} \mathrm{exp} 
+    \ins{\beta \sum_{\rho} \inp{a\Mh{\mu}g^{\rho} \\
+    & -b\Rh{\mu}|g^{\rho}|}}
 \end{equation}
 
 
 \begin{equation} \label{self-consistent-r}
     \rh{\mu} = \frac{1}{Z_{\mu}}
-    \int_0^{\pi} d\theta \; d\phi \; \sen^3 \theta \; \sen^2 \phi \; 
-    |g_{\rho}| \mathrm{exp} 
-    \ins{\beta \sum_{\rho} \inp{a\Mh{\mu}g_{\rho} \\
-    & -b\Rh{\mu}|g_{\rho}|}}
+    \int_0^{\pi} \int_0^{\pi} d\theta \; d\phi \; \sen^3 \theta \; \sen^2 \phi\; 
+    |g^{\rho}| \mathrm{exp} 
+    \ins{\beta \sum_{\rho} \inp{a\Mh{\mu}g^{\rho} \\
+    & -b\Rh{\mu}|g^{\rho}|}}
 \end{equation}
 
 com a função de partição dada por
@@ -475,10 +492,10 @@ com a função de partição dada por
 
 \begin{equation} \label{self-consistent-Z}
     Z_{\mu} = 
-    \int_0^{\pi} d\theta \; d\phi \; \sen^3 \theta \; \sen^2 \phi \; 
+    \int_0^{\pi} \int_0^{\pi} d\theta \; d\phi \; \sen^3 \theta \; \sen^2 \phi\; 
     \mathrm{exp} 
-    \ins{\beta \sum_{\rho} \inp{a\Mh{\mu}g_{\rho} \\
-    & -b\Rh{\mu}|g_{\rho}|}}
+    \ins{\beta \sum_{\rho} \inp{a\Mh{\mu}g^{\rho} \\
+    & -b\Rh{\mu}|g^{\rho}|}}
 \end{equation}
 
 %------------------------------------------------
