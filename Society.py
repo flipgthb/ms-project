@@ -10,96 +10,85 @@ def row_norm(X):
     nX = np.sqrt((X*X).sum(axis=1)[:, np.newaxis])
     return nX
 
-def build_pair(dim, angle, plane=(0,1)):
-    # Poor realization of a rotation in a plane, resulting in a
-    # pair of vectors with the given angle between then in this
-    # given plane. It is poor in the sense that, actually, the
-    # function is performing a rotantion in 2 dimensions and
-    # embending the vectors in dim dimensions.
-    c = math.cos(angle)
-    s = math.sin(angle)
-    z1 = np.zeros(dim)
-    z2 = np.zeros(dim)
-    z1[list(plane)] = 1, 0
-    z2[list(plane)] = c, s
-    return np.vstack([z1, z2])
+def prob_row_norm(X):
+    nX = X.sum(axis=1)[:, np.newaxis]
+    return nX
 
 class Society(object):
 
-    def __init__(self, w, gamma, rho, eps, beta):
+    def __init__(self, N, D, delta, beta):
 
-        self.N = w.shape[0]
-        self.D = w.shape[1]
-
-        self.gamma = gamma
-        self.rho = rho
-        self.eps = eps
+        self.N = N  # number of agents
+        self.D = D  # agent complexity, cognitive vector dimension
+        self.delta = delta
         self.beta = beta
 
-        self.state = w / row_norm(w)
-        self.zeitgeist = build_pair(self.D, self.gamma)
-        self.adjacency = np.ones((self.N, self.N)) - np.identity(self.N)
+        self.w = np.random.randn(self.N, self.D)
+        self.w /= row_norm(self.w)
+
+        self.social_network = np.random.rand(self.N,self.N)
+        self.social_network -= np.diag(np.diag(self.social_network))
+        self.social_network *= self.N / prob_row_norm(self.social_network)
+
+        self.zeitgeist = self.compute_initial_zeitgeist()
+
+    def compute_initial_zeitgeist(self):
+        z = self.social_network.dot(self.w)
+        z /= row_norm(z)
+        return z
+
+    @property
+    def reputation(self):
+        A = self.social_network
+        R = A.sum(axis=0)
+        return R
+
+    @property
+    def listening_probability(self):
+        min_ = self.social_network.min(axis=1)[:, np.newaxis]
+        max_ = self.social_network.max(axis=1)[:, np.newaxis]
+        X = self.social_network.copy()
+        P = (X - min_)/(max_ - min_)
+        P -= np.diag(np.diag(P))
+        return P / prob_row_norm(P)
 
     @property
     def field(self):
-        fi = self.state.dot(self.zeitgeist.T)
-        return fi
+        h = (self.zeitgeist*self.w).sum(axis=1)
+        return h
 
     def agreement(self, i, j):
-        h = self.field
-        hi, hj = h[i], h[j]
-        # hi, hj = self.field[[i, j]]
-        z_idx = np.argmax(hj)
-        s = np.sign(hj[z_idx])
-        x = hi[z_idx] * s
-        return x
+        hi, hj = self.field[[i,j]]
+        return hi*hj
 
-    @property
-    def topology(self):
-        A = self.adjacency
-        n = A.sum(axis=1)[:,np.newaxis]
-        return A/n
+    def potential(self, i, j):
+        a =  (1+self.delta)/2
+        b =  (1-self.delta)/2
+        hi, hj  = self.field[[i,j]]
+        Vij = -a*hi*hj + b*abs(hi*hj)
+        return Vij
 
-    def energy(self, i, j):
-        x = self.agreement(i, j)
-        C = (1/self.rho) * np.sqrt(1 - self.rho*self.rho)
-        Fi = 1/2*(1+erf(x/(C*math.sqrt(2))))
-        E = math.log(self.eps + (1 - 2*self.eps)*Fi)
-        return E
 
 
 if __name__ == "__main__":
+    S = Society(3,5,.2,5)
+    test = """
+    S.N, S.D = {}, {}
 
-    w = np.ones((4, 5))
-    w[2:] *= -1
-    rho = .8
-    eps = .2
-    beta = 1.
-    gamma = 3*np.pi/4
-    s = Society(w, gamma, rho, eps, beta)
-    report = """
-    w =
-    {0}
+    S.w =
+    {}
 
-    rho={1},  beta={2},  gamma={3}, eps={4}
+    S.zeitgeist =
+    {}
 
-    z =
-    {5}
+    S.listening_probability = {}
 
-    z*z.T =
-    {6}
+    S.reputation = {}
 
-    arccos(z*z.T) =
-    {7}
+    S.social_network =
+    {}
 
-    energy(0,1) = {8}
-    agreement(0,1) = {9}
-    (w*w).sum(axis=1) = {10}
-    field = {11}
-    indmax(field) = {12}
-    """.format(s.state, s.rho, s.beta, s.gamma, s.eps,
-               s.zeitgeist, s.zeitgeist.dot(s.zeitgeist.T),
-               np.arccos(s.zeitgeist.dot(s.zeitgeist.T)),
-               s.energy(0,1), s.agreement(0,1), (s.state*s.state).sum(axis=1),
-               s.field, s.field.argmax(axis=1))
-    print(report)
+    S.potential(0,2) = {}
+    """.format(S.N,S.D,S.w,S.zeitgeist,S.listening_probability,
+               S.reputation,S.social_network,S.potential(0,2))
+    print(test)

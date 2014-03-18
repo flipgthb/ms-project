@@ -7,29 +7,35 @@ import scipy.stats as st
 import math
 from collections import namedtuple
 
+def row_norm(X):
+    nX = np.sqrt((X*X).sum(axis=1)[:,np.newaxis])
+    return nX
 
 class MCMC(object):
-    def __init__(self, system, n, b, m, ds=1., df=1.):
-        self.n = n       # number of steps
-        self.b = b       # burned steps
-        self.m = m       # measure period
-        self.ds = ds     # propose scale
-        self.df = df     # adjacency increment scale
-        # samples will be drawn from scipy.stats.norm
+    def __init__(self, system, num_steps, burn, measure_period,
+                 d_omega=1., d_eps=.1):
+        self.num_steps = num_steps                 # number of steps
+        self.burn = burn                           # burned steps
+        self.measure_period = measure_period       # measure period
+        self.delta_omega = d_omega                 # propose scale
+        self.delta_epsilon = d_eps                 # adjacency increment scale
+
         self._data = None
+
         # system is an instance of society
         self.system = system
-        self.explain = ("beta", "rho", "gamma", "eps", "fi",
-                        "sig", "h1", "h2", "v1", "v2")
+        self.explain = ("beta", "delta", "R_max", "R_mean", "R_var")
 
     @property
     def data(self):
         data_means = np.array(self._data).mean(axis=0)
-        s = self.system.state.copy()
-        a = self.system.adjacency.copy()
+        w = self.system.w.copy()
+        s = self.system.social_network.copy()
+        z = self.system.zeitgeist.copy()
         final_data = {"statistics":data_means,
-                      "state": s,
-                      "adjacency": a,
+                      "state": w,
+                      "social_network": s,
+                      "zeitgeist": z,
                       "explain": self.explain}
         return final_data
 
@@ -41,13 +47,15 @@ class MCMC(object):
             self._data = more
 
     def propose(self, i):
-        w0 = self.system.state[i].copy()
-        w = np.random.multivariate_normal(np.zeros_like(w0),
-                                          np.identity(*w0.shape))
+        w0 = self.system.w[i].copy()
+        w = np.random.multivariate_normal(
+            np.zeros_like(w0),
+            self.delta_omega*np.identity(*w0.shape)
+        )
         w /= np.linalg.norm(w)
         w += w0
         w /= np.linalg.norm(w)
-        self.system.state[i] = w.copy()
+        self.system.w[i] = w.copy()
         return w0.copy()
 
     def step(self):
@@ -55,56 +63,57 @@ class MCMC(object):
         i = np.random.choice(self.system.N)
 
         # than, get the weight pij gives to each other agent.
-        # The weights are given by the system topology
-        pij = self.system.topology[i]
+        # The weights are given by the system social network
+        pij = self.system.listening_probability[i]
 
         # and finally pick j from N/i with probability pij
         j = np.random.choice(self.system.N, p=pij)
 
-        # updating adjacency. Basically, add df to adjacency[i,j]
-        # if the they agree, zero otherwise. Note that the adition
-        # adjacency is kept symmetric.
-        fi = (1 + np.sign(self.system.agreement(i, j)))/2
-        self.system.adjacency[i, j] += fi * self.df
-        self.system.adjacency[j, i] += fi * self.df
-
-        # proposing a new state with Metropolis-Hastings
-        E0 = self.system.energy(i, j)
+        # update the coupling vector
+        E0 = self.system.potential(i, j)
         w0 = self.propose(i)
-        E = self.system.energy(i, j)
+        E = self.system.potential(i, j)
         bdE = self.system.beta*(E - E0)
         acc = min(1, math.exp(-bdE))
         rej = np.random.rand()
         if rej >= acc:
-            self.system.state[i] = w0.copy()
+            self.system.w[i] = w0.copy()
+
+        # update the social network
+        x = self.system.social_network[i]
+        sign = np.sign(self.system.agreement(i,j))
+        x[j] += sign*self.delta_epsilon*(1+1/self.system.N)
+        x -= sign*self.delta_epsilon*(1/self.system.N)
+        # x[x<0] = 0
+        x[i] = 0
+        x *= self.system.N / x.sum()
+
+        # update the zeitgeist
+        z_new = self.system.social_network.dot(self.system.w)
+        z_new /= row_norm(z_new)
+        self.system.zeitgeist = z_new.copy()
 
     def sample(self):
-        for k in xrange(self.n):
+        for k in xrange(self.num_steps):
             self.step()
-            if k >= self.b and k%self.m == 0:
+            if k >= self.burn and k%self.measure_period == 0:
                 self.measure()
 
     def measure(self):
-        h1, h2 = self.system.field.mean(axis=0)
-        v1, v2 = self.system.field.var(axis=0)
+        R_max = self.system.reputation.max()
+        R_mean = self.system.reputation.mean()
+        R_var = self.system.reputation.var()
         beta = self.system.beta
-        rho = self.system.rho
-        gamma = self.system.gamma
-        eps = self.system.eps
-        fi = self.df
-        sig = self.ds
-        self.data = np.array([beta, rho, gamma, eps, fi, sig, h1, h2, v1, v2])
+        delta = self.system.delta
+        self.data = np.array([beta, delta, R_max, R_mean, R_var])
 
 
 if __name__ == "__main__":
     from Society import Society
 
-    w = np.ones((64, 5))
-    rho = .8
-    eps = .2
-    beta = 1.
-    gamma = np.pi / 3
-    S = Society(w, gamma, rho, eps, beta)
-    mc = MCMC(S, 10, 0, 1)
+    S = Society(3, 5, .2, 5)
+    mc = MCMC(S, 100, 0, 1)
     mc.sample()
-    print(mc.data)
+    x = mc.data
+    for k, v in x.items():
+        print(k,':\n',v, end='\n\n')
