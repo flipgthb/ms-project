@@ -11,24 +11,33 @@ def row_norm(X):
     nX = np.sqrt((X*X).sum(axis=1)[:,np.newaxis])
     return nX
 
+def Heavyside(x):
+    return 1 if x>=0 else 0
+
 class MCMC(object):
     def __init__(self, system, num_steps, burn, measure_period,
-                 d_omega=1., d_eps=.1):
+                 d_omega=1., d_eps=.2, drift=1.0):
         self.num_steps = num_steps                 # number of steps
         self.burn = burn                           # burned steps
         self.measure_period = measure_period       # measure period
         self.delta_omega = d_omega                 # propose scale
         self.delta_epsilon = d_eps                 # adjacency increment scale
+        self.drift = drift                         # zeitgeist drift factor
 
         self._data = None
 
         # system is an instance of society
         self.system = system
-        self.explain = ("beta", "delta", "R_max", "R_mean", "R_var")
+        self.explain = ("beta", "delta", "m", "v",
+                        "R_max", "R_mean", "R_var",
+                        "A_max", "A_mean", "A_var")
 
     @property
     def data(self):
         data_means = np.array(self._data).mean(axis=0)
+        data_cumulative = np.array(self._data).cumsum(axis=0)
+        n = np.arange(1.,data_cumulative.shape[0]+1)[:, np.newaxis]
+        data_cumulative /= n
         w = self.system.w.copy()
         s = self.system.social_network.copy()
         z = self.system.zeitgeist.copy()
@@ -36,6 +45,7 @@ class MCMC(object):
                       "state": w,
                       "social_network": s,
                       "zeitgeist": z,
+                      "cumulative": data_cumulative,
                       "explain": self.explain}
         return final_data
 
@@ -64,7 +74,8 @@ class MCMC(object):
 
         # than, get the weight pij gives to each other agent.
         # The weights are given by the system social network
-        pij = self.system.listening_probability[i]
+        pij = self.system.listening_probability(i)
+        # pij = self.system.social_network[i]
 
         # and finally pick j from N/i with probability pij
         j = np.random.choice(self.system.N, p=pij)
@@ -80,18 +91,20 @@ class MCMC(object):
             self.system.w[i] = w0.copy()
 
         # update the social network
-        x = self.system.social_network[i]
-        sign = np.sign(self.system.agreement(i,j))
-        x[j] += sign*self.delta_epsilon*(1+1/self.system.N)
-        x -= sign*self.delta_epsilon*(1/self.system.N)
-        # x[x<0] = 0
-        x[i] = 0
-        x *= self.system.N / x.sum()
+        eps_i = self.system.social_network[i]
+        s = np.sign(self.system.agreement(i,j))
+        # s = (1+s)/2
+        deps_ij = s * self.delta_epsilon
+        k = self.system.N - 2
+        eps_i[j] += (1+1/k)*deps_ij
+        eps_i -= deps_ij/k
+        eps_i[i] = 0
 
         # update the zeitgeist
-        z_new = self.system.social_network.dot(self.system.w)
-        z_new /= row_norm(z_new)
-        self.system.zeitgeist = z_new.copy()
+        # z_new = self.system.social_network.dot(self.system.w)
+        # z_new /= row_norm(z_new)
+        # z = self.system.zeitgeist.copy()
+        # self.system.zeitgeist = (1-self.drift)*z + self.drift*z_new.copy()
 
     def sample(self):
         for k in xrange(self.num_steps):
@@ -103,16 +116,23 @@ class MCMC(object):
         R_max = self.system.reputation.max()
         R_mean = self.system.reputation.mean()
         R_var = self.system.reputation.var()
+        A_max = self.system.authority.max()
+        A_mean =self.system.authority.mean()
+        A_var = self.system.authority.var()
+        m = self.system.field.mean()
+        v = self.system.field.var()
         beta = self.system.beta
         delta = self.system.delta
-        self.data = np.array([beta, delta, R_max, R_mean, R_var])
+        self.data = np.array([beta, delta, m, v,
+                              R_max, R_mean, R_var,
+                              A_max, A_mean, A_var])
 
 
 if __name__ == "__main__":
     from Society import Society
 
     S = Society(3, 5, .2, 5)
-    mc = MCMC(S, 100, 0, 1)
+    mc = MCMC(S, 100, 0, 1, 1)
     mc.sample()
     x = mc.data
     for k, v in x.items():
