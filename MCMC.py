@@ -14,6 +14,13 @@ def row_norm(X):
 def Heavyside(x):
     return 1 if x>=0 else 0
 
+def weighted_choice(weights):
+    rnd = np.random.rand() * weights.sum()
+    for i, w in enumerate(weights):
+        rnd -= w
+        if rnd < 0:
+            return i
+
 class MCMC(object):
     def __init__(self, system, num_steps, burn, measure_period,
                  d_omega=1., d_eps=.2, drift=1.0):
@@ -28,9 +35,8 @@ class MCMC(object):
 
         # system is an instance of society
         self.system = system
-        self.explain = ("beta", "delta", "m", "v",
-                        "R_max", "R_mean", "R_var",
-                        "A_max", "A_mean", "A_var")
+        self.explain = ("beta","delta","gamma","m","v","m2",
+                        "stag_m","M","r","n","R_max","R_mean","R_var")
 
     @property
     def data(self):
@@ -40,12 +46,14 @@ class MCMC(object):
         data_cumulative /= n
         w = self.system.w.copy()
         s = self.system.social_network.copy()
+        s0 = self.system.initial_social_network.copy()
         z = self.system.zeitgeist.copy()
         final_data = {"statistics":data_means,
                       "state": w,
                       "social_network": s,
                       "zeitgeist": z,
                       "cumulative": data_cumulative,
+                      "initial_social_network": s0,
                       "explain": self.explain}
         return final_data
 
@@ -69,42 +77,41 @@ class MCMC(object):
         return w0.copy()
 
     def step(self):
-        # picking pair of agents: first pick i uniformly over N
+        # pick an agent i distributed with prop exp(-Ri)
+        # pi = self.system.agent_weights()
+        # i = np.random.choice(self.system.N, p=pi)
         i = np.random.choice(self.system.N)
-
-        # than, get the weight pij gives to each other agent.
-        # The weights are given by the system social network
-        pij = self.system.listening_probability(i)
-        # pij = self.system.social_network[i]
-
-        # and finally pick j from N/i with probability pij
+        # pick an neighbor j of i based on Rij
+        pij = self.system.neighbor_weights(i)
         j = np.random.choice(self.system.N, p=pij)
 
         # update the coupling vector
-        E0 = self.system.potential(i, j)
+        x0 = self.system.agreement(i,j)
+        # hj = self.system.field[j]
+        ni = self.system.social_network[i]
+        if x0 < -self.system.gamma:
+            self.system.social_network[i,j] -= 1.0  # works, in some way
+            # self.system.social_network[i,j] -= 10.0
+            # ni[j] /= 2
+            ni *= self.system.N/ni.sum()
+            return
+
+        E0 = self.system.potential(i,j)
         w0 = self.propose(i)
-        E = self.system.potential(i, j)
+        E = self.system.potential(i,j)
+
         bdE = self.system.beta*(E - E0)
         acc = min(1, math.exp(-bdE))
         rej = np.random.rand()
         if rej >= acc:
             self.system.w[i] = w0.copy()
 
-        # update the social network
-        eps_i = self.system.social_network[i]
-        s = np.sign(self.system.agreement(i,j))
-        # s = (1+s)/2
-        deps_ij = s * self.delta_epsilon
-        k = self.system.N - 2
-        eps_i[j] += (1+1/k)*deps_ij
-        eps_i -= deps_ij/k
-        eps_i[i] = 0
+        # update the affinity
+        self.system.social_network[i,j] += x0 # works, with the previous
+        # self.system.social_network[i,j] += np.sign(x0)*10
+        # ni[j] *= 2**np.sign(x0)
+        ni *= self.system.N/ni.sum()
 
-        # update the zeitgeist
-        # z_new = self.system.social_network.dot(self.system.w)
-        # z_new /= row_norm(z_new)
-        # z = self.system.zeitgeist.copy()
-        # self.system.zeitgeist = (1-self.drift)*z + self.drift*z_new.copy()
 
     def sample(self):
         for k in xrange(self.num_steps):
@@ -113,25 +120,34 @@ class MCMC(object):
                 self.measure()
 
     def measure(self):
-        R_max = self.system.reputation.max()
-        R_mean = self.system.reputation.mean()
-        R_var = self.system.reputation.var()
-        A_max = self.system.authority.max()
-        A_mean =self.system.authority.mean()
-        A_var = self.system.authority.var()
         m = self.system.field.mean()
+        r = np.abs(self.system.field).mean()
+        m2 = (self.system.field*self.system.field).mean()
         v = self.system.field.var()
+        h = self.system.field
+        n_pos = h[h>0].shape[0]
+        n_neg = h[h<0].shape[0]
+        m_pos = h[h>0].sum()/(n_pos+1)
+        m_neg = h[h<0].sum()/(n_neg+1)
+        stag_m = (m_pos - m_neg)/2#self.system.N
+        M = (m_pos + m_neg)/self.system.N
+        n = (n_pos - n_neg)/self.system.N
+
+        R = self.system.reputation
+        R_max = R.max()
+        R_mean = R.mean()
+        R_var = R.var()
         beta = self.system.beta
         delta = self.system.delta
-        self.data = np.array([beta, delta, m, v,
-                              R_max, R_mean, R_var,
-                              A_max, A_mean, A_var])
+        gamma = self.system.gamma
+        self.data = np.hstack([beta, delta, gamma, m, v, m2, stag_m, M,
+                               r,n,R_max, R_mean, R_var])
 
 
 if __name__ == "__main__":
     from Society import Society
 
-    S = Society(3, 5, .2, 5)
+    S = Society(64, 20, 5, .2, 5, .5)
     mc = MCMC(S, 100, 0, 1, 1)
     mc.sample()
     x = mc.data

@@ -4,6 +4,7 @@
 from __future__ import print_function, division
 import numpy as np
 import math
+import networkx as nx
 from scipy.special import erf
 
 def row_norm(X):
@@ -16,30 +17,38 @@ def prob_row_norm(X):
 
 class Society(object):
 
-    def __init__(self, N, D, delta, beta):
+    def __init__(self, N, k, D, delta, beta, gamma, rewiring_prob=1/2):
 
         self.N = N  # number of agents
         self.D = D  # agent complexity, cognitive vector dimension
-        self.k = N - 1 # number of neighbors
+        self.k = k # number of neighbors
+        self.rewiring_prob = rewiring_prob # watts-strogatz rewiring probability
         self.delta = delta  # cognitive style, learning style
         self.beta = beta  # peer pressure
+        self.gamma = gamma  # bullshit threshold
 
         self.w = np.random.randn(self.N, self.D)
         self.w /= row_norm(self.w)
 
-        self.social_network = np.ones((self.N,self.N)) - np.identity(self.N)
-        # self.social_network /= prob_row_norm(self.social_network)
+        # G = nx.watts_strogatz_graph(self.N, self.k, self.rewiring_prob)
+        # G = nx.barabasi_albert_graph(self.N, self.k)
+        G = nx.complete_graph(self.N)
+        self.social_graph = G
+        self.social_network = np.array(nx.adjacency_matrix(G))
+        # self.social_network = np.zeros((self.N,self.N))
+        self.initial_social_network = self.social_network.copy()
 
-        self.zeitgeist = self.social_network.dot(self.w)
-        self.zeitgeist /= row_norm(self.zeitgeist)
+        self.zeitgeist = np.random.randn(self.D)
+        self.zeitgeist /= np.linalg.norm(self.zeitgeist)
 
     @property
     def field(self):
-        h = (self.zeitgeist*self.w).sum(axis=1)
+        h = self.zeitgeist.dot(self.w.T)
         return h
 
     def agreement(self, i, j):
-        hi, hj = self.field[[i,j]]
+        h = self.field
+        hi, hj = h[[i,j]]
         return hi*hj
 
     def potential(self, i, j):
@@ -50,51 +59,46 @@ class Society(object):
         return Vij
 
     @property
-    def authority(self):
-        C = self.social_network.T.dot(self.social_network)
-        w, v = np.linalg.eig(C)
-        i = np.argmax(w)
-        A = v[:, i]
-        A /= A.sum()
-        A *= self.N
-        return A
-
-    @property
     def reputation(self):
         R = self.social_network.sum(axis=0).copy()
-        R /= R.sum()
-        R *= self.N
+        R *= self.N/R.sum()
         return R
 
-    def listening_probability(self, i):
-        X = self.social_network[i].copy()
-        X[i] = 0
-        X[X<0] = 1e-5
-        P = X / X.sum()
+    def neighbor_weights(self, i):
+        y = self.social_network[i].copy()
+        x = np.exp(y)
+        x[i] = 0
+        P = x/x.sum()
+        return P
+
+    def agent_weights(self):
+        y = self.social_network.sum(axis=0).copy()
+        x = np.exp(-y/np.abs(y).max())
+        P = x/x.sum()
         return P
 
 
 if __name__ == "__main__":
-    S = Society(3,5,.2,5,.1)
+    S = Society(64, 20, 5,.2,5)
     test = """
-    S.N, S.D = {}, {}
-
     S.w =
     {}
 
     S.zeitgeist =
     {}
 
-    S.listening_probability = {}
-
-    S.reputation = {}
-
-    S.authority = {}
-
     S.social_network =
     {}
 
-    S.potential(0,2) = {}
-    """.format(S.N,S.D,S.w,S.zeitgeist,S.listening_probability(0),
-               S.reputation,S.authority,S.social_network,S.potential(0,2))
+    S.listening_probability(0) =
+    {}
+
+    S.field =
+    {}
+
+    S.agreement(0,2,0) = {}
+
+    S.potential(0,2,0) = {}
+    """.format(S.w, S.zeitgeist, S.social_network, S.listening_probability(0),
+               S.field, S.agreement(0,2,0), S.potential(0,2,0))
     print(test)

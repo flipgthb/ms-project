@@ -16,11 +16,15 @@ from datetime import timedelta
 
 _D_ = 5
 _N_ = 64
-_BETA_ = (0,50,0.5)
+_k_ = 20
+_P_ = 1
+_p_= 1/2
+_BETA_ = (0,50,.5)
 _DELTA_ = (0,1.2,0.2)
-_NUM_STEPS_ = 11000
-_BURN_ = 1000
-_MEASURE_ = 100
+_GAMMA_ = (0.1, 1.0, 0.4)
+_NUM_STEPS_ = 6000
+_BURN_ = 5000
+_MEASURE_ = 1
 _D_OMEGA_ = 1.0
 _D_EPS_ = 0.2
 _DRIFT_ = 1.0
@@ -51,6 +55,18 @@ def read_args():
                         help='int: number of agents. default is %d'%_N_,
                         type=int)
 
+    parser.add_argument('-k', '--num_neighbors',
+                        default=_k_,
+                        help='int: number of neighbors of each agents. '+\
+                        'default is %d'%_k_,
+                        type=int)
+
+    parser.add_argument('-p', '--rewire_probability',
+                        default=_p_,
+                        help='float: rewire probability to watts-strogatz '+\
+                        'model. default is %.2f'%_p_,
+                        type=float)
+
     parser.add_argument('--beta', nargs=3,
                         default=_BETA_,
                         help='tuple of floats: inverse temperature.'+\
@@ -61,6 +77,12 @@ def read_args():
                         default=_DELTA_,
                         help='tuple of floats: cognitivel style. default is'+\
                         ' {}'.format(_DELTA_),
+                        type=float)
+
+    parser.add_argument('--gamma', nargs=3,
+                        default=_GAMMA_,
+                        help='tuple of floats: bullshit threshold. default is'+\
+                        ' {}'.format(_GAMMA_),
                         type=float)
 
     # mcmc relative ==========================================================
@@ -140,6 +162,9 @@ def save_data(data_list, config):
     with open(SAVE_DIR+'/social-network.npy', 'w') as file_:
         np.save(file_, data["social_network"])
 
+    with open(SAVE_DIR+'/initial_social_network.npy', 'w') as file_:
+        np.save(file_, data["initial_social_network"])
+
     with open(SAVE_DIR+'/state.npy', 'w') as file_:
         np.save(file_, data["state"])
 
@@ -156,7 +181,8 @@ if __name__ == "__main__":
     args = read_args()
 
     s_conf = dict(N=args.num_agents,
-                  D=args.agent_complexity)
+                  D=args.agent_complexity,
+                  k=args.num_neighbors)
 
     mc_conf = dict(num_steps=args.num_steps,
                    burn=args.burn,
@@ -164,28 +190,39 @@ if __name__ == "__main__":
                    d_omega=args.d_omega,
                    d_eps=args.d_eps)
 
+    bounds = dict(beta=args.beta,
+                  delta=args.delta,
+                  gamma=args.gamma)
+
     config = dict(society=s_conf,
                   mcmc=mc_conf,
-                  name=args.alias)
+                  name=args.alias,
+                  bounds=bounds)
+
     if 'explanation' in args:
         config['readme'] = args.explanation
 
     beta_grid = slice(*args.beta)
     delta_grid = slice(*args.delta)
+    gamma_grid = slice(*args.gamma)
 
-    grid = np.mgrid[delta_grid, beta_grid]
+    grid = np.mgrid[gamma_grid, delta_grid, beta_grid]
+    # grid = np.mgrid[delta_grid, beta_grid]
     points = np.vstack([x.ravel() for x in grid]).T
     order = np.arange(points.shape[0])[:,np.newaxis]
     args = np.hstack([order, points])
 
     def run(x):
-        idx, delta, beta = x
-        S = Society(delta=delta, beta=beta, **config["society"])
+        idx, gamma, delta, beta = x
+        # idx, delta, beta = x
+        S = Society(delta=delta, beta=beta, gamma=gamma, **config["society"])
+        # S = Society(delta=delta, beta=beta, gamma=0.1, **config["society"])
         mc = MCMC(system=S, **config["mcmc"])
         mc.sample()
         r = mc.data
         return idx, r
 
+    # map(run,args)
     pool = mp.Pool()
     t0 = time.time()
     print(40*"=")
