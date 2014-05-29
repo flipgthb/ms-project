@@ -21,12 +21,12 @@ _P_ = 1
 _p_= 1/2
 _BETA_ = (0,50,.5)
 _DELTA_ = (0,1.2,0.2)
-_GAMMA_ = (0.1, 1.0, 0.4)
+_GAMMA_ = (0.1, 1.1, 0.8)
 _NUM_STEPS_ = 6000
 _BURN_ = 5000
 _MEASURE_ = 1
 _D_OMEGA_ = 1.0
-_D_EPS_ = 0.2
+_D_EPS_ = 0.1
 _DRIFT_ = 1.0
 
 def read_args():
@@ -161,6 +161,9 @@ def save_data(data_list, config):
 
     with open(SAVE_DIR+'/social-network.npy', 'w') as file_:
         np.save(file_, data["social_network"])
+
+    with open(SAVE_DIR+'/activity.npy', 'w') as file_:
+        np.save(file_, data["activity"])
 
     with open(SAVE_DIR+'/initial_social_network.npy', 'w') as file_:
         np.save(file_, data["initial_social_network"])

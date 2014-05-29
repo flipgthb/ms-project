@@ -35,8 +35,26 @@ class MCMC(object):
 
         # system is an instance of society
         self.system = system
-        self.explain = ("beta","delta","gamma","m","v","m2",
-                        "stag_m","M","r","n","R_max","R_mean","R_var")
+        self.explain = (
+            "beta",
+            "delta",
+            "gamma",
+            "m",
+            "stag_m",
+            "M",
+            "r",
+            "n",
+            "n_pos",
+            "n_neg",
+            "R_max",
+            "R_mean",
+            "V_max",
+            "V_mean"
+            # "kout_max",
+            # "kout_mean",
+            # "kin_max",
+            # "kin_mean"
+        )
 
     @property
     def data(self):
@@ -48,12 +66,14 @@ class MCMC(object):
         s = self.system.social_network.copy()
         s0 = self.system.initial_social_network.copy()
         z = self.system.zeitgeist.copy()
+        a = self.system.activity.copy()
         final_data = {"statistics":data_means,
                       "state": w,
                       "social_network": s,
                       "zeitgeist": z,
                       "cumulative": data_cumulative,
                       "initial_social_network": s0,
+                      "activity": a,
                       "explain": self.explain}
         return final_data
 
@@ -68,50 +88,50 @@ class MCMC(object):
         w0 = self.system.w[i].copy()
         w = np.random.multivariate_normal(
             np.zeros_like(w0),
-            self.delta_omega*np.identity(*w0.shape)
+            np.identity(*w0.shape)
         )
-        w /= np.linalg.norm(w)
+        # w = np.random.rand(*w0.shape)
+        w *= self.delta_omega/np.linalg.norm(w)
         w += w0
         w /= np.linalg.norm(w)
         self.system.w[i] = w.copy()
         return w0.copy()
 
     def step(self):
-        # pick an agent i distributed with prop exp(-Ri)
-        # pi = self.system.agent_weights()
-        # i = np.random.choice(self.system.N, p=pi)
+        # pick an agent i uniformly in N
         i = np.random.choice(self.system.N)
+
         # pick an neighbor j of i based on Rij
         pij = self.system.neighbor_weights(i)
         j = np.random.choice(self.system.N, p=pij)
 
+        # update the activity between (i,j)
+        self.system.activity[i,j] += 1
+
         # update the coupling vector
-        x0 = self.system.agreement(i,j)
-        # hj = self.system.field[j]
+        hi, hj = self.system.field[[i,j]]
+        x0 = hi*np.sign(hj)
         ni = self.system.social_network[i]
         if x0 < -self.system.gamma:
-            self.system.social_network[i,j] -= 1.0  # works, in some way
-            # self.system.social_network[i,j] -= 10.0
-            # ni[j] /= 2
+            ni[j] -= self.delta_epsilon
             ni *= self.system.N/ni.sum()
             return
 
+        # coupling vector proposition
         E0 = self.system.potential(i,j)
+        # E0 = self.system.energy()
         w0 = self.propose(i)
         E = self.system.potential(i,j)
-
+        # E = self.system.energy()
         bdE = self.system.beta*(E - E0)
-        acc = min(1, math.exp(-bdE))
-        rej = np.random.rand()
+        acc = min(0, -bdE)
+        rej = math.log(np.random.rand())
         if rej >= acc:
             self.system.w[i] = w0.copy()
 
         # update the affinity
-        self.system.social_network[i,j] += x0 # works, with the previous
-        # self.system.social_network[i,j] += np.sign(x0)*10
-        # ni[j] *= 2**np.sign(x0)
+        ni[j] += x0*self.delta_epsilon
         ni *= self.system.N/ni.sum()
-
 
     def sample(self):
         for k in xrange(self.num_steps):
@@ -120,28 +140,56 @@ class MCMC(object):
                 self.measure()
 
     def measure(self):
+        # opinion order parameters
         m = self.system.field.mean()
         r = np.abs(self.system.field).mean()
-        m2 = (self.system.field*self.system.field).mean()
-        v = self.system.field.var()
         h = self.system.field
-        n_pos = h[h>0].shape[0]
-        n_neg = h[h<0].shape[0]
-        m_pos = h[h>0].sum()/(n_pos+1)
-        m_neg = h[h<0].sum()/(n_neg+1)
-        stag_m = (m_pos - m_neg)/2#self.system.N
-        M = (m_pos + m_neg)/self.system.N
+        n_pos = h[h>=0].shape[0]
+        n_neg = h[h<=0].shape[0]
+        n_null = h[h==0].shape[0]
+        m_pos = h[h>0].sum()/(n_pos+1e-5)
+        m_neg = h[h<0].sum()/(n_neg+1e-5)
+        stag_m = (m_pos*n_pos - m_neg*n_neg)/self.system.N
+        M = (m_pos*n_pos + m_neg*n_neg)/self.system.N
         n = (n_pos - n_neg)/self.system.N
 
+        # structure order parameters
+        # kout = self.system.activity.sum(axis=1)
+        # kout_max = kout.max()
+        # kout_mean = kout.mean()
+        # kin = self.system.activity.sum(axis=0)
+        # kin_max = kin.max()
+        # kin_mean = kin.mean()
+        V = self.system.visibility
+        V_max = V.max()
+        V_mean = V.mean()
         R = self.system.reputation
         R_max = R.max()
         R_mean = R.mean()
-        R_var = R.var()
         beta = self.system.beta
         delta = self.system.delta
         gamma = self.system.gamma
-        self.data = np.hstack([beta, delta, gamma, m, v, m2, stag_m, M,
-                               r,n,R_max, R_mean, R_var])
+
+        self.data = np.hstack([
+            beta,
+            delta,
+            gamma,
+            m,
+            stag_m,
+            M,
+            r,
+            n,
+            n_pos,
+            n_neg,
+            R_max,
+            R_mean,
+            V_max,
+            V_mean
+            # kout_max,
+            # kout_mean,
+            # kin_max,
+            # kin_mean
+        ])
 
 
 if __name__ == "__main__":
