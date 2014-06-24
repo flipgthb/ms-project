@@ -1,146 +1,90 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from __future__ import print_function, division
+from __future__ import division, print_function
 import numpy as np
 import math
 import networkx as nx
-from scipy.special import erf
 
-def row_norm(X):
-    nX = np.sqrt((X*X).sum(axis=1)[:, np.newaxis])
-    return nX
-
-def prob_row_norm(X):
-    nX = X.sum(axis=1)[:, np.newaxis]
-    return nX
+from utility import row_norm,prob_row_norm,create_network,create_initial_state
 
 class Society(object):
+    def __init__(self, topology, D=5, delta=1.0, beta=0.0, gamma=1.0,
+                 initial_state="disordered", zeitgeist=None):
+        self.topology = topology
+        self.delta = delta
+        self.beta = beta
+        self.gamma = gamma
+        self.D = D
 
-    def __init__(self, N, k, D, delta, beta, gamma, rewiring_prob=1/2):
-
-        self.N = N  # number of agents
-        self.D = D  # agent complexity, cognitive vector dimension
-        self.k = k # number of neighbors
-        self.rewiring_prob = rewiring_prob # watts-strogatz rewiring probability
-        self.delta = delta  # cognitive style, learning style
-        self.beta = beta  # peer pressure
-        self.gamma = gamma  # bullshit threshold
-
-        self.w = np.random.randn(self.N, self.D)
-        # self.w = np.ones((self.N, self.D))
-        # self.w[self.N/2:,:] *= -1
-        self.w /= row_norm(self.w)
-
-        G = nx.watts_strogatz_graph(self.N, self.k, self.rewiring_prob)
-        # G = nx.barabasi_albert_graph(self.N, self.k)
-        # G = nx.complete_graph(self.N)
-        self.social_graph = G
-        self.social_network = np.array(nx.adjacency_matrix(G))
-        # self.social_network = np.zeros((self.N,self.N))
-        self.initial_social_network = self.social_network.copy()
-        # self.activity = np.zeros_like(self.social_network)
-        self.activity = self.social_network.copy()
-
-        # self.zeitgeist = np.random.randn(self.D)
-        # self.zeitgeist = np.ones(self.D)
-        # self.zeitgeist[0] = 1-self.D
-        self.zeitgeist = np.zeros(self.D)
-        self.zeitgeist[0] = 1.
+        # z0 = np.arange(self.D)
+        z0 = np.zeros(D)
+        z0[0] = 1.0
+        z0[-1] = -1
+        self.zeitgeist = zeitgeist or z0
         self.zeitgeist /= np.linalg.norm(self.zeitgeist)
 
+        self.social_network = create_network(self.topology)
+
+        self.N = self.social_network.shape[0]
+        self.W = create_initial_state(self.N, self.D, initial_state)
+
+        self.reputation_score = self.social_network.copy()
+        self.reputation_score *= self.N/prob_row_norm(self.reputation_score)
+
+        self.activity_record = np.zeros_like(self.social_network)
+
     @property
-    def field(self):
-        h = self.zeitgeist.dot(self.w.T)
+    def opinion(self):
+        h = self.zeitgeist.dot(self.W.T)
         return h
-
-    def agreement(self, i, j):
-        h = self.field
-        hi, hj = h[[i,j]]
-        return hi*hj
-
-    def potential(self, i, j):
-        a =  (1+self.delta)/2
-        b =  (1-self.delta)/2
-        z  = self.agreement(i,j)
-        Vij = -a*z + b*abs(z)
-        return Vij
-
-    def energy(self):
-        a =  (1+self.delta)/2
-        b =  (1-self.delta)/2
-        h = self.field
-        hT = self.field[:,None]
-        # A = self.initial_social_network
-        Rij = np.exp(self.social_network)
-        Rij -= np.diag(np.diag(Rij))
-        Rij /= Rij.sum(axis=1)[:,None]
-        A = Rij
-        z = A*h*hT
-        abs_z = np.abs(z)
-        abs_zg = np.abs(z+self.gamma)
-        x = z.sum()/2
-        y = abs_z.sum()/2
-        # u = abs_zg.sum()/2
-        # v = (x+self.gamma).sum()/2
-        E = -a*x + b*y #+ 10*(u - v)
-        return E
 
     @property
     def reputation(self):
-        Rij = np.exp(self.social_network)
-        Rij -= np.diag(np.diag(Rij))
-        # Rij = self.social_network
-        # Ri_min, Ri_max = Rij.min(axis=1)[:,None], Rij.max(axis=1)[:,None]
-        # Rij = (Rij - Ri_min)/(Ri_max - Ri_min)
-        Rij /= Rij.sum(axis=1)[:,None]
-        R = (Rij).sum(axis=0)
+        r = self.reputation_score
+        R = r - r.min(axis=1)[:,None]
+        # r *= self.N/prob_row_norm(r)
+        # R = np.exp(r)
+        R -= np.diag(np.diag(R))
+        # R /= prob_row_norm(R)
         return R
 
     @property
-    def visibility(self):
-        Vij = self.activity
-        Vij /= Vij.sum(axis=1)[:,None]
-        V = (Vij).sum(axis=0)
-        return V
+    def activity(self):
+        a = self.activity_record.copy()
+        total = a.sum()
+        if total == 0:
+            return a
+        return a/total
 
     def neighbor_weights(self, i):
-        y = self.social_network[i].copy()
-        x = np.exp(y)
-        x[i] = 0
-        P = x/x.sum()
-        return P
+        p = self.reputation[i].copy()
+        # r = self.reputation_score[i].copy()
+        # p = r - r.min()
+        # r *= self.N/r.sum()
+        # p = np.exp(r)
+        p /= p.sum()
+        return p
 
-    def agent_weights(self):
-        # y = self.social_network.sum(axis=0).copy()
-        # x = np.exp(-y)
-        y = np.exp(-self.social_network)
-        x = y.sum(axis=0)
-        P = x/x.sum()
-        return P
-
+    def potential(self, i, j):
+        K1, K2 = (1+self.delta)/2, (1-self.delta)/2
+        hi, hj = self.opinion[[i,j]]
+        x = hi*np.sign(hj)
+        if x < -self.gamma:
+            # V_max = 1000*self.N*(self.N-1)/2   # should be higher
+            V_max = np.infty
+            return V_max
+        x = hi*hj
+        V = -K1*x + K2*abs(x)
+        return V
 
 if __name__ == "__main__":
-    S = Society(64, 20, 5,.2,5)
-    test = """
-    S.w =
-    {}
-
-    S.zeitgeist =
-    {}
-
-    S.social_network =
-    {}
-
-    S.listening_probability(0) =
-    {}
-
-    S.field =
-    {}
-
-    S.agreement(0,2,0) = {}
-
-    S.potential(0,2,0) = {}
-    """.format(S.w, S.zeitgeist, S.social_network, S.listening_probability(0),
-               S.field, S.agreement(0,2,0), S.potential(0,2,0))
-    print(test)
+    top = dict(type="complete", parameters=dict(n=10))
+    s = Society(top)
+    print(
+        s.energy(),
+        s.opinion,
+        s.reputation,
+        s.activity,
+        sep='\n\n'
+    )

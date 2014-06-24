@@ -3,201 +3,107 @@
 
 from __future__ import print_function, division
 import numpy as np
-import scipy.stats as st
 import math
-from collections import namedtuple
-
-def row_norm(X):
-    nX = np.sqrt((X*X).sum(axis=1)[:,np.newaxis])
-    return nX
-
-def Heavyside(x):
-    return 1 if x>=0 else 0
-
-def weighted_choice(weights):
-    rnd = np.random.rand() * weights.sum()
-    for i, w in enumerate(weights):
-        rnd -= w
-        if rnd < 0:
-            return i
+import pandas as pd
+from utility import prob_row_norm, row_norm
 
 class MCMC(object):
-    def __init__(self, system, num_steps, burn, measure_period,
-                 d_omega=1., d_eps=.2, drift=1.0):
-        self.num_steps = num_steps                 # number of steps
-        self.burn = burn                           # burned steps
-        self.measure_period = measure_period       # measure period
-        self.delta_omega = d_omega                 # propose scale
-        self.delta_epsilon = d_eps                 # adjacency increment scale
-        self.drift = drift                         # zeitgeist drift factor
-
-        self._data = None
-
-        # system is an instance of society
+    def __init__(self, system, max_sweeps=10, therm_time=0,
+                 autocor_time=1, epsilon=0.5, dW=1.0):
         self.system = system
-        self.explain = (
-            "beta",
-            "delta",
-            "gamma",
-            "m",
-            "stag_m",
-            "M",
-            "r",
-            "n",
-            "n_pos",
-            "n_neg",
-            "R_max",
-            "R_mean",
-            "V_max",
-            "V_mean"
-            # "kout_max",
-            # "kout_mean",
-            # "kin_max",
-            # "kin_mean"
-        )
+        self.max_sweeps = max_sweeps
+        self.therm_time = therm_time
+        self.autocor_time = autocor_time
+        self.epsilon = epsilon
+        self.dW = dW
+        h = self.system.opinion
+        self.trace = {
+            "m":np.array([self.system.opinion.sum()]),
+            "r":np.array([np.abs(self.system.opinion).sum()]),
+            "R": np.array([np.max(self.system.reputation.sum(axis=0))]),
+            "<R>":np.array([np.mean(self.system.reputation.sum(axis=0))]),
+            "A":np.array([np.max(self.system.activity_record.sum(axis=0))]),
+            "<A>": np.array([np.mean(self.system.activity_record.sum(axis=0))]),
+            "n_pos":np.array([h[h>0].shape[0]/self.system.N]),
+            "n_neg":np.array([h[h<0].shape[0]/self.system.N]),
+        }
 
     @property
     def data(self):
-        data_means = np.array(self._data).mean(axis=0)
-        data_cumulative = np.array(self._data).cumsum(axis=0)
-        n = np.arange(1.,data_cumulative.shape[0]+1)[:, np.newaxis]
-        data_cumulative /= n
-        w = self.system.w.copy()
-        s = self.system.social_network.copy()
-        s0 = self.system.initial_social_network.copy()
-        z = self.system.zeitgeist.copy()
-        a = self.system.activity.copy()
-        final_data = {"statistics":data_means,
-                      "state": w,
-                      "social_network": s,
-                      "zeitgeist": z,
-                      "cumulative": data_cumulative,
-                      "initial_social_network": s0,
-                      "activity": a,
-                      "explain": self.explain}
-        return final_data
-
-    @data.setter
-    def data(self, more):
-        try:
-            self._data = np.vstack([self._data, more])
-        except:
-            self._data = more
-
-    def propose(self, i):
-        w0 = self.system.w[i].copy()
-        w = np.random.multivariate_normal(
-            np.zeros_like(w0),
-            np.identity(*w0.shape)
-        )
-        # w = np.random.rand(*w0.shape)
-        w *= self.delta_omega/np.linalg.norm(w)
-        w += w0
-        w /= np.linalg.norm(w)
-        self.system.w[i] = w.copy()
-        return w0.copy()
-
-    def step(self):
-        # pick an agent i uniformly in N
-        i = np.random.choice(self.system.N)
-
-        # pick an neighbor j of i based on Rij
-        pij = self.system.neighbor_weights(i)
-        j = np.random.choice(self.system.N, p=pij)
-
-        # update the activity between (i,j)
-        self.system.activity[i,j] += 1
-
-        # update the coupling vector
-        hi, hj = self.system.field[[i,j]]
-        x0 = hi*np.sign(hj)
-        ni = self.system.social_network[i]
-        if x0 < -self.system.gamma:
-            ni[j] -= self.delta_epsilon
-            ni *= self.system.N/ni.sum()
-            return
-
-        # coupling vector proposition
-        E0 = self.system.potential(i,j)
-        # E0 = self.system.energy()
-        w0 = self.propose(i)
-        E = self.system.potential(i,j)
-        # E = self.system.energy()
-        bdE = self.system.beta*(E - E0)
-        acc = min(0, -bdE)
-        rej = math.log(np.random.rand())
-        if rej >= acc:
-            self.system.w[i] = w0.copy()
-
-        # update the affinity
-        ni[j] += x0*self.delta_epsilon
-        ni *= self.system.N/ni.sum()
-
-    def sample(self):
-        for k in xrange(self.num_steps):
-            self.step()
-            if k >= self.burn and k%self.measure_period == 0:
-                self.measure()
+        df = pd.DataFrame(self.trace)
+        sn = self.system.social_network
+        rep = self.system.reputation_score
+        act = self.system.activity_record
+        w = self.system.W
+        return df, sn, rep, act, w
 
     def measure(self):
-        # opinion order parameters
-        m = self.system.field.mean()
-        r = np.abs(self.system.field).mean()
-        h = self.system.field
-        n_pos = h[h>=0].shape[0]
-        n_neg = h[h<=0].shape[0]
-        n_null = h[h==0].shape[0]
-        m_pos = h[h>0].sum()/(n_pos+1e-5)
-        m_neg = h[h<0].sum()/(n_neg+1e-5)
-        stag_m = (m_pos*n_pos - m_neg*n_neg)/self.system.N
-        M = (m_pos*n_pos + m_neg*n_neg)/self.system.N
-        n = (n_pos - n_neg)/self.system.N
+        H_new = self.system.opinion.mean()
+        abs_H_new =  np.abs(self.system.opinion).mean()
+        max_rep_new = np.max(self.system.reputation_score.mean(axis=0))
+        mean_rep_new = np.mean(self.system.reputation_score.mean(axis=0))
+        max_act_new = np.max(self.system.activity.mean(axis=0))
+        mean_act_new = np.mean(self.system.activity.mean(axis=0))
+        h = self.system.opinion
+        n_pos = h[h>0].shape[0]/self.system.N
+        n_neg = h[h<0].shape[0]/self.system.N
 
-        # structure order parameters
-        # kout = self.system.activity.sum(axis=1)
-        # kout_max = kout.max()
-        # kout_mean = kout.mean()
-        # kin = self.system.activity.sum(axis=0)
-        # kin_max = kin.max()
-        # kin_mean = kin.mean()
-        V = self.system.visibility
-        V_max = V.max()
-        V_mean = V.mean()
-        R = self.system.reputation
-        R_max = R.max()
-        R_mean = R.mean()
-        beta = self.system.beta
-        delta = self.system.delta
-        gamma = self.system.gamma
+        self.trace["m"] = np.hstack([self.trace["m"], H_new])
+        self.trace["r"] = np.hstack([self.trace["r"], abs_H_new])
+        self.trace["R"] = np.hstack([self.trace["R"], max_rep_new])
+        self.trace["<R>"] = np.hstack([self.trace["<R>"], mean_rep_new])
+        self.trace["A"] = np.hstack([self.trace["A"], max_act_new])
+        self.trace["<A>"] = np.hstack([self.trace["<A>"], mean_act_new])
+        self.trace["n_pos"] = np.hstack([self.trace["n_pos"], n_pos])
+        self.trace["n_neg"] = np.hstack([self.trace["n_neg"], n_neg])
 
-        self.data = np.hstack([
-            beta,
-            delta,
-            gamma,
-            m,
-            stag_m,
-            M,
-            r,
-            n,
-            n_pos,
-            n_neg,
-            R_max,
-            R_mean,
-            V_max,
-            V_mean
-            # kout_max,
-            # kout_mean,
-            # kin_max,
-            # kin_mean
-        ])
+    def propose(self, i):
+        w0 = self.system.W[i].copy()
+        S = self.dW*np.identity(*w0.shape)
+        w = np.random.multivariate_normal(w0, S)
+        w /= np.linalg.norm(w)
+        self.system.W[i] = w.copy()
+        return w0.copy()
 
+    def sample(self):
+        n = 0
+        t = 0
+        for _ in xrange(self.max_sweeps*self.system.N):
+            self.step()
+            n += 1
+            if n == self.system.N:
+                n = 0
+                t += 1
+                if t >= self.therm_time and t%self.autocor_time == 0:
+                    self.measure()
+        return self.data
+
+    def step(self):
+        i = np.random.choice(self.system.N)
+        pij = self.system.neighbor_weights(i)
+        j = np.random.choice(self.system.N, p=pij)
+        hi, hj = self.system.opinion[[i,j]]
+        x0 = hi*hj  # hi*np.sign(hj)
+        self.system.activity_record[i,j] += 1
+        self.system.reputation_score[i,j] += x0*self.epsilon
+
+        if x0 < -self.system.gamma:
+            return
+
+        V0 = self.system.potential(i,j)
+        w0 = self.propose(i)
+        V = self.system.potential(i,j)
+        bdV = self.system.beta*(V - V0)
+        acc = min(0, -bdV)
+        rej = math.log(np.random.rand())
+        if rej > acc:
+            self.system.W[i] = w0.copy()
 
 if __name__ == "__main__":
     from Society import Society
-
-    S = Society(64, 20, 5, .2, 5, .5)
-    mc = MCMC(S, 100, 0, 1, 1)
-    mc.sample()
-    x = mc.data
-    for k, v in x.items():
-        print(k,':\n',v, end='\n\n')
+    top = dict(type="complete", parameters=dict(n=10))
+    s = Society(top)
+    mc = MCMC(s)
+    print(mc.data)
+    data = mc.sample()
+    print(data)
