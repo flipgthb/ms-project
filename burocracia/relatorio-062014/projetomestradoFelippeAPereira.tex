@@ -1,0 +1,508 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil, english]{babel}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage[small,bf]{caption}
+
+
+\begin{document}
+\selectlanguage{brazil}
+\begin{titlepage}
+\begin{center}
+\textsc{\Large projeto de pesquisa - mestrado\\}
+%\textsc{\small Fundação de Amparo à Pesquisa do Estado de São Paulo - FAPESP}\\[6.5cm]
+\textsc{\Huge Quebra de simetria espontânea, Limites Cognitivos e  Complexidade de Sociedades}\\[0.5cm]
+\textsc{\small {\it Estudante:} felippe alves pererira\\ {\it Orientador:} nestor caticha}
+\vfill
+\textsc{universidade de são paulo - instituto de física}\\
+\textsc{\small departamento de física geral}\\
+\small \today
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\thispagestyle{empty}
+
+\begin{abstract}
+O estudo de fenômenos coletivos e transições de fase tem sido central,
+desde o começo do século passado, em áreas tradicionais da física. 
+Nas últimas  décadas tem ficado claro, a partir do trabalho de Jaynes e outros
+autores [1-6] que o formalismo da Mecânica Estatística
+pode ser descrito dentro de um contexto de teoria de informação. A partir desta
+constatação o horizonte de aplicabilidade de Mecânica Estatística foi 
+enormemente aumentado, passando a incorporar a possibilidade de descrever 
+sistemas de processamento de informação. Nesta categoria podemos citar como exemplos
+modelos inspirados em sistemas sensoriais periféricos (visual, auditivo, olfativo, etc.), 
+modelos de memórias associativas, aprendizagem de máquinas, processamento de 
+informação distribuidos em sistemas 
+de agentes, entre outros.
+
+Este projeto está inserido num esforço interdisciplinar onde aplicamos 
+idéias e técnicas de teoria de informação para descrever modelos de 
+estruturas sociais onde há fenômenos coletivos e transições de fase.
+Sociedades de agentes que aprendem e trocam informação são construidas usando
+dados de neurociência e teoria de aprendizagem de máquinas e são analisados usando 
+técnicas analíticas e numéricas de Mecânica Estatística e de inferência probabilística.  
+Como exemplo de tais transições
+temos trabalhado com estudos da quebra da organização egalitária de sociedades 
+que é considerado  um problema central  em diversas áreas de estudo, como antropologia 
+e economia. Outro exemplo diz respeito ao problema de construção de estados onde a 
+sociedade apresenta ordem ou desordem de crenças sobre questões discutidas no âmbito
+da sociedade. Estilos cognitivos diferentes dos agentes levam a sociedades
+com diferentes assinaturas estatísticas e estas são comparadas com assinaturas extraídas de
+questionários respondidos por milhares de pessoas.  
+
+Neste trabalho 
+desenvolveremos e estudaremos  modelos de sociedade onde há fontes conflitante de informações. 
+Estudaremos o efeito da  diferença da compĺexidade computacional  entre as fontes de informação 
+e dos agentes. 
+
+Além da metodologia de teoria de informação o estudante deverá aprender teoria de análise de 
+instituições em ciências sociais. A metodologia mais relevante nesta área foi introduzida por
+Elinor Ostrom e colaboradores \cite{Ostrom} para desconstruir nos elementos básicos
+ instituições
+que recebem o nome de {\it commons} e para entender como pode ser evitada 
+em casos específicos a tragédia dos comuns\cite{Hardin}.
+
+
+\end{abstract}
+
+\selectlanguage{english}
+\begin{abstract}
+The study of collective and critical phenomena has been central in many
+areas of Physics since the begining of the last century. In the last few decades,
+it has been shown by Jaynes and other authors [1-6], that the formalism of Statistical 
+Mechanics can be described within the context of Information theory. This
+enabled the scope of applications of Statistical Mechanics to be wildly expanded,
+and now it is used to address the study of information processing systems. 
+In this area we can mention among others, such  examples  as peripheral
+sensory systems (visual, auditive, olfactive, etc), associative memories, 
+machine learning and information processing agent systems.
+
+This project is imersed in a wider scope interdisciplinary effort, where
+we use ideas and techniques from information theory to describe models of social structures
+where there are collective  phenomena and phase transitions. 
+Societies of agents that learn and exchange information are built using
+neuroscience data, machine learning theory and are analyzed using analytical
+and numerical techniques drawn from Statistical Mechanics and probabilistic inference.
+As examples of such transitions we have worked with a central problem in social sciences
+antropology and economics, that deals with the transitions from hierarchical 
+to egalitarian societies. In another example  we dealt with the construction 
+of states where the society presents order or disorder when measured by the 
+distribution of opinions about certain issues. Different  cognitive styles lead
+to societies with different statistical signatures and these were compared to
+the correspondent statistical signatures extracted from data obtain from 
+thousands of questionnaries answered by real people. 
+
+In these work we will study models of societies in the presence of conflicting 
+infromation sources. We will study effects of the difference of computational 
+complexity of the sources and of the agents.
+
+In addition to infromation theory, the student will have to learn about
+methodolgy for the  analysis of institutions in the social sciences. 
+The most relevant methodolgy in this area was introduced by Elinor Ostrom
+and collaborators  \cite{Ostrom}, for deconstructing the type of institutions
+that are known as {\it commons} into their basic elements and to understand how to avoid,
+from the analysis of specific cases how to avoid the tragedy of the commons \cite{Hardin}.
+
+\end{abstract}
+
+\selectlanguage{brazil}
+\setcounter{page}{3}
+\doublespace
+\section{Introdução}
+\subsection{Modelos de sociedades, crenças compartilhadas
+ e Teoria de Informação}
+Um problema central no estudo de sociedades é a questão de formação
+de padrões de crenças coletivas. Este tipo de fenômeno está por trás da
+formação de capital social e tradições culturais.
+Estamos interessados na modelagem de sociedades humanas
+usando técnicas de Mecânica Estatística e Teoria de Informação, com dados  
+obtidos por estudos nas áreas de arqueologia, antropologia cultural 
+e ecológica, economia e neurociência.  
+
+
+
+Recentemente foi introduzido \cite{CaVi} um modelo de um sistema de 
+agentes que trocam informação baseado em evidências psicofísicas 
+e neurocognitivas sobre a possibilidade de existência de diferentes
+estilos cognitivos. Os resultados mostram que as assinaturas estatísticas
+de agentes com diferentes estilos cognitivos são semelhantes às
+assinaturas empíricas de diferentes grupos de afiliação política, 
+obtidas a partir de
+extensos bancos de dados coletados pelo grupo de J. Haidt. 
+Ao percorrer o espectro
+de afiliação política da esquerda para a direita em relação a questões
+sociais (e não econômicas) e sua base moral, há uma mudança
+no estilo de lidar com a informação nova versus informação corroborativa.
+Aqueles agentes que dão mais importância a informação nova que a
+informação corroborativa, são estatisticamente semelhantes a, no contexto
+dos EUA, liberais. Os que dão a mesma importância são semelhantes 
+estatisticamente a conservadores. Além disso os tempos característicos para
+atingir o equílibrio após a perturbações do sistema depende do estilo 
+cognitivo. Grupos de agentes identificados como conservadores demoram mais
+para voltar ao equilíbrio e os liberais menos. Isso apóia a conclusão 
+que a base para os nomes das classificações políticas, inspirados em
+atitudes e estilos, decorrem dos estilos neurocognitivos
+subjacentes. 
+
+Também realiamos o
+ estudo de sistemas de agentes que usam algoritmos de aprendizagem {\it on-line}
+otimos, no sentido que se aproximam o máximo possível de algortimos Bayesiano,
+e são chamados de agentes Bayesianos. Em semelhança a seres humanos, postulamos
+ao menos duas fases no desenvolvimento cognitivo. Na primeira fase
+há um aprendizagem Bayesiano. O algoritmo muda com o número de eventos
+sociais de trocas de informação até o fim da primeira fase, isso é
+típico do algoritmo Bayesiano que se adapta: o agente aprende a aprender. Durante a
+segunda fase o algoritmo está congelado. Embora o agente possa aprender, isto é 
+há adaptabilidade do agente, seu estilo cognitivo permance congelado e 
+reflete a sua história durante a primeira fase. O resultado novamente
+ é que as assinaturas estatísticas refletem o estilo cognitivo. Agora
+ha uma correlação entre o número de encontros sociais e a  assinatura estatística.
+Por outro lado, comparando com dados sobre pessoas que declararam sua 
+afiliação política, podemos ver uma correlação positiva entre número de encontros sociais
+na primeira fase dos agentes e afiliação política liberal. 
+Este resultado é de extremo interesse dado que em 
+\cite{Settle2010a}  encontraram o mesmo tipo de correlação em dados sobre seres humanos
+para portadores de duplo alelo do gene DRD4-7r. Esse trabalho 
+mostra pela primeira vez uma interação direta entre ideologia política
+e genética, e nós mostramos as bases da teoria de informação para esse mecanismo.
+
+
+\newpage
+\section{Projeto e Objetivos}
+Uma descrição física do problema dinâmico de agentes interagentes pode ser feita  
+como o  resultado de aprendizagem por uma dinâmica ao
+longo de um gradiente de uma função de Lyapunov mais uma componente estocástica.
+Em geral a função de Lyapunov tem termos que se originam de duas fontes principais.
+A estrutura desta função depende  de neurobiologia e teoria de aprendizado 
+e dos tipos de interações sociais do sistema a ser modelado. A partir
+de idealizações deste tipo de consideração obtemos uma dinâmica particular.
+
+Neste projeto iremos considerar as interações entre os agentes mas
+também adicionaremos um termo de interação com o meio ambiente. 
+Assim será possível avaliar o efeito de 
+\begin{enumerate}
+\item Variação da complexidade do meio ambiente
+\item Dependência na estrutura social frente a ameaças externas
+\item Variação da importância para a sobrevivência do domínio do meio ambiente complexo.
+\item mudanças de parâmetros da teoria, estudo de transições de fase.
+\end{enumerate}
+
+Há vários cenários empíricos que podem ser modelados com este tipo de estrutura metodológica, entre eles mencionamos:
+
+\begin{enumerate}
+\item Surgimento de facções com opiniões diferentes
+\item Modelos para o surgimento de proto-religiões
+\item Evolução cultural
+\end{enumerate}
+
+
+Uma parte ambiciosa do projeto é considerar a possiblidade de
+usar o esquema de análise de Ostrom \cite{Ostrom} para descrição dos 
+{\it commons}, pelo qual recebeu o Prêmio Nobel de Economia. Este sistema
+de análise foi desenvolvido para sistemas de interação humana em meios 
+ambientes biofísicos. O exemplo paradigmático é sobre exemplos de emergência
+de regras de interação que levam a evitar a catástrofe dos comuns, por
+exemplo a pesca de lagostas em Maine, EUA. 
+Estamos interessados porém na emergência de tais estruturas, não num ambiente
+biofísico mas cultural. A extensão da teoria para ambientes informacionais
+foi feita por  Madison, Frischmann e 
+Strandburg \cite{Strandburg}. Isto está bem além  das necessidade para um mestrado,
+porém é natural que o pesquisador se defronte com problemas acima 
+da sua capacidade e desenvolver a atitude correta frente a 
+desafios faz parte da formação que deve ser adquirida já no mestrado.
+\subsection{Objetivos}
+O objetivo do projeto é que o estudante participe na elaboração detalhada
+do modelo de agentes e no seu estudo numérico e analítico. Também deverá
+participar na comparação dos resultados com dados empíricos.
+
+O desenvolvimento deste projeto envolverá também o Prof. Renato Vicente
+do IME-USP, com quem temos colaborado neste e outros tópicos no passado.
+
+\newpage
+\section{Cronograma de Atividades}
+Durante o desenvolvimento do  projeto de mestrado o estudante deverá
+estudar as técnicas de Mecânica Estatística, Teoria de Informação
+e Teoria de Aprendizagem de Máquinas, para poder contribuir
+na construção de variações sobre o modelo, escrever programas de simulação
+e realizar cálculos analíticos das quantidades de interesse.
+
+Há também a necessidade de vasta leitura de literatura na área de antropologia, economia, arqueologia e primatologia. Estas leituras serão realizadas predominantemente durante os meses de janeiro a julho de 2012. Exemplos destas leituras aparecem na bibliografia.
+
+\subsection{Primeiro Semestre - 2012}
+\begin{itemize}
+\item Disciplinas de Pós-Graduação - Mecânica Quântica I (IFUSP),
+Fundamentos Matemáticos da Relatividade Geral (IFUSP), Simulação de processos Físicos com Método de Monte Carlo (IFUSP)
+\item Estudos da bibliografia relevante ao problema
+\item Participação da elaboração dos programas de simulação
+\end{itemize}
+
+\subsection{Segundo Semestre - 2012}
+\begin{itemize}
+\item Desenvolvimento e análise dos modelos de agentes
+\item Elaboração dos programas para a simulação dos modelos
+\item Uma disciplina de pós-graduação a ser escolhida
+\end{itemize}
+
+
+\subsection{Primeiro Semestre - 2013}
+\begin{itemize}
+\item Obtenção de resultados e análise teórica
+\item Análise estatística dos resultados das simulações e tratamento analítico.
+Comparação com dados etnográficos e econômicos
+\end{itemize}
+
+
+\subsection{Segundo Semestre - 2013}
+\begin{itemize}
+\item Elaboração da dissertação
+\item Defesa
+\end{itemize}
+
+
+
+\newpage
+\begin{thebibliography}{30}
+
+\bibitem{Jaynes}E. T. Jaynes {\it Probability theory: The Logic of
+    Science} Cambridge University Press, Cambridge (2003)
+\bibitem{Ariel} A. Caticha Lecture Notes on information Theory,
+\bibitem{mackay} MacKay D.J.C., \textit{Information Theory, Inference
+    and Learning Algorithms}
+Cambridge University Press, Cambridge, (2003).
+\bibitem{Parisi} G. Parisi {\it et al, Spin Glasses and Beyond}
+\bibitem{Engel} A. Engel and C. van den Broeck {\it Statistical
+    Mechanics of Learning}
+\bibitem{Nishimori} Nishimori, Statistical Physics of Spin Glasses and Information Processing: An Introduction
+
+\bibitem{Ostrom}Ostrom, Elinor (1990). Governing the Commons: The Evolution of Institutions for Collective Action. Cambridge University Press. ISBN 0-521-40599-8; Ostrom, Elinor (July 2009). "A General Framework for Analyzing Sustainability of Social-Ecological Systems". Science 325: 419–422.
+\bibitem{Hardin}Garrett Hardin
+"The Tragedy of the Commons". Science 162 (3859): 1243–1248. 1968.
+
+\bibitem{Strandburg}Michael J. Madison, Brett M. Frischmann
+and Katherine J. Strandburg, 
+Legal Studies Research Paper Series
+Working Paper No. 2008-26
+August 2008
+
+\bibitem{Estes}William K. Estes, Research and Theory on the
+Learning of Probabilities,
+Journal of the American Statistical Association, Vol. 67, No. 337
+(Mar., 1972), pp. 81-102
+
+\bibitem{CaVi}N.Caticha and R.Vicente ¨Agent-based social psycology: from neurocognitive processes to social data¨ Volume: 14, Issue: 5(2011) pp.711-731 Advances in Complex Systems (ACS)
+
+\bibitem{Settle2010a}Settle, Jaime E Dawes, Christofer T Christakis, Nicholas A Fowler, James H (2010) 72,4 1189 ¨Friendships Moderates an Association Between a Dopamine Gene and Political Ideology.¨ The journal of politicsz
+
+\bibitem{Kandel} Kandel, et al, Essentials of neural sciences and behavior.
+
+
+\bibitem{Dunbar} R. Dunbar,  Grooming, Gossip, and the
+Evolution of Language. Faber, London (1997)
+
+
+
+\bibitem{Eisenberger} Eisenberger, N., Lieberman, M., and Williams, K., Does rejection hurt? An fMRI
+study of social exclusion, Science 302 (2003) 290-292.
+
+\bibitem{Mazur} Allan Mazur,
+Biosociology
+of Dominance
+and Deference
+ROWMAN and LITTLEFIELD PUBLISHERS, INC.
+(2005
+
+ \bibitem{Pumain}
+Hierarchy in Natural
+and Social Sciences
+edited by
+Denise Pumain, Springer (2006)
+
+\bibitem{Bohem}Christopher Boehm
+Hierarchy in the Forest
+The Evolution of
+Egalitarian Behavior, Harvard University Press (2001)
+
+\bibitem{Earle} Timothy Earle,
+How Chiefs came to power, Stanford University Press (1997)
+
+\bibitem{Salzman} Philip Carl Salzman, Pastoralists: Equality, Hierarchy and
+the State. Westview Press (2004)
+
+
+\bibitem{Fleagle}Edited by
+John G. Fleagle
+Charles H. Janson
+Kaye E. Reed, Primate Communities
+Cambridge University Press (2004)
+
+\bibitem{Wason} Paul K. Wason, The archaeology of rank
+Cambridge University Press (1994)
+
+
+
+\bibitem{Sassaman} Kenneth E. Sassaman, Journal of Archaeological Research Vol 12 september 2004
+
+\bibitem{Menger} Carl Menger
+On the Origins of Money
+Economic Journal, volume 2,(1892) p. 239-55.
+translated by C.A. Foley
+
+\bibitem{Maisels}Charles Keith Maisels, The Emergence of
+Civilization:
+From hunting and gathering to
+agriculture, cities, and the state in the
+Near East,
+Routledge   (2005)
+
+\bibitem{CatichaetalA} N. Caticha, R. Calsaverini, R. Vicente, {\it
+Cognitive limits and Breakdown of the Egalitarian Society} preprint   (2012)
+
+\bibitem{Schonmannetal2011a} R. Schonmann, R. Vicente e N. Caticha
+Two-level Fisher-Wright framework with selection and migration: An approach to studying evolution in group structured populations.
+arXiv:1106.4783 (2011)
+
+\bibitem{Perreault}C. Perreault, C. Moya, and R. Boyd. A Baysian approach to the evolution of social learning. Evolution and Human Behavior, Proofs posted online April 2012
+
+\end{thebibliography}
+\end{document}
+
+
+
+
+
+A descrição da teoria abaixo é muito abreviada.
+
+O estudo de aparecimento de altruísmo em modelos evolucionários
+tem sido bastante discutido na literatura. Recentemente foi mostrado
+\cite{Schonmannetal2011a} que é possível o aparecimento de genes
+chamados altruístas em populações estruturadas em grupos sob
+regimes de migração compatíveis com estimativas baseadas em dados empíricos.
+Um ingrediente importante para isto é que haja estruturas de colaboração
+e punição entre subgrupos que formam coligações e proto-instituições.
+Um gene associado ao altruísmo, neste contexto, significa que seu portador
+terá uma ajuste ({\it fitness}) menor, mas os membros do grupo serão beneficiados
+e terão um ajuste maior.
+Exemplos destas coligações são encontradas frequentemente em humanos mas
+também abundam em chimpanzés, bonobos e outros primatas.
+
+Os agentes destas sociedades apresentam uma tendência à conformidade e
+à troca de favores. Estes aparecem na forma de catação ({\it grooming})
+ou troca de comida, sexo e alianças. Em humanos estão associados, além
+destes, à troca de informação na forma de fofocas ({\it gossip}) \cite{Dunbar}.
+É interessante notar que o repagamento de favores recebidos não precisa
+ser imediato. A probabilidade de repagamento decai lentamente com o tempo, com
+tempos característicos que dependem da espécie. O repagamento também não precisa necessariamente ser na mesma
+categoria de mercadoria ou favor. Por exemplo, de Waal mostra exemplos em chimpanzés onde
+pode haver troca de sexo por defesa, ou de catação por carne.
+Humanos extraem prazer de tal troca de favores, e ser deixado de lado leva à
+ativação de regiões associadas à dor \cite{Eisenberger}.
+A dor da injustiça na troca leva a um consenso na intercambialidade das
+diferentes mercadorias.
+Em \cite{Bohem} há uma descrição do ponto de vista primatológico, de como
+estas proto-instituições levam a um convívio onde há de graus moderados de
+hierarquia (chimpanzés e bonobos) a sociedades egalitárias (humanos).
+Com o começo da agricultura e pastoralismo houve um aumento do tamanho dos
+bandos humanos. Para isto contribuíram diversificação das fontes de alimento,
+melhores métodos de produção e estocagem, menor necessidade
+de migrações e uma diminuição do intervalo de idade entre irmãos. Segue que
+há uma transição, sob condições cognitivas fixas, devido ao aumento do
+tamanho do bando \cite{CatichaetalA} para uma sociedade estruturada.
+A quebra de simetria na representação da estrutura social é o início de uma sociedade hierárquica.
+As figuras \ref{individualgraph} e \ref{degree} mostram resultados de simulações
+de Monte Carlo ilustrando a quebra de simetria.
+
+\begin{figure}[h]
+\center
+%\subfigure{
+\includegraphics[scale=0.3, angle=0]{fullgraph20.png}%}
+%\subfigure{
+\includegraphics[scale=0.3, angle=0]{powerstruggle20.png}%}
+%\subfigure{
+\includegraphics[scale=0.3, angle=0]{stargraph20.png}%}
+\caption{Esquerda: Gráfo inteiro, recursos cognitivos são suficientes
+para considerar todos os pares de interações.
+ Centro: Grafo diluído, os recursos cognitivos são reduzidos e alguma informação
+é perdida. Direita: Uma redução maior leva à quebra de simetria e um agente
+é escolhido como o central.
+ }\label{individualgraph}
+\end{figure}
+
+
+A introdução de linguagem (fofoca) leva ao aparecimento de correlações entre
+as representações sociais dos diferentes agentes. A probabilidade do agente
+central da hierarquia ser o mesmo para os diferentes agentes,
+aumenta com a taxa de troca de informação.
+
+Postulando que a probabilidade de troca de favores entre dois agentes
+decai com a distância no grafo de representações sociais, temos
+que há um agente, o central, que participa com muito maior
+probabilidade de trocas com membros do grupos do que qualquer outro agente.
+
+A teoria de Herrman-Pilliath introduz o conceito de droga perceptual. Ele
+considera uma atividade que originalmente pode ter valor evolutivo. Agentes que
+tem prazer, por ativação de circuitos dopaminérgicos, realizam essa tarefa
+com grande probabilidade. A busca hedônica, de pura ativação dopaminérgica, sem
+o necessário ganho evolutivo original, leva ao aumento da frequência de realização
+da atividade. As trocas de favores, necessárias para amálgama das
+coligações, podem passar, por esta espécie de corrida armamentista, a ser
+realizadas de forma mais frequente. Numa sociedade hierárquica, o membro central
+realizará mais trocas e dificilmente poderá repagar os favores imediatamente.
+Deverá haver alguma forma de crédito que leva à demora de pagamento e
+a quebra de promessas de repagamento levará a atritos sociais a não ser que
+haja um meio de aumentar a memória de pagamento de tais dívidas.
+Surge assim uma mercadoria, que não necessita ter valor intrínseco,
+como meio de manter registro de trocas. Surge assim o dinheiro. A existência
+deste meio permite a diversificação da sociedade e aumento da produtividade
+através de mecanismos já estabelecidos.
+ 
+\begin{figure}[h]
+\center
+\hspace{1cm}\includegraphics[scale=0.4]{emergencesStarGraph4.png}
+\caption{Grau médio do grafo de representação social como função
+$N(N-1)/(2\alpha)$, que  mede os
+ recursos cognitivos $\alpha$ (aumenta para a esquerda) e do número
+ de membros do
+ grupo (aumenta para a direita). Em azul aparece o grau máximo e em preto o grau médio.}
+\label{degree}
+\end{figure}
+
+
+
+s e alianças. Devido à competição entre
+as limitações cognitivas associadas à memória finita dos agentes e às vantagens associadas ao conhecimento
+das proto-instituições sociais existentes, se observa uma transição de regime de organização
+social quando o número de componentes do bando ultrapassa um limite.
+
+Este limite pode estar associado ao {\it número de Dunbar}, que descreve
+uma lei de potência para a relação entre o tamanho dos grupos de primatas observados na
+natureza e o tamanho relativo do neocórtex. As técnicas para este estudo são
+as da área de Mecânica Estatística, incluindo Campo Médio e Método de Monte Carlo.
+As interações são modeladas a partir de teoria de aprendizado de máquinas, com considerações neurocognitivas.
+ 
+Neste projeto queremos estudar as consequências da transição de quebra de simetria na complexificação da sociedade.
+Recentemente \cite{Sassaman} houve críticas sérias à emergência de
+complexidade das sociedades causada por razões ambientais.  
+Resultados de pesquisas paleoambientais dão apoio a hipótese de que mudanças de organização
+ econômica foram causadas por mudanças estruturais na organização social
+que levaram a desigualdades, e não como descrito na teoria de origem
+do dinheiro de Menger onde primeiro há complexificação e depois o aparecimento
+de desigualdades. No modelo que estudaremos há primeiro a quebra de simetria
+para posterior aparecimento da complexidade economica.
+ estudo do  modelo de quebra de simetria da organização social
+devido a limites cognitivos está bastante avançado. Neste projeto, buscamos adicionar um ingrediente novo,
+que consiste em permitir a troca de diferentes tipos de mercadorias ou favores.
+
+Será estudada a formação de coligações cimentadas por estas trocas, num ambiente competitivo. Novamente limites cognitivos impõem restrições ao
+conhecimento total da rede de relações sociais. As desvantagens destas restrições se devem ao fato de que o conhecimento imperfeito do meio social leva a uma
+desvantagem ou custo social. A competição leva a estrutura da representação
+da rede social numa topologia estrela, que mostra a organização social
+hierárquica. A simulação de uma sociedade de troca de mercadorias, com probabilidade
+dependente da distância social introduz uma dinâmica que pode ou não levar,
+dependendo da escolha de parâmetros, ao aparecimento de uma mercadoria central
+de trocabilidade universal.

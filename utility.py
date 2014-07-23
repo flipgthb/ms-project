@@ -18,6 +18,12 @@ def prob_row_norm(X):
     nX = X.sum(axis=1)[:, np.newaxis]
     return nX
 
+def zip_dicts(a, b):
+    if set(a.keys()) != set(b.keys()):
+        raise Exception("can't do it")
+    for k in a.keys():
+        a[k] = np.hstack([a[k],b[k]])
+
 def create_network(top_dict):
         params = top_dict["parameters"]
         type_ = top_dict["type"]
@@ -77,7 +83,7 @@ def save_data(index_data_list, config):
     reputation = dict(rep_list)
     activity = dict(act_list)
     w = dict(w_list)
-    label = ["gamma", "delta", "beta"]
+    label = ["tau", "delta", "beta"]
     stat_panel = pd.Panel(statistics)
     stat_panel.items.set_names(label, inplace=True)
     sn_panel = pd.Panel(social_network)

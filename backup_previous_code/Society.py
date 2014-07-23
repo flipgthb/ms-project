@@ -9,19 +9,21 @@ import networkx as nx
 from utility import row_norm,prob_row_norm,create_network,create_initial_state
 
 class Society(object):
-    def __init__(self, topology, D=5, delta=1.0, beta=0.0, gamma=1.0,
-                 initial_state="disordered", zeitgeist=None):
+    def __init__(self, topology, zeitgeist=None,
+                 D=5, delta=1.0, beta=0.0, tau=1.0,
+                 initial_state="disordered"):
         self.topology = topology
         self.delta = delta
         self.beta = beta
-        self.gamma = gamma
+        self.tau = tau
         self.D = D
 
-        # z0 = np.arange(self.D)
-        z0 = np.zeros(D)
-        z0[0] = 1.0
-        z0[-1] = -1
-        self.zeitgeist = zeitgeist or z0
+        if not zeitgeist:
+            print("zeitgeist is None")
+            zeitgeist = np.zeros(D)
+            zeitgeist[0] = 1
+            zeitgeist[-1] = -1
+        self.zeitgeist = zeitgeist
         self.zeitgeist /= np.linalg.norm(self.zeitgeist)
 
         self.social_network = create_network(self.topology)
@@ -41,12 +43,11 @@ class Society(object):
 
     @property
     def reputation(self):
-        r = self.reputation_score
+        r = self.reputation_score.copy()
         R = r - r.min(axis=1)[:,None]
-        # r *= self.N/prob_row_norm(r)
-        # R = np.exp(r)
         R -= np.diag(np.diag(R))
-        # R /= prob_row_norm(R)
+        # R /= R.max(axis=1)[:,None]
+        R /= prob_row_norm(R)
         return R
 
     @property
@@ -59,21 +60,17 @@ class Society(object):
 
     def neighbor_weights(self, i):
         p = self.reputation[i].copy()
-        # r = self.reputation_score[i].copy()
-        # p = r - r.min()
-        # r *= self.N/r.sum()
-        # p = np.exp(r)
-        p /= p.sum()
+        # p = self.social_network[i].copy()
+        # p /= p.sum()
         return p
 
     def potential(self, i, j):
         K1, K2 = (1+self.delta)/2, (1-self.delta)/2
         hi, hj = self.opinion[[i,j]]
-        x = hi*np.sign(hj)
-        if x < -self.gamma:
-            # V_max = 1000*self.N*(self.N-1)/2   # should be higher
-            V_max = np.infty
-            return V_max
+        # x = hi*np.sign(hj)
+        # if x < -self.tau:
+        #     V_max = np.infty
+        #     return V_max
         x = hi*hj
         V = -K1*x + K2*abs(x)
         return V

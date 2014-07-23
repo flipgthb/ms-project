@@ -10,7 +10,6 @@ import argparse
 import multiprocessing as mp
 from Society import Society
 from MCMC import MCMC
-import Parameter as pmt
 import time
 from datetime import timedelta
 

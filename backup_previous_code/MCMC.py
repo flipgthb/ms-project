@@ -16,16 +16,22 @@ class MCMC(object):
         self.autocor_time = autocor_time
         self.epsilon = epsilon
         self.dW = dW
+
         h = self.system.opinion
+        m = h.mean()
+        r =  np.abs(h).mean()
+        R = self.system.reputation_score.copy()
+        x = np.zeros_like(R)
+        x[R<1] = 1
+        x -= np.diag(np.diag(x))
+        n_op = x.mean(axis=1).mean()
+        a = R.mean()
+
         self.trace = {
-            "m":np.array([self.system.opinion.sum()]),
-            "r":np.array([np.abs(self.system.opinion).sum()]),
-            "R": np.array([np.max(self.system.reputation.sum(axis=0))]),
-            "<R>":np.array([np.mean(self.system.reputation.sum(axis=0))]),
-            "A":np.array([np.max(self.system.activity_record.sum(axis=0))]),
-            "<A>": np.array([np.mean(self.system.activity_record.sum(axis=0))]),
-            "n_pos":np.array([h[h>0].shape[0]/self.system.N]),
-            "n_neg":np.array([h[h<0].shape[0]/self.system.N]),
+            "m":np.array([m]),
+            "r":np.array([r]),
+            "n_op":np.array([n_op]),
+            "R":np.array([a])
         }
 
     @property
@@ -38,24 +44,20 @@ class MCMC(object):
         return df, sn, rep, act, w
 
     def measure(self):
-        H_new = self.system.opinion.mean()
-        abs_H_new =  np.abs(self.system.opinion).mean()
-        max_rep_new = np.max(self.system.reputation_score.mean(axis=0))
-        mean_rep_new = np.mean(self.system.reputation_score.mean(axis=0))
-        max_act_new = np.max(self.system.activity.mean(axis=0))
-        mean_act_new = np.mean(self.system.activity.mean(axis=0))
         h = self.system.opinion
-        n_pos = h[h>0].shape[0]/self.system.N
-        n_neg = h[h<0].shape[0]/self.system.N
+        m = h.mean()
+        r =  np.abs(h).mean()
+        R = self.system.reputation_score.copy()
+        x = np.zeros_like(R)
+        x[R<1] = 1
+        x -= np.diag(np.diag(x))
+        n_op = x.mean(axis=1).mean()
+        a = R.mean()
 
-        self.trace["m"] = np.hstack([self.trace["m"], H_new])
-        self.trace["r"] = np.hstack([self.trace["r"], abs_H_new])
-        self.trace["R"] = np.hstack([self.trace["R"], max_rep_new])
-        self.trace["<R>"] = np.hstack([self.trace["<R>"], mean_rep_new])
-        self.trace["A"] = np.hstack([self.trace["A"], max_act_new])
-        self.trace["<A>"] = np.hstack([self.trace["<A>"], mean_act_new])
-        self.trace["n_pos"] = np.hstack([self.trace["n_pos"], n_pos])
-        self.trace["n_neg"] = np.hstack([self.trace["n_neg"], n_neg])
+        self.trace["m"] = np.hstack([self.trace["m"], m])
+        self.trace["r"] = np.hstack([self.trace["r"], r])
+        self.trace["n_op"] = np.hstack([self.trace["n_op"], n_op])
+        self.trace["R"] = np.hstack([self.trace["R"], a])
 
     def propose(self, i):
         w0 = self.system.W[i].copy()
@@ -83,11 +85,12 @@ class MCMC(object):
         pij = self.system.neighbor_weights(i)
         j = np.random.choice(self.system.N, p=pij)
         hi, hj = self.system.opinion[[i,j]]
-        x0 = hi*hj  # hi*np.sign(hj)
+        x0 = hi*hj
         self.system.activity_record[i,j] += 1
+        # self.system.reputation_score[i,j] += np.sign(x0)*self.epsilon
         self.system.reputation_score[i,j] += x0*self.epsilon
 
-        if x0 < -self.system.gamma:
+        if x0 < -self.system.tau:
             return
 
         V0 = self.system.potential(i,j)
@@ -98,6 +101,7 @@ class MCMC(object):
         rej = math.log(np.random.rand())
         if rej > acc:
             self.system.W[i] = w0.copy()
+
 
 if __name__ == "__main__":
     from Society import Society

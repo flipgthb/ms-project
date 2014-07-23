@@ -27,26 +27,26 @@ if __name__ == "__main__":
 
     beta_grid =  slice(*config["bounds"]["beta"])
     delta_grid = slice(*config["bounds"]["delta"])
-    gamma_grid = slice(*config["bounds"]["gamma"])
+    tau_grid = slice(*config["bounds"]["tau"])
 
-    grid = np.mgrid[gamma_grid, delta_grid, beta_grid]
+    grid = np.mgrid[tau_grid, delta_grid, beta_grid]
     # grid = np.mgrid[delta_grid, beta_grid]
     points = np.vstack([x.ravel() for x in grid]).T
     order = np.arange(points.shape[0])[:,np.newaxis]
     args = np.hstack([order, points])
 
     def run(x):
-        idx, gamma, delta, beta = x
+        idx, tau, delta, beta = x
         # idx, delta, beta = x
-        S = Society(delta=delta, beta=beta, gamma=gamma, **config["society"])
-        # S = Society(delta=delta, beta=beta, gamma=0.1, **config["society"])
+        S = Society(delta=delta, beta=beta, tau=tau, **config["society"])
+        # S = Society(delta=delta, beta=beta, tau=0.1, **config["society"])
         mc = MCMC(system=S, **config["mcmc"])
         r = mc.sample()
         # print("accptance ratio at {} was {}".format(
-        #     (gamma,beta,delta),
+        #     (tau,beta,delta),
         #     (1 - mc.rejected/(S.N*mc.max_sweeps))
         # ))
-        return idx, (gamma, delta, beta), r
+        return idx, (tau, delta, beta), r
 
     # result = map(run,args[:3])
     pool = mp.Pool()
@@ -66,6 +66,6 @@ if __name__ == "__main__":
     t_save = time.time()
     print("save_data took %s"%(timedelta(seconds=(t_save-t0_save))))
     t_final = time.time()
-    print("Total time spent: %s"%(timedelta(seconds=(t_save-t0_save))))
+    print("Total time spent: %s"%(timedelta(seconds=(t_save-t0))))
     print("Finished at: ", time.asctime())
     print(40*"=")

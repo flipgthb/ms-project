@@ -1,0 +1,40 @@
+
+{
+    "bounds": {
+        "beta": [
+            0, 
+            35, 
+            10
+        ], 
+        "delta": [
+            0.3, 
+            1.2,
+            0.5
+        ], 
+        "tau": [
+            0.0, 
+            1.01, 
+            0.01
+        ]
+    }, 
+    "mcmc": {
+        "autocor_time": 1, 
+        "dW": 0.1,
+        "epsilon": 1.0, 
+        "max_sweeps": 200, 
+        "therm_time": 0
+    }, 
+    "save_directory": "/media/felippe/backup/simulation-data/", 
+    "notes": "measuring the parameters: m=<h>, r=<|h|>,n_op=<theta(1-r_ij)>. r_ij(t+1)=r_ij(t)+(h_i*h_j)*epsilon. p_ij ~ (r_ij).",
+    "society": {
+        "D": 5, 
+        "zeitgeist": [1.0,0,0,0,-1.0],
+        "initial_state": "disordered",
+        "topology": {
+            "parameters": {
+                "n": 100
+            }, 
+            "type": "complete"
+        }
+    }
+}
