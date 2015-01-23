@@ -1,0 +1,50 @@
+%%
+% VDQI style title page
+\renewcommand{\maketitlepage}[0]{%
+  \cleardoublepage%
+  {%
+  \begin{fullwidth}%
+  \fontsize{20}{30}\selectfont\par\noindent\emph{\thanklessauthor}%
+  \vspace{1.25in}%
+  \fontsize{32}{54}\selectfont\par\noindent\thanklesstitle%
+  % \vspace{1.5in}%
+  % \LARGE\par\noindent\edition%
+  \vfill%
+  \fontsize{14}{16}\selectfont\par\noindent{\smallcaps{\thanklesspublisher}}%
+  \end{fullwidth}%
+  }
+  \thispagestyle{empty}%
+  \clearpage%
+}
+
+%%
+% VDQI \section headings are bold, not italic
+% See the `titlesec' and `titletoc' documentation for details: http://ctan.org/pkg/titlesec
+\titleformat{\section}%
+  [hang]% shape
+  {\normalfont\Large\bfseries}% format applied to label+text
+  {\thesection}% label
+  {1em}% horizontal separation between label and title body
+  {}% before the title body
+  []% after the title body
+
+
+%%
+% VDQI chapters are numbered
+
+\setcounter{secnumdepth}{2}
+
+%%
+% Show more levels in the TOC
+
+\setcounter{tocdepth}{3}
+
+
+% TODO: Use \titleformat to adjust the \part style
+
+%%
+% defining the distance between footnotes
+\setlength\marginparpush{12pt}
+
+%%
+% Done!

@@ -1,0 +1,103 @@
+
+% \documentclass[nobib,a4,twosided,justified,symmetric]{tufte-book}
+\documentclass[nobib,a4,twosided,justified]{tufte-book}
+\usepackage[english,brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{cabin}
+\usepackage{tgpagella}
+\usepackage{hyphenat}
+\usepackage[citetracker=constrict,style=authoryear,autocite=footnote]{biblatex}
+% \usepackage[backend=bibtex,autocite=footnote,style=alphabetic]{biblatex}
+\addbibresource{./document.bib}
+\usepackage{lipsum}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[fleqn,tbtags]{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{eucal}
+\usepackage{mathrsfs}
+\usepackage{epigraph}
+\usepackage{etoolbox}
+\usepackage[amsmath,thmmarks]{ntheorem}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{./graphics/}}
+\usepackage{makeidx}
+\makeindex
+% \usepackage[nodisplayskipstretch]{setspace}
+% \setstretch{1.5}
+
+\usepackage{style}  % my macros and other tunes
+% \allowdisplaybreaks[1]
+% \setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+% \setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+
+
+\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
+
+\hypersetup{colorlinks}  % hyperlinks coloridos
+
+%%% Metadata {{}
+\title{%
+    Quebra de Simetria Espontânea,
+     \\Limites Cognitivos e
+     \\Complexidade de Sociedades
+}
+\author{Felippe Alves Pereira}
+\publisher{Instituto de Física - Universidade de São Paulo}
+%%%
+
+%%% Document
+\begin{document}
+
+%%% front matter
+\frontmatter
+
+%\chapter*{Dedicatória}
+%\chapter*{Declaração}
+%\chapter*{Agradecimentos}
+
+
+\blankpage
+\maketitle
+% \newpage
+
+\chapter*{Resumo}
+\chapter*{Abstract}
+
+\tableofcontents
+% \listoffigures
+% \listoftables
+%%%
+
+%%% main matter
+\mainmatter
+% ideia
+% cap 1 : apresentação dos modelos, interpretação de beta
+% cap 2 : dinâmica de reputação
+% cap 3 : campo médio e a desconfiança
+% cap 4 : jogos de partidos
+% ESSA ESTRUTURA NÃO É MANDATÓRIA, SÓ UMA GUIA!
+% OS NOMES DOS CAPÍTULOS NÃO SERÃO ESTES, NECESSÁRIAMENTE.
+
+%% Capítulo 1
+\input{./chapters/chapter1.tex}
+
+%% Capítulo 2
+\input{./chapters/chapter2.tex}
+
+%% Capítulo 3
+\input{./chapters/chapter3.tex}
+
+%%%
+
+%%% back matter
+\backmatter
+%% \selectlanguage{brazilian}
+\printbibliography
+% \printindex
+%%%
+
+\end{document}

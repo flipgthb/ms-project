@@ -1,0 +1,182 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+from __future__ import division, print_function
+import numpy as np
+import pandas as pd
+from scipy.integrate import quad
+import math
+from argparse import ArgumentParser
+import os
+import json
+import multiprocessing as mp
+import time
+import datetime
+from datetime import timedelta
+
+
+def is_valid_file(parser, arg):
+    """Check if the given arg is an existent file"""
+    if not os.path.exists(arg):
+       parser.error("The file %s does not exist!"%arg)
+    else:
+       return open(arg,'r')  #return an open file handle
+
+def read_args():
+    """Parsing the command line arguments. Defines 'input' and 'label'"""
+    parser = ArgumentParser()
+
+    parser.add_argument(
+        "-i", "--input", dest="filename", required=True,
+        help="input file with model parameters.",
+        metavar="FILE",
+        type=lambda x: is_valid_file(parser,x)
+    )
+
+    parser.add_argument(
+        'label',
+        help='string: label given to simulation files'
+    )
+
+    args = parser.parse_args()
+    return args
+
+def save_data(path, data_tuple, time_stamp=True):
+    """Organize and save a tuple composed of dict with format 'data_source':'pandas object'"""
+    ts = ""
+    if time_stamp:
+        lt = time.localtime()
+        ymd = lt.tm_year,lt.tm_mon,lt.tm_mday
+        date = datetime.date(*ymd)
+        ts = "_"+str(date)
+
+    data = dict.fromkeys(data_tuple[0].keys())
+    for entry in data_tuple:
+        for k,v in entry.items():
+            try:
+                data[k].append(v)
+            except:
+                data[k] = [v]
+            
+    for file_name, data_list in data.items():
+        full_name = path + file_name + ts + ".csv"
+        with open(full_name, "w") as file_:
+            panel = pd.concat(data_list)
+            panel.to_csv(file_)
+
+# --- self consistent equations ---
+def Psi(h, m, r, rho, tau, beta):
+    x =(1-rho)* m*h/2 - rho*r*np.abs(h)/2 + np.abs(m*h-tau)/2
+    psi = (1 - h*h)*np.exp(beta*x)
+    return psi
+
+def Z(*args):
+    z = quad(Psi, -1, 1, args=args)[0]
+    return z
+
+def m(z, *args):
+    f = lambda x: x*Psi(x, *args)
+    m = quad(f, -1, 1)[0]/z
+    return m
+
+def r(z, *args):
+    f = lambda x: np.abs(x)*Psi(x,*args)
+    r = quad(f, -1, 1)[0]/z
+    return r
+
+def sce(m0, r0, rho, eps, beta):
+    n = 0
+    converged = False
+    M = m0
+    R = r0
+    g = np.sqrt(1-rho**2)/rho
+    tau = (-g + g*np.log(2*eps)/2)
+    delta = .1
+    precision = 1e-6
+    if beta >= 3 and beta < 7:
+        precision = 1e-8
+    while (not converged) and n < 10000:
+        M0 = M
+        R0 = R
+        z = Z(M0, R0, rho, tau, beta)
+        M = (1 - delta)*M0 + delta*m(z, M0, R0, rho, tau, beta)
+        R = (1 - delta)*R0 + delta*r(z, M0, R0, rho, tau, beta)
+        if np.abs(M - M0)<precision or np.abs(R - R0)<precision:
+            converged = True
+        n += 1
+    s = pd.Series([M, R, converged, n],
+                   index=['m', 'r', 'converged', 'n_iter'])
+    point=(m0, r0, rho, eps, beta)
+    point_names = "m0 r0 rho eps beta".split(" ")
+    df = pd.DataFrame({point:s}).T
+    df.index.set_names(point_names,inplace=True)
+    data = {"self-consistent-solution": df}
+    return data
+#---------
+
+if __name__ == "__main__":
+# def simulation():
+    args = read_args()
+
+    input_ = args.filename
+    label = args.label
+    config = json.load(input_)
+    config["label"] = label
+    input_.close()
+
+    m0_grid =   np.array([.1])
+    r0_grid =   np.array([.1])
+    config["m0_values"] = m0_grid.tolist()
+    config["r0_values"] = r0_grid.tolist()
+
+    rho_grid =  np.arange(*config["rho_slice"])
+    eps_grid =  np.arange(*config["eps_slice"])
+    beta_grid = np.hstack([np.linspace(0,5,50),
+                           np.linspace(5,15,400),
+                           np.linspace(15,30,50)])
+    config["beta_values"] = beta_grid.tolist()
+    grid = np.meshgrid(
+        m0_grid,
+        r0_grid, 
+        rho_grid, 
+        eps_grid, 
+        beta_grid
+    )
+    points = np.vstack([x.ravel() for x in grid]).T
+    parameters = enumerate(points)
+
+    def run(x):
+        idx, prmt = x
+        res = sce(*prmt)
+        return idx, res
+
+    pool = mp.Pool()
+    t0 = time.time()
+    print(40*"=")
+    print("Passed:", json.dumps(config, indent=4), sep="\n")
+    print("Starting at: ", time.asctime())
+    results = pool.map(run, parameters)
+    pool.close()
+    pool.join()
+    results.sort()
+    results =  tuple([res[-1] for res in results])
+    t = time.time()
+    print("pool.map(run, args) took %s"%(timedelta(seconds=(t-t0))))
+
+    path = config["save_dir"] + label + '/'
+    if not os.path.exists(path):
+        os.mkdir(path)
+
+    with open(path+"config.json","w") as file_:
+        json.dump(config, file_, indent=4)
+
+    t0_save = time.time()
+    save_data(path, results)
+    t_save = time.time()
+    print("save_data took %s" % (timedelta(seconds=(t_save-t0_save))))
+
+    t_final = time.time()
+    print("Total time spent: %s"%(timedelta(seconds=(t_save-t0))))
+    print("Finished at: ", time.asctime())
+    print(40*"=")
+

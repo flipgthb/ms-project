@@ -1,0 +1,13 @@
+{
+    "sweeps": 3000, 
+    "N": 370, 
+    "D": 5, 
+    "dw": 0.2, 
+    "beta": [0, 3.1, 0.6], 
+    "rho": [0.2, 0.9, 0.3], 
+    "epsilon": [0, 0.5, 0.1], 
+    "political_pressure": [3, 100, 3],
+    "liberal_index": [0.2, 0.2, 0.2],
+    "party_sizes": [20, 80, 70, 200],
+    "save_directory":"/media/felippe/backup/simulation-data/"
+}

@@ -1,0 +1,62 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Thu Nov 20 18:03:54 2014
+;; Desktop file format version 206
+;; Emacs version 24.3.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("~/Documents/ms-project/current-working-code/mean-field-scripts/" "~/Documents/ms-project/current-working-code/mean-field-scripts/input-mean-field-ferro-rho.json" "~/Documents/ms-project/current-working-code/mean-field-scripts/mean-field-ferro.py" "~/Documents/ms-project/current-working-code/mean-field-scripts/input-mean-field-antiferro.json" "~/Documents/ms-project/current-working-code/mean-field-scripts/mean-field-antiferro.py" "~/Documents/ms-project/thesis/chapters/chapter2.tex" "~/.emacs.d/init.el" "~/Documents/ms-project/thesis/document.tex" "~/Documents/ms-project/thesis/document.bib" "~/Documents/ms-project/thesis/chapters/chapter1.tex" "~/Documents/ms-project/new-design/Model.py" "~/Documents/ms-project/new-design/MonteCarlo.py" "~/Documents/ms-project/current-working-code/parameters.json" "~/.emacs.d/elpa/jedi-readme.txt" "~/.emacs.d/elpa/jedi-20140321.1323/jedi-autoloads.el" "~/.emacs.d/elpa/epc-20140609.2234/epc-autoloads.el" "~/.emacs.d/elpa/concurrent-20140609.1940/concurrent-autoloads.el" "~/.emacs.d/elpa/deferred-20140816.2205/deferred-autoloads.el" "~/.emacs.d/elpa/ctable-20140304.1659/ctable-autoloads.el" "~/.emacs.d/elpa/python-environment-20140321.1116/python-environment-autoloads.el" "~/.emacs.d/elpa/archives/melpa/archive-contents" "~/.emacs.d/elpa/archives/gnu/archive-contents"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/home/felippe/Documents/ms-project/current-working-code/mean-field-scripts/mean-field-ferro.py"
+  "mean-field-ferro.py"
+  'python-mode
+  '(visual-line-mode global-visual-line-mode linum-mode)
+  3730
+  '(3603 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/felippe/Documents/ms-project/current-working-code/mean-field-scripts/input-mean-field-ferro-rho.json"
+  "input-mean-field-ferro-rho.json"
+  'js-mode
+  '(visual-line-mode global-visual-line-mode linum-mode)
+  126
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/felippe/Documents/ms-project/current-working-code/mean-field-scripts/mean-field-antiferro.py"
+  "mean-field-antiferro.py"
+  'python-mode
+  '(visual-line-mode global-visual-line-mode linum-mode)
+  4748
+  '(4675 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/felippe/Documents/ms-project/current-working-code/mean-field-scripts/input-mean-field-antiferro.json"
+  "input-mean-field-antiferro.json"
+  'js-mode
+  '(visual-line-mode global-visual-line-mode linum-mode)
+  97
+  '(23 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+

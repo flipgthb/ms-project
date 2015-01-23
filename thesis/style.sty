@@ -1,0 +1,136 @@
+
+\ProvidesPackage{style}
+
+%%% Euler constant macro
+\newcommand{\EulerE}{\ensuremath{\mathrm{e}}}
+
+%%% my vector notation : bold
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+
+%%% my vector notation : bold
+\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
+% \renewcommand{\vec}[1]{\ensuremath{|#1\rangle}}
+% \newcommand{\adjvec}[1]{\ensuremath{\langle #1|}}
+
+%%% sign function macro
+\newcommand{\sgn}{\ensuremath{\mathrm{sgn}}}
+
+%%% issues notation
+\newcommand{\iss}[1]{\ensuremath{\vec{x}^{#1}}}
+
+%%% zeitgeist notation
+\newcommand{\ztg}{\ensuremath{\vec{z}}}
+
+%%% reputation matrix elements
+\newcommand{\rep}[2]{\ensuremath{R_{#1 #2}}}
+
+%%% integration measure macro
+\newcommand{\msr}[1]{\ensuremath{\,\mathrm{d} #1\,}}
+
+%%% utility
+% \newcommand{\letv}{\newcommand}
+\newcommand{\lpr}{\ensuremath{\left(}}
+\newcommand{\rpr}{\ensuremath{\right)}}
+\newcommand{\lbk}{\ensuremath{\left[}}
+\newcommand{\rbk}{\ensuremath{\right]}}
+\newcommand{\inpr}[1]{\ensuremath{\lpr #1 \rpr}}
+\newcommand{\inbk}[1]{\ensuremath{\lbk #1 \rbk}}
+\newcommand{\halfV}[1]{\ensuremath{\frac{#1}{2}}}
+\newcommand{\half}{\ensuremath{{1 \over 2}}}
+
+%%% Machine Learning deductions
+% \newcommand{\rl}{\ensuremath{\vec{w}}}
+% \newcommand{\expt}[1]{\left<#1\right>}
+% \newcommand{\newthis}[1]{\hat{#1}}
+\newcommand{\estv}[1]{\ensuremath{\overline{\vec{#1}}}}
+% \newcommand{\dtset}{\ensuremath{Y_t}}
+% \newcommand{\ynew}{\ensuremath{\newthis{y}}}
+% \newcommand{\tnew}{\ensuremath{\newthis{t}}}
+% \newcommand{\xnew}{\ensuremath{\newthis{x}}}
+% \newcommand{\ostd}{\ensuremath{\estv{w}}}
+% \newcommand{\ocor}{\ensuremath{C}}
+% \newcommand{\nstd}{\ensuremath{\estv{w}'}}
+% \newcommand{\ncor}{\ensuremath{C'}}
+% \newcommand{\ndist}[2]{\ensuremath{G\left(#1|#2\right)}}
+% \newcommand{\ndistnorm}[1]{\ensuremath{\det(2\pi #1)^{-\frac{1}{2}}}}
+% \newcommand{\ostgrd}{\ensuremath{\frac{\partial}{\partial \ostd}}}
+% \newcommand{\nstgrd}{\ensuremath{\frac{\partial}{\partial \nstd}}}
+
+%%% epigraph settings
+% \epigraphsize{\small}% Default
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother
+% chaper epigraphs facility
+\newcommand{\chapquote}[2]{\epigraph{``#1''}{--- \emph{#2}}}
+
+%%% citation settings
+%
+\makeatletter
+\newrobustcmd{\mkbibblfootnote}[1]{%
+  \iftoggle{blx@footnote}
+    {\blx@warning{Nested notes}%
+     \addspace\mkbibparens{#1}}
+    {\unspace
+     \ifnum\blx@notetype=\tw@
+       \expandafter\@firstoftwo
+     \else
+       \expandafter\@secondoftwo
+     \fi
+       {\csuse{blx@theendnote}{\protecting{\blxmkbibnote{end}{#1}}}}
+       {\csuse{blfootnote}{\protecting{\blxmkbibnote{foot}{#1}}}}}}
+
+\newcommand\blfootnote[1]{\begingroup\let\thefootnote\relax\footnotetext{#1}\endgroup}
+\makeatother
+
+\DeclareCiteCommand{\keyfootcite}
+  {\usebibmacro{prenote}}
+  {\mkbibbrackets{\usebibmacro{cite}}%
+   \ifciteseen{}
+   {\mkbibblfootnote{%
+    %  \mkbibbrackets{\usebibmacro{cite}}%
+     \usebibmacro{cite}%
+     \setunit{\addspace}%
+     \usebibmacro{morecite}}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\newbibmacro*{morecite}{%
+  % \printnames{labelname}%
+  \setunit{\addspace}%
+  % \printfield[parens]{year}%
+  \setunit{\nametitledelim}%
+  \printfield[citetitle]{labeltitle}}
+
+  \DeclareCiteCommand{\footfullcite}[\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\mkbibbrackets{\usebibmacro{cite}}%
+   \ifciteseen{}
+   {\mkbibblfootnote{%
+    %  \mkbibbrackets{\usebibmacro{cite}}%
+     \usebibmacro{cite}%
+     \setunit{\addspace}%
+     \usebibmacro{morecite}}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+% \renewcommand{\autocite}{\keyfootcite}
+
+%%% fontsize
+
+% \iflarger
+% \AtBeginDocument{%
+% \fontsize{11}{13}\selectfont
+ % }%
+% \else\fi
+
+%%% equation numbers at side margin
+% \makeatletter
+%
+% \let\orig@maketag@@@\maketag@@@
+% \renewcommand{\eqref}[1]{\textup{\let\maketag@@@\orig@maketag@@@\tagform@{\ref{#1}}}}
+%
+% \def\maketag@@@#1{\hbox{\rlap{\kern\marginparsep\m@th\normalfont#1}\kern1sp}}
+% \makeatother

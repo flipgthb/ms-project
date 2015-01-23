@@ -1,0 +1,41 @@
+%%% Capítulo 4 - Conclusão e Discussão
+
+\chapter{Conclusões e Futuros Estudos}
+\label{ch:C4}
+
+\section{Uma Breve Revisão dos Resultados}
+
+Neste trabalho desenvolvemos modelos para o estudo de fenômenos sociais com base em características cognitivas dos humanos.
+Como foi visto no capítulo \ref{ch:C1}, o crescente corpo de resultados a respeito do comportamento humano, tanto a nível neural quanto psico-social nos guiam na captura dos elementos básico do comportamento social.
+Estabelecida a base empírica e fazendo uso das técnicas da mecânica estatística e da teoria de aprendizado de máquina, fomos capazes de estabelecer uma dinâmica para o aprendizado social, que exerce papel fundamental na interpretação dos fenômenos exibidos pelos modelos.
+
+No capítulo \ref{ch:C2} desenvolvemos a teoria elementar para a abordagem estatística de fenômenos de interação social através da troca de opiniões.
+O uso de ferramentas, como o método de máxima entropia, nos permitiu compreender através da análise de campo médio qual seria o comportamento de agentes que aprendem em conjunto, bem como o de agentes que se antagonizam, em anologia com sistemas ferromagnéticos e antiferromagnéticos.
+Note que, embora este trabalho tenha tomado como modelo base outros trabalhos recentes na mesma área \footcite{Cesar2014,Vicente2014,Caticha2011}, esta é a primeira vez que uma análise um pouco mais profunda é feita em relação à desconfiança $\ns$ ao desenvolver a sociedade baseada no custo cognitivo \eqref{eq:Vij}.
+
+No capítulo \ref{ch:C3} conseguimos comparar os resultados de campo médio com simulações usando o custo cognitivo associado à função de modulação Bayesiana, reproduzindo os resultados encontrado nas referências.
+Com base nesses resultados, elaboramos um modelo de construção (ou aniquilação) das relações sociais com base na troca de opiniões.
+Esse modelo se mostrou capaz de produzir a estrutura de comunidade com distintas opiniões, proporcionando inclusive uma medida do grau de organização dessa estrutura.
+
+Por fim, um pequeno modelo de comportamento do plenário brasileiro foi elaborado para ilustrar algumas das possibilidades ao utilizar a nossa abordagem no estudo de fenômenos reais.
+Embora as bases sob as quais esse modelo foi contruído demandem mais estudo, seus resultados são interessantes pela capacidade de reproduzir o comportamento observado nas votação em plenário.
+Entretanto, esses resultados são tratados como um guia qualitativo e qualquer esperança de usar esse modelo para explicar quantitativamente fenômenos reais necessita de base experimental.
+
+Além dos resultados apresentados, diversos pontos podem ser destacados com relação ao modelo utilizado.
+A escolha de usar apenas uma questão é uma limitação que pode ser facilmente removida, embora o custo computacional envolvido é um preço alto a pagar.
+A escolha da topologia da rede social como um grafo completo é irreal na maior parte das redes sociais.
+Porém, como um dos focos do trabalho era a construção das estruturas sociais, a escolha de alguma topologia mais realista não é facilmente justificável.
+Por fim, os resultados apresentados no capítulo \ref{ch:C3} dependem de parâmetros usado nas simulações de Monte Carlo para os quais há pouca margem para interpretação dentro do modelo.
+
+Por exemplo, o raio do cone dentro do qual o vetor cognitivo de um agente pode ser proposto está associado com a velocidade de convergência do algoritmo e pode também ser associado a uma velocidade de aprendizado.
+Porém, essa taxa não surge na dedução apresentada no capítulo \ref{ch:C2} e precisaria ser introduzida artificialmente tendo como justificativa seu uso no algoritmo.
+Os resultados apresentados neste trabalho são aqueles mais robustos com relação a esses parâmetros, e diversas variações dos modelos que poderiam gerar outras interpretações para os fenômenos não foram apresentados por não estarem sob controle dos parâmetros fornecidos pela teoria.
+
+\section{O que há pela frente?}
+
+Embora o fenômeno de estruturação social possa ser um pouco melhor compreendido através dos resultados deste trabalho, diversas críticas podem ser feitas com relação à elaboração do modelo.
+Esforço deve ser desempenhado no sentido de justificar a forma da dinâmica das relações sociais que, difente da dinâmica de aprendizado, foi estabelecida de forma heurística.
+Tal justificativa demanda não apenas uma análise matemática mais delicada das interações sociais como também de resultados experimentais diretamente relacionado a escolha de amigos ou de colegas de trabalho e outros comportamentos relacionados.
+
+A falta do respaldo experimental é outra crítica que pode ser feita a este trabalho.
+A busca de resultados em áreas bem estudadas do comportamento social é prioridade para a sequência do trabalho apresentado aqui.

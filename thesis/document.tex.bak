@@ -1,0 +1,171 @@
+
+% \documentclass[nobib,a4,twosided,justified,symmetric]{tufte-book}
+\documentclass[nobib,a4,twosided,justified]{tufte-book}
+\usepackage[english,brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage{cabin}
+\usepackage{tgpagella}
+\usepackage{hyphenat}
+\usepackage[citetracker=constrict,style=authoryear,autocite=footnote]{biblatex}
+% \usepackage[backend=bibtex,autocite=footnote,style=alphabetic]{biblatex}
+\addbibresource{./document.bib}
+\usepackage{lipsum}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[fleqn,tbtags]{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{eucal}
+\usepackage{mathrsfs}
+\usepackage{epigraph}
+\usepackage{etoolbox}
+\usepackage[amsmath,thmmarks]{ntheorem}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{./graphics/}}
+\usepackage{makeidx}
+\makeindex
+% \usepackage[nodisplayskipstretch]{setspace}
+% \setstretch{1.5}
+
+\usepackage{style}  % my macros and other tunes
+% \allowdisplaybreaks[1]
+% \setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+% \setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+%% \makeatletter
+
+%% \let\orig@maketag@@@\maketag@@@
+%% \renewcommand{\eqref}[1]{\textup{\let\maketag@@@\orig@maketag@@@\tagform@{\ref{#1}}}}
+
+%% \def\maketag@@@#1{\hbox{\rlap{\kern\marginparsep\m@th\normalfont#1}\kern1sp}}
+%% \makeatother
+
+
+\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
+
+\hypersetup{colorlinks}  % hyperlinks coloridos
+
+%%% Metadata {{}
+\title{%
+    Quebra de Simetria Espontânea,
+     \\Limites Cognitivos e
+     \\Complexidade de Sociedades
+}
+\author{Felippe Alves Pereira}
+\publisher{Instituto de Física - Universidade de São Paulo}
+%%%
+
+%%% Document
+\begin{document}
+
+%%% front matter
+\frontmatter
+
+%\chapter*{Dedicatória}
+%\chapter*{Declaração}
+
+\blankpage
+
+\cleardoublepage%
+{%
+\begin{fullwidth}%
+
+\centering{
+    \fontsize{18}{28}\selectfont\par\noindent{Universidade de São Paulo\\Intituto de Física}%
+    \vspace{1.25in}%
+
+
+    \fontsize{24}{30}\selectfont\par\noindent{Quebra de Simetria Espotânea,\\Limites Cognitivos e\\Complexidade de Sociedades\\}%
+    \vspace{2cm}%
+    % \LARGE\par\noindent\edition%
+    % \vfill%
+    \fontsize{20}{30}\selectfont\par\noindent{Felippe Alves Pereira\\}%
+    }
+    \vspace{2cm}
+    \flushright{
+    {\fontsize{14}{20}\selectfont\par\noindent{Orientador: Prof.Dr. Nestor Caticha\\}}
+        \vspace{1cm}
+        Dissertação de Mestrado apresentada\\ao Instituto de Física para a obtenção\\do título de Mestre em Ciências
+    }
+    \vspace{1cm}
+    \flushleft{
+        Banca Examinadora:
+
+        Prof.Dr.\\
+        Prof.Dr.\\
+        Prof.Dr.\\
+    }
+
+    \end{fullwidth}%
+}
+    \thispagestyle{empty}%
+    \clearpage%
+
+%\maketitle
+% \newpage
+
+\chapter*{Agradecimentos}
+
+Agradeço a meus pais e ao meu irmão pelo apoio dado e confiança em mim depositada.
+Agradeço ao Nestor Caticha pela orientação e pelo entusiasmo.
+Agradeço à Milena pela preocupação, paciência e pelos ouvidos.
+\blankpage
+
+\chapter*{Resumo}
+
+Neste trabalho elaboramos um modelo para a formação de estruturas sociais através das características cognitivas das pessoas e do modo como interagem umas com as outras.
+Com base em estudos nos campos da neurociência e da psicologia social, além do uso das técnicas de mecânica estatística e da teoria de aprendizado de máquina, fomos capazes de estabelecer um modelo de agentes que trocam opiniões, aprendem e escolhem seus parceiros com base nas informações que obtêm.
+
+A dinâmica das relações sociais introduzida aqui é capaz de produzir complexidade na estrutura das relações sociais e na distribuição de opiniões de forma correlacionada.
+Essa dinâmica nos dá um parâmetro que mede o nível de organização social e nos permite interpretar o fenômeno de formação de comunidades como uma estrutura que requer uma \emph{"massa crítica"} para se estabelecer.
+
+Com base nesses resultados, propusemos um modelo capaz de reproduzir parte do comportamento observado no plenário brasileiro ao londo do anos em relação a votações de projetos de lei sob diferentes mandatos presidenciais.
+
+\chapter*{Abstract}
+
+In this work we establish a model for social structure formation based on cognitive characteristics of human beings and how they interact with each other.
+From neuroscience and social psychology studies, and also relying on technique from statistical mechanics and machine leaning theory, we were able to establish a model of agents who exchange opinions, learn together and choose their partnerships using the information they gather.
+
+The social relationship dynamics here introduced is capable of generating complexity on the social structure level and a on opinion distribution in a correlated way.
+This dynamics gives a parameter representing the degree to which society is organized and allow us to see the phenomena of community formation as a structure requiring a \emph{"critical mass"} to fixate.
+
+These results guided us in proposing a model able to replicate a portion of the behavior observed at the Brazilian plenary through year of voting law projects under different president mandates.
+
+\tableofcontents
+% \listoffigures
+% \listoftables
+%%%
+
+%%% main matter
+\mainmatter
+% ideia
+% cap 1 : apresentação dos modelos, interpretação de beta
+% cap 2 : dinâmica de reputação
+% cap 3 : campo médio e a desconfiança
+% cap 4 : jogos de partidos
+% ESSA ESTRUTURA NÃO É MANDATÓRIA, SÓ UMA GUIA!
+% OS NOMES DOS CAPÍTULOS NÃO SERÃO ESTES, NECESSÁRIAMENTE.
+
+%% Capítulo 1
+\input{./chapters/chapter1.tex}
+
+%% Capítulo 2
+\input{./chapters/chapter2.tex}
+
+%% Capítulo 3
+\input{./chapters/chapter3.tex}
+
+%% Capítulo 4
+\input{./chapters/chapter4.tex}
+
+%%%
+
+%%% back matter
+\backmatter
+%% \selectlanguage{brazilian}
+\printbibliography
+% \printindex
+%%%
+
+\end{document}

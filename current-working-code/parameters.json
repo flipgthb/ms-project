@@ -1,0 +1,23 @@
+{
+    "beta": [
+        0, 
+        30, 
+        0.6
+    ], 
+    "D": 5, 
+    "rho": [
+        0.2, 
+        0.9, 
+        0.3
+    ], 
+    "dw": 0.2, 
+    "epsilon": [
+        0, 
+        0.5, 
+        0.01
+    ], 
+    "dr": 0.5, 
+    "sweeps": 1000, 
+    "N": 100, 
+    "save_directory":"/media/felippe/backup/simulation-data/"
+}

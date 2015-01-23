@@ -1,0 +1,924 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.4 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{nyt}{nyt}
+    \entry{Amodio2007}{article}{}
+      \name{labelname}{4}{}{%
+        {{uniquename=0,hash=c74d691585220a9f3d6cbe822312c429}{Amodio}{A\bibinitperiod}{David\bibnamedelima M}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=de3cb53824f71674f7393d6fe81e5d36}{Jost}{J\bibinitperiod}{John\bibnamedelima T}{J\bibinitperiod\bibinitdelim T\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=accb2711d64544e96ab460b173f4433c}{Master}{M\bibinitperiod}{Sarah\bibnamedelima L}{S\bibinitperiod\bibinitdelim L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=243a7456cfbb2a61642d596e0a76cff3}{Yee}{Y\bibinitperiod}{Cindy\bibnamedelima M}{C\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{uniquename=0,hash=c74d691585220a9f3d6cbe822312c429}{Amodio}{A\bibinitperiod}{David\bibnamedelima M}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=de3cb53824f71674f7393d6fe81e5d36}{Jost}{J\bibinitperiod}{John\bibnamedelima T}{J\bibinitperiod\bibinitdelim T\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=accb2711d64544e96ab460b173f4433c}{Master}{M\bibinitperiod}{Sarah\bibnamedelima L}{S\bibinitperiod\bibinitdelim L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=243a7456cfbb2a61642d596e0a76cff3}{Yee}{Y\bibinitperiod}{Cindy\bibnamedelima M}{C\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b74d8dee8bc31d5e3863f716d9857fa4}
+      \strng{fullhash}{9cce706c6fa0638a9a6afe54f004a70f}
+      \field{sortinit}{A}
+      \field{sortinithash}{c8a29dea43e9d2645817723335a4dbe8}
+      \field{labelyear}{2007}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Neurocognitive correlates of liberalism and conservatism.}}
+      \field{abstract}{Political scientists and psychologists have noted that, on average, conservatives show more structured and persistent cognitive styles, whereas liberals are more responsive to informational complexity, ambiguity and novelty. We tested the hypothesis that these profiles relate to differences in general neurocognitive functioning using event-related potentials, and found that greater liberalism was associated with stronger conflict-related anterior cingulate activity, suggesting greater neurocognitive sensitivity to cues for altering a habitual response pattern.}
+      \field{isbn}{1097-6256 (Print)$\backslash$n1097-6256 (Linking)}
+      \field{issn}{1097-6256}
+      \field{journaltitle}{Nature neuroscience}
+      \field{title}{{Neurocognitive correlates of liberalism and conservatism.}}
+      \field{volume}{10}
+      \field{year}{2007}
+      \field{pages}{1246\bibrangedash 1247}
+      \verb{doi}
+      \verb 10.1038/nn1979
+      \endverb
+    \endentry
+    \entry{Asch1955}{misc}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=50c207ab79a634354168e1bacda28267}{Asch}{A\bibinitperiod}{Solomon\bibnamedelima E.}{S\bibinitperiod\bibinitdelim E\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=50c207ab79a634354168e1bacda28267}{Asch}{A\bibinitperiod}{Solomon\bibnamedelima E.}{S\bibinitperiod\bibinitdelim E\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{50c207ab79a634354168e1bacda28267}
+      \strng{fullhash}{50c207ab79a634354168e1bacda28267}
+      \field{sortinit}{A}
+      \field{sortinithash}{c8a29dea43e9d2645817723335a4dbe8}
+      \field{labelyear}{1955}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Opinions and Social Pressure}}
+      \field{abstract}{Exactly d what is the efect of the opinions of others on our own? In other words, how strong is the urge toward social conformity? The question is approached by means of some unusual experiments}
+      \field{booktitle}{Scientific American}
+      \field{isbn}{0036-8733}
+      \field{issn}{0036-8733}
+      \field{title}{{Opinions and Social Pressure}}
+      \field{volume}{193}
+      \field{year}{1955}
+      \field{pages}{31\bibrangedash 35}
+      \verb{doi}
+      \verb 10.1038/scientificamerican1155-31
+      \endverb
+    \endentry
+    \entry{Axelrod1997}{misc}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=44b20e00b576081da67f5b7892b1ba1b}{Axelrod}{A\bibinitperiod}{R.}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=44b20e00b576081da67f5b7892b1ba1b}{Axelrod}{A\bibinitperiod}{R.}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{44b20e00b576081da67f5b7892b1ba1b}
+      \strng{fullhash}{44b20e00b576081da67f5b7892b1ba1b}
+      \field{sortinit}{A}
+      \field{sortinithash}{c8a29dea43e9d2645817723335a4dbe8}
+      \field{labelyear}{1997}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{The Dissemination of Culture: A Model with Local Convergence and Global Polarization}}
+      \field{abstract}{Despite tendencies toward convergence, differences between individuals and groups continue to exist in beliefs, attitudes, and behavior. An agent-based adaptive model reveals the effects of a mechanism of convergent social influence. The actors are placed at fixed sites. The basic premise is that the more similar an actor is to a neighbor, the more likely that that actor will adopt one of the neighbor's traits. Unlike previous models of social influence or cultural change that treat features one at a time, the proposed model takes into accountt he interactionb etweend ifferentf eatures.T he modeli llustratesh ow local convergencec an generate global polarization. Simulations show that the number of stable homogeneous regions decreases with the numbero f features,i ncreasesw ith the numbero f alternativet raitsp er feature,d ecreases with the range of interaction,a nd (most surprisingly)d ecreasesw hen the geographict erritoryg rows beyond a certains ize.}
+      \field{booktitle}{Journal of Conflict Resolution}
+      \field{isbn}{0022-0027}
+      \field{issn}{0022-0027}
+      \field{title}{{The Dissemination of Culture: A Model with Local Convergence and Global Polarization}}
+      \field{volume}{41}
+      \field{year}{1997}
+      \field{pages}{203\bibrangedash 226}
+      \verb{doi}
+      \verb 10.1177/0022002797041002001
+      \endverb
+    \endentry
+    \entry{Blakemore2008}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=f6728dceb81571ed47f223a90befac40}{Blakemore}{B\bibinitperiod}{Sarah-Jayne}{S\bibinithyphendelim J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=f6728dceb81571ed47f223a90befac40}{Blakemore}{B\bibinitperiod}{Sarah-Jayne}{S\bibinithyphendelim J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{f6728dceb81571ed47f223a90befac40}
+      \strng{fullhash}{f6728dceb81571ed47f223a90befac40}
+      \field{sortinit}{B}
+      \field{sortinithash}{1a3a21dbed09540af12d49a0b14f4751}
+      \field{labelyear}{2008}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{The social brain in adolescence.}}
+      \field{abstract}{The term 'social brain' refers to the network of brain regions that are involved in understanding others. Behaviour that is related to social cognition changes dramatically during human adolescence. This is paralleled by functional changes that occur in the social brain during this time, in particular in the medial prefrontal cortex and the superior temporal sulcus, which show altered activity during the performance of social cognitive tasks, such as face recognition and mental-state attribution. Research also indicates that, in humans, these parts of the social brain undergo structural development, including synaptic reorganization, during adolescence. Bringing together two relatively new and rapidly expanding areas of neuroscience--social neuroscience and the study of brain development during adolescence--will increase our understanding of how the social brain develops during adolescence.}
+      \field{isbn}{1471-003X(Print)}
+      \field{issn}{1471-003X}
+      \field{journaltitle}{Nature reviews. Neuroscience}
+      \field{title}{{The social brain in adolescence.}}
+      \field{volume}{9}
+      \field{year}{2008}
+      \field{pages}{267\bibrangedash 277}
+      \verb{doi}
+      \verb 10.1038/nrn2353
+      \endverb
+    \endentry
+    \entry{Calsaverini2013}{thesis}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=b8074b486b1fa9442467a539ca30ba2a}{Calsaverini}{C\bibinitperiod}{Rafael\bibnamedelima S.}{R\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b8074b486b1fa9442467a539ca30ba2a}{Calsaverini}{C\bibinitperiod}{Rafael\bibnamedelima S.}{R\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b8074b486b1fa9442467a539ca30ba2a}
+      \strng{fullhash}{b8074b486b1fa9442467a539ca30ba2a}
+      \field{sortinit}{C}
+      \field{sortinithash}{dd0e4ddd17488a6ebf12cd6de2f2c237}
+      \field{labelyear}{2013}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Tópicos em Mecânica Estatística de Sistemas Complexos}}
+      \field{title}{{Tópicos em Mecânica Estatística de Sistemas Complexos}}
+      \field{type}{phdthesis}
+      \field{year}{2013}
+    \endentry
+    \entry{Campbell-Meiklejohn2010}{article}{}
+      \name{labelname}{5}{}{%
+        {{uniquename=0,hash=800f1c95af1bdfec8e1785b8164eec11}{Campbell-Meiklejohn}{C\bibinithyphendelim M\bibinitperiod}{Daniel\bibnamedelima K.}{D\bibinitperiod\bibinitdelim K\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2c7ec66be7b8702ee8decff432442900}{Bach}{B\bibinitperiod}{Dominik\bibnamedelima R.}{D\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=b159432caba9f12c5df8c41523e25614}{Roepstorff}{R\bibinitperiod}{Andreas}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=40ef0a6d0a48f4e72252f3c26384dfa9}{Dolan}{D\bibinitperiod}{Raymond\bibnamedelima J.}{R\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2697ffb00f155dc6331cf4b19e3e3cb9}{Frith}{F\bibinitperiod}{Chris\bibnamedelima D.}{C\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{5}{}{%
+        {{uniquename=0,hash=800f1c95af1bdfec8e1785b8164eec11}{Campbell-Meiklejohn}{C\bibinithyphendelim M\bibinitperiod}{Daniel\bibnamedelima K.}{D\bibinitperiod\bibinitdelim K\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2c7ec66be7b8702ee8decff432442900}{Bach}{B\bibinitperiod}{Dominik\bibnamedelima R.}{D\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=b159432caba9f12c5df8c41523e25614}{Roepstorff}{R\bibinitperiod}{Andreas}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=40ef0a6d0a48f4e72252f3c26384dfa9}{Dolan}{D\bibinitperiod}{Raymond\bibnamedelima J.}{R\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2697ffb00f155dc6331cf4b19e3e3cb9}{Frith}{F\bibinitperiod}{Chris\bibnamedelima D.}{C\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{62861df84e0ec341263d99034f948ef1}
+      \strng{fullhash}{651b037cb1a8df168f8cd9c5d146f5c4}
+      \field{sortinit}{C}
+      \field{sortinithash}{dd0e4ddd17488a6ebf12cd6de2f2c237}
+      \field{labelyear}{2010}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{How the opinion of others affects our valuation of objects}}
+      \field{abstract}{The opinions of others can easily affect how much we value things. We investigated what happens in our brain when we agree with others about the value of an object and whether or not there is evidence, at the neural level, for social conformity through which we change object valuation. Using functional magnetic resonance imaging we independently modeled (1) learning reviewer opinions about a piece of music, (2) reward value while receiving a token for that music, and (3) their interaction in 28 healthy adults. We show that agreement with two "expert" reviewers on music choice produces activity in a region of ventral striatum that also responds when receiving a valued object. It is known that the magnitude of activity in the ventral striatum reflects the value of reward-predicting stimuli [1-8]. We show that social influence on the value of an object is associated with the magnitude of the ventral striatum response to receiving it. This finding provides clear evidence that social influence mediates very basic value signals in known reinforcement learning circuitry [9-12]. Influence at such a low level could contribute to rapid learning and the swift spread of values throughout a population. ?? 2010 Elsevier Ltd.}
+      \field{isbn}{1879-0445 (Electronic)$\backslash$n0960-9822 (Linking)}
+      \field{issn}{09609822}
+      \field{journaltitle}{Current Biology}
+      \field{title}{{How the opinion of others affects our valuation of objects}}
+      \field{volume}{20}
+      \field{year}{2010}
+      \field{pages}{1165\bibrangedash 1170}
+      \verb{doi}
+      \verb 10.1016/j.cub.2010.04.055
+      \endverb
+      \keyw{SYSNEURO}
+    \endentry
+    \entry{Castellano2009}{article}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=0,hash=1f995e83b34c1fad8cc8ec5fccfc9629}{Castellano}{C\bibinitperiod}{Claudio}{C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=3f057d4175c110c6302b495f38eebcb6}{Fortunato}{F\bibinitperiod}{Santo}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=7144c0bfd01cbf1afe3f7fd7b9650abe}{Loreto}{L\bibinitperiod}{Vittorio}{V\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=1f995e83b34c1fad8cc8ec5fccfc9629}{Castellano}{C\bibinitperiod}{Claudio}{C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=3f057d4175c110c6302b495f38eebcb6}{Fortunato}{F\bibinitperiod}{Santo}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=7144c0bfd01cbf1afe3f7fd7b9650abe}{Loreto}{L\bibinitperiod}{Vittorio}{V\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{3810a653f6ab29a3d9469b736436cd47}
+      \strng{fullhash}{3810a653f6ab29a3d9469b736436cd47}
+      \field{sortinit}{C}
+      \field{sortinithash}{dd0e4ddd17488a6ebf12cd6de2f2c237}
+      \field{labelyear}{2009}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Statistical physics of social dynamics}}
+      \field{abstract}{Statistical physics has proven to be a very fruitful framework to describe$\backslash$nphenomena outside the realm of traditional physics. The last years have$\backslash$nwitnessed the attempt by physicists to study collective phenomena emerging from$\backslash$nthe interactions of individuals as elementary units in social structures. Here$\backslash$nwe review the state of the art by focusing on three major research lines i.e.,$\backslash$nopinion, cultural and language dynamics. In addition we discuss other social$\backslash$nphenomena, such as crowd behavior, hierarchy formation, human dynamics, social$\backslash$nspreading. We highlight the connections between these problems and other, more$\backslash$ntraditional, topics of statistical physics. We also emphasize the comparison of$\backslash$nmodel results with empirical data from social systems.}
+      \field{issn}{0034-6861}
+      \field{journaltitle}{Reviews of Modern Physics}
+      \field{title}{{Statistical physics of social dynamics}}
+      \field{volume}{81}
+      \field{year}{2009}
+      \field{pages}{591\bibrangedash 646}
+      \verb{doi}
+      \verb 10.1103/RevModPhys.81.591
+      \endverb
+      \verb{url}
+      \verb http://link.aps.org/doi/10.1103/RevModPhys.81.591
+      \endverb
+    \endentry
+    \entry{Cesar2014}{thesis}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=b5626d58d9bd19d53cddd6188a8e6516}{César}{C\bibinitperiod}{Jônatas\bibnamedelimb Eduardo\bibnamedelimb da\bibnamedelima Silva}{J\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b5626d58d9bd19d53cddd6188a8e6516}{César}{C\bibinitperiod}{Jônatas\bibnamedelimb Eduardo\bibnamedelimb da\bibnamedelima Silva}{J\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b5626d58d9bd19d53cddd6188a8e6516}
+      \strng{fullhash}{b5626d58d9bd19d53cddd6188a8e6516}
+      \field{sortinit}{C}
+      \field{sortinithash}{dd0e4ddd17488a6ebf12cd6de2f2c237}
+      \field{labelyear}{2014}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Mecânica Estatística de Sistemas de Agentes Bayesianos}}
+      \field{title}{{Mecânica Estatística de Sistemas de Agentes Bayesianos}}
+      \field{type}{phdthesis}
+      \field{year}{2014}
+    \endentry
+    \entry{Choudhury2006}{article}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=0,hash=335e1d0cc35eb5e84d3101bf82392f75}{Choudhury}{C\bibinitperiod}{Suparna}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=f6728dceb81571ed47f223a90befac40}{Blakemore}{B\bibinitperiod}{Sarah-Jayne}{S\bibinithyphendelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=66a41fe6aaccb1d09a7299fb3d747a7a}{Charman}{C\bibinitperiod}{Tony}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=335e1d0cc35eb5e84d3101bf82392f75}{Choudhury}{C\bibinitperiod}{Suparna}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=f6728dceb81571ed47f223a90befac40}{Blakemore}{B\bibinitperiod}{Sarah-Jayne}{S\bibinithyphendelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=66a41fe6aaccb1d09a7299fb3d747a7a}{Charman}{C\bibinitperiod}{Tony}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{a40385968c462a0997d144b27ca8db4f}
+      \strng{fullhash}{a40385968c462a0997d144b27ca8db4f}
+      \field{sortinit}{C}
+      \field{sortinithash}{dd0e4ddd17488a6ebf12cd6de2f2c237}
+      \field{labelyear}{2006}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Social cognitive development during adolescence.}}
+      \field{abstract}{Social relationships are particularly important during adolescence. In recent years, histological and MRI studies have shown that the brain is subject to considerable structural development during adolescence. Brain regions that are implicated in social cognition, including parts of prefrontal, parietal and superior temporal cortex, undergo the most pronounced and prolonged change. However, the development of social cognition during adolescence and its neural underpinnings remains poorly understood. Here, we begin by outlining how the brain changes between childhood and adulthood. We then describe findings that have emerged from behavioural and neuroimaging studies of the recognition of facial expression during adolescence. Finally, we present new data that demonstrate development of emotional perspective taking during adolescence. In this study, 112 participants, aged 8-36 years, performed a computerised task that involved taking an emotional perspective either from the participant's own point of view or from that of another person. The results showed that average difference in reaction time (RT) to answer questions in the first person perspective (1PP) and third person perspective (3PP) significantly decreased with age. The RT difference of adults tended to cluster close to the zero line (3PP = 1PP), while a greater proportion of pre-adolescents had higher difference values in both the positive (3PP > 1PP) and negative direction (1PP > 3PP) of the scale. The data suggest that the efficiency, and possibly strategy, of perspective taking develop in parallel with brain maturation and psychosocial development during adolescence.}
+      \field{issn}{1749-5024}
+      \field{journaltitle}{Social cognitive and affective neuroscience}
+      \field{title}{{Social cognitive development during adolescence.}}
+      \field{volume}{1}
+      \field{year}{2006}
+      \field{pages}{165\bibrangedash 174}
+      \verb{doi}
+      \verb 10.1093/scan/nsl024
+      \endverb
+    \endentry
+    \entry{Eisenberger2003}{article}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=0,hash=a62a81ed129b1fb6053b92917f294ff4}{Eisenberger}{E\bibinitperiod}{Naomi\bibnamedelima I}{N\bibinitperiod\bibinitdelim I\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=36428b99f7043b35c7d72ae85c8c5d83}{Lieberman}{L\bibinitperiod}{Matthew\bibnamedelima D}{M\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=7a49015a46261b0c04582a825b5a4885}{Williams}{W\bibinitperiod}{Kipling\bibnamedelima D}{K\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=a62a81ed129b1fb6053b92917f294ff4}{Eisenberger}{E\bibinitperiod}{Naomi\bibnamedelima I}{N\bibinitperiod\bibinitdelim I\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=36428b99f7043b35c7d72ae85c8c5d83}{Lieberman}{L\bibinitperiod}{Matthew\bibnamedelima D}{M\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=7a49015a46261b0c04582a825b5a4885}{Williams}{W\bibinitperiod}{Kipling\bibnamedelima D}{K\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{338c4443fec23adb55c0563e8ff43aff}
+      \strng{fullhash}{338c4443fec23adb55c0563e8ff43aff}
+      \field{sortinit}{E}
+      \field{sortinithash}{655e26c7438ff123e5c69c6c3f702107}
+      \field{labelyear}{2003}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Does rejection hurt? An FMRI study of social exclusion.}}
+      \field{abstract}{A neuroimaging study examined the neural correlates of social exclusion and tested the hypothesis that the brain bases of social pain are similar to those of physical pain. Participants were scanned while playing a virtual ball-tossing game in which they were ultimately excluded. Paralleling results from physical pain studies, the anterior cingulate cortex (ACC) was more active during exclusion than during inclusion and correlated positively with self-reported distress. Right ventral prefrontal cortex (RVPFC) was active during exclusion and correlated negatively with self-reported distress. ACC changes mediated the RVPFC-distress correlation, suggesting that RVPFC regulates the distress of social exclusion by disrupting ACC activity.}
+      \field{isbn}{1095-9203 (Electronic) 0036-8075 (Linking)}
+      \field{issn}{0036-8075}
+      \field{journaltitle}{Science (New York, N.Y.)}
+      \field{title}{{Does rejection hurt? An FMRI study of social exclusion.}}
+      \field{volume}{302}
+      \field{year}{2003}
+      \field{pages}{290\bibrangedash 292}
+      \verb{doi}
+      \verb 10.1126/science.1089134
+      \endverb
+    \endentry
+    \entry{Engel2001}{book}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=c05589b9d4a7e5c7928bf1a3b6574e6b}{Engel}{E\bibinitperiod}{A}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=5874b5dd733887e7eaee579f9e352209}{{Den\bibnamedelimb Broeck}}{D\bibinitperiod}{C\bibnamedelima Van}{C\bibinitperiod\bibinitdelim V\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=c05589b9d4a7e5c7928bf1a3b6574e6b}{Engel}{E\bibinitperiod}{A}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=5874b5dd733887e7eaee579f9e352209}{{Den\bibnamedelimb Broeck}}{D\bibinitperiod}{C\bibnamedelima Van}{C\bibinitperiod\bibinitdelim V\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{eb59123c4bb3f595295f58c5bc5d43cd}
+      \strng{fullhash}{eb59123c4bb3f595295f58c5bc5d43cd}
+      \field{sortinit}{E}
+      \field{sortinithash}{655e26c7438ff123e5c69c6c3f702107}
+      \field{labelyear}{2001}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Statistical Mechanics of Learning}}
+      \field{abstract}{The effort to build machines that are able to learn and undertake tasks such as datamining, image processing and pattern recognition has led to the development of artificial neural networks in which learning from examples may be described and understood. The contribution to this subject made over the past decade by researchers applying the techniques of statistical mechanics is the subject of this book. The authors provide a coherent account of various important concepts and techniques that are currently only found scattered in papers, supplement this with background material in mathematics and physics, and include many examples and exercises.}
+      \field{booktitle}{Quantum}
+      \field{isbn}{051102021X}
+      \field{title}{{Statistical Mechanics of Learning}}
+      \field{volume}{5400}
+      \field{year}{2001}
+      \field{pages}{1\bibrangedash 22}
+      \verb{doi}
+      \verb 10.1007/978-3-642-01805-3
+      \endverb
+      \verb{url}
+      \verb http://books.google.com/books?id=qVo4IT9ByfQC
+      \endverb
+    \endentry
+    \entry{Graham2011}{article}{}
+      \name{labelname}{6}{}{%
+        {{uniquename=0,hash=e2accf4ab7431a770b8b0c4587aee22c}{Graham}{G\bibinitperiod}{Jesse}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=31e189354b4d2503a728f3258235682c}{Nosek}{N\bibinitperiod}{Brian\bibnamedelima A}{B\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=4ad5db1a3e5b2a00eb7b9f09db549ab6}{Haidt}{H\bibinitperiod}{Jonathan}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=74a34524abaa4b815c6ee68cd2fcfa6b}{Iyer}{I\bibinitperiod}{Ravi}{R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=76bf3af94a06f86d0479d76bb5a01cc2}{Koleva}{K\bibinitperiod}{Spassena}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=ca2bf207ba69576634613f57f12f464d}{Ditto}{D\bibinitperiod}{Peter\bibnamedelima H}{P\bibinitperiod\bibinitdelim H\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{6}{}{%
+        {{uniquename=0,hash=e2accf4ab7431a770b8b0c4587aee22c}{Graham}{G\bibinitperiod}{Jesse}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=31e189354b4d2503a728f3258235682c}{Nosek}{N\bibinitperiod}{Brian\bibnamedelima A}{B\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=4ad5db1a3e5b2a00eb7b9f09db549ab6}{Haidt}{H\bibinitperiod}{Jonathan}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=74a34524abaa4b815c6ee68cd2fcfa6b}{Iyer}{I\bibinitperiod}{Ravi}{R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=76bf3af94a06f86d0479d76bb5a01cc2}{Koleva}{K\bibinitperiod}{Spassena}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=ca2bf207ba69576634613f57f12f464d}{Ditto}{D\bibinitperiod}{Peter\bibnamedelima H}{P\bibinitperiod\bibinitdelim H\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{ab2af13b22d428a68073c927575be196}
+      \strng{fullhash}{c0f22b16726a6c80369c750fc6e8cfe8}
+      \field{sortinit}{G}
+      \field{sortinithash}{480ee01f9ffd559b3258d822f54a8ac2}
+      \field{labelyear}{2011}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Mapping the moral domain.}}
+      \field{abstract}{The moral domain is broader than the empathy and justice concerns assessed by existing measures of moral competence, and it is not just a subset of the values assessed by value inventories. To fill the need for reliable and theoretically grounded measurement of the full range of moral concerns, we developed the Moral Foundations Questionnaire on the basis of a theoretical model of 5 universally available (but variably developed) sets of moral intuitions: Harm/Care, Fairness/Reciprocity, Ingroup/Loyalty, Authority/Respect, and Purity/Sanctity. We present evidence for the internal and external validity of the scale and the model, and in doing so we present new findings about morality: (a) Comparative model fitting of confirmatory factor analyses provides empirical justification for a 5-factor structure of moral concerns; (b) convergent/discriminant validity evidence suggests that moral concerns predict personality features and social group attitudes not previously considered morally relevant; and (c) we establish pragmatic validity of the measure in providing new knowledge and research opportunities concerning demographic and cultural differences in moral intuitions. These analyses provide evidence for the usefulness of Moral Foundations Theory in simultaneously increasing the scope and sharpening the resolution of psychological views of morality.}
+      \field{isbn}{0022-3514}
+      \field{issn}{0022-3018}
+      \field{journaltitle}{Journal of personality and social psychology}
+      \field{title}{{Mapping the moral domain.}}
+      \field{volume}{101}
+      \field{year}{2011}
+      \field{pages}{366\bibrangedash 385}
+      \verb{doi}
+      \verb 10.1097/00005053-199107000-00016
+      \endverb
+    \endentry
+    \entry{Haidt2007}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=daa1bbcfa28b8ce2f89c228aad136098}{Haidt}{H\bibinitperiod}{J}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=daa1bbcfa28b8ce2f89c228aad136098}{Haidt}{H\bibinitperiod}{J}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{daa1bbcfa28b8ce2f89c228aad136098}
+      \strng{fullhash}{daa1bbcfa28b8ce2f89c228aad136098}
+      \field{sortinit}{H}
+      \field{sortinithash}{95b2cb08933fe649b7e9f8beee2132b4}
+      \field{labelyear}{2007}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{The New Synthesis in Moral Psychology}}
+      \field{abstract}{People are selfish, yet morally motivated. Morality is universal, yet culturally variable. Such apparent contradictions are dissolving as research from many disciplines converges on a few shared principles, including the importance of moral intuitions, the socially functional (rather than ...}
+      \field{issn}{1095-9203}
+      \field{journaltitle}{Science (New York, NY)}
+      \field{title}{{The New Synthesis in Moral Psychology}}
+      \field{volume}{316}
+      \field{year}{2007}
+      \field{pages}{998\bibrangedash 1002}
+      \verb{doi}
+      \verb 10.1126/science.1137651
+      \endverb
+      \verb{url}
+      \verb http://www.sciencemag.org/cgi/doi/10.1126/science.1137651$%5Cbackslash$npapers2://publication/doi/10.1126/science.1137651
+      \endverb
+      \keyw{Affect,Altruism,Brain,Brain: physiology,Cognition,Cooperative Behavior,Culture,Emotions,Group Processes,Humans,Intuition,Models,Psychological,Morals,Psychology,Social,Thinking}
+    \endentry
+    \entry{Holroyd2002a}{report}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=3d0e739bcf6d3c4668147bad198bc960}{Holroyd}{H\bibinitperiod}{Clay\bibnamedelima B}{C\bibinitperiod\bibinitdelim B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=1d52e87c27a63da57b0de14318b99cd7}{Coles}{C\bibinitperiod}{Michael\bibnamedelimb G\bibnamedelima H}{M\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim H\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=3d0e739bcf6d3c4668147bad198bc960}{Holroyd}{H\bibinitperiod}{Clay\bibnamedelima B}{C\bibinitperiod\bibinitdelim B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=1d52e87c27a63da57b0de14318b99cd7}{Coles}{C\bibinitperiod}{Michael\bibnamedelimb G\bibnamedelima H}{M\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim H\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{f8e5d1a82649dd5b0fa9820ec29f5361}
+      \strng{fullhash}{f8e5d1a82649dd5b0fa9820ec29f5361}
+      \field{sortinit}{H}
+      \field{sortinithash}{95b2cb08933fe649b7e9f8beee2132b4}
+      \field{labelyear}{2002}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{The neural basis of human error processing: reinforcement learning, dopamine, and the error-related negativity.}}
+      \field{abstract}{The authors present a unified account of 2 neural systems concerned with the development and expression of adaptive behaviors: a mesencephalic dopamine system for reinforcement learning and a "generic" error-processing system associated with the anterior cingulate cortex. The existence of the error-processing system has been inferred from the error-related negativity (ERN), a component of the event-related brain potential elicited when human participants commit errors in reaction-time tasks. The authors propose that the ERN is generated when a negative reinforcement learning signal is conveyed to the anterior cingulate cortex via the mesencephalic dopamine system and that this signal is used by the anterior cingulate cortex to modify performance on the task at hand. They provide support for this proposal using both computational modeling and psychophysiological experimentation.}
+      \field{booktitle}{Psychological review}
+      \field{isbn}{1939-1471(Electronic);0033-295X(Print)}
+      \field{issn}{0033-295X}
+      \field{title}{{The neural basis of human error processing: reinforcement learning, dopamine, and the error-related negativity.}}
+      \field{type}{techreport}
+      \field{volume}{109}
+      \field{year}{2002}
+      \field{pages}{679\bibrangedash 709}
+      \verb{doi}
+      \verb 10.1037/0033-295X.109.4.679
+      \endverb
+    \endentry
+    \entry{Kinouchi1996}{thesis}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=caf6f072344ed2b231219a00a2bf7974}{Kinouchi}{K\bibinitperiod}{Osame}{O\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=caf6f072344ed2b231219a00a2bf7974}{Kinouchi}{K\bibinitperiod}{Osame}{O\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{1}{%
+        {Universidade de São Paulo}%
+      }
+      \strng{namehash}{caf6f072344ed2b231219a00a2bf7974}
+      \strng{fullhash}{caf6f072344ed2b231219a00a2bf7974}
+      \field{sortinit}{K}
+      \field{sortinithash}{33bf4c961fa093ee6a297ccbd88eacc0}
+      \field{labelyear}{1996}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Apredizagem Ótima em Percéptrons a Partir de Exemplos com Ruído}}
+      \field{title}{{Apredizagem Ótima em Percéptrons a Partir de Exemplos com Ruído}}
+      \field{type}{Tese de Doutorado}
+      \field{year}{1996}
+    \endentry
+    \entry{MarinoBlog1}{misc}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=b34a863fe12ed789fd5d47ac857db231}{Marino}{M\bibinitperiod}{Ricardo}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b34a863fe12ed789fd5d47ac857db231}{Marino}{M\bibinitperiod}{Ricardo}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b34a863fe12ed789fd5d47ac857db231}
+      \strng{fullhash}{b34a863fe12ed789fd5d47ac857db231}
+      \field{sortinit}{M}
+      \field{sortinithash}{4203d16473bc940d4ac780773cb7c5dd}
+      \field{extrayear}{1}
+      \field{labelyear}{nodate}
+      \field{labeltitle}{{A Valsa dos Partidos}}
+      \field{title}{{A Valsa dos Partidos}}
+      \verb{url}
+      \verb http://www.todasasconfiguracoes.com/2014/04/24/a-valsa-dos-partidos/
+      \endverb
+    \endentry
+    \entry{MarinoBlog2}{misc}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=b34a863fe12ed789fd5d47ac857db231}{Marino}{M\bibinitperiod}{Ricardo}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=b34a863fe12ed789fd5d47ac857db231}{Marino}{M\bibinitperiod}{Ricardo}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b34a863fe12ed789fd5d47ac857db231}
+      \strng{fullhash}{b34a863fe12ed789fd5d47ac857db231}
+      \field{sortinit}{M}
+      \field{sortinithash}{4203d16473bc940d4ac780773cb7c5dd}
+      \field{extrayear}{2}
+      \field{labelyear}{nodate}
+      \field{labeltitle}{{Há Partidos Politicos no Brasil}}
+      \field{title}{{Há Partidos Politicos no Brasil}}
+      \verb{url}
+      \verb http://www.todasasconfiguracoes.com/2013/09/14/ha-partidos-politicos-no-brasil/
+      \endverb
+    \endentry
+    \entry{Moriguchi2007}{article}{}
+      \name{labelname}{5}{}{%
+        {{uniquename=0,hash=f8188a2991fb3c5fcabeff25130e4db7}{Moriguchi}{M\bibinitperiod}{Yoshiya}{Y\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=0d67d0b59ba5ed74d7c4c92e72297259}{Ohnishi}{O\bibinitperiod}{Takashi}{T\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=7e340dba6c6403315f8ee8b3921c04e1}{Mori}{M\bibinitperiod}{Takeyuki}{T\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=112733b105811d6b4a0883f9bf9c0ee7}{Matsuda}{M\bibinitperiod}{Hiroshi}{H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=eb77dfddfffdc0a0f09637d693adadb3}{Komaki}{K\bibinitperiod}{Gen}{G\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{5}{}{%
+        {{uniquename=0,hash=f8188a2991fb3c5fcabeff25130e4db7}{Moriguchi}{M\bibinitperiod}{Yoshiya}{Y\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=0d67d0b59ba5ed74d7c4c92e72297259}{Ohnishi}{O\bibinitperiod}{Takashi}{T\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=7e340dba6c6403315f8ee8b3921c04e1}{Mori}{M\bibinitperiod}{Takeyuki}{T\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=112733b105811d6b4a0883f9bf9c0ee7}{Matsuda}{M\bibinitperiod}{Hiroshi}{H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=eb77dfddfffdc0a0f09637d693adadb3}{Komaki}{K\bibinitperiod}{Gen}{G\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{8652bd6c17a6d13243dddf85660b3a5d}
+      \strng{fullhash}{eaa0ba64590bbc82c6be54b2ab624bfb}
+      \field{sortinit}{M}
+      \field{sortinithash}{4203d16473bc940d4ac780773cb7c5dd}
+      \field{labelyear}{2007}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Changes of brain activity in the neural substrates for theory of mind during childhood and adolescence.}}
+      \field{abstract}{Theory of mind (ToM) refers to the ability to attribute independent mental states, such as beliefs, preferences and desires, to the self and others. Neuroimaging studies of normal adults have consistently demonstrated the importance of particular brain regions for ToM, the superior temporal sulcus (STS), temporal pole (TP) and the medial prefrontal cortex (MPFC). However, there are little data showing how ToM develops during childhood and adolescence. Such data are important for understanding the development of social functioning and its disorders. The authors used functional magnetic resonance imaging to study age-related changes in brain activity associated with ToM during childhood and early adolescence (9-16 years). Normally developed children and adolescents demonstrated significant activation in the bilateral STS, the TP adjacent to the amygdala (TP/Amy) and the MPFC. Furthermore, the authors found a positive correlation between age and the degree of activation in the dorsal part of the MPFC; in contrast, a negative correlation was found for the ventral part of the MPFC. The authors also found a positive correlation between the Z coordinate of the peak activation in the MPFC and age. The data indicated that activity in the MPFC associated with ToM shifted from the ventral to the dorsal part of the MPFC during late childhood and adolescence. No age-related changes were found in the STS and the TP/Amy regions. The authors consider that the age-related brain activity observed in the present study may be associated with the maturation of the prefrontal cortex and the associated development of cognitive functions.}
+      \field{issn}{1323-1316}
+      \field{journaltitle}{Psychiatry and clinical neurosciences}
+      \field{title}{{Changes of brain activity in the neural substrates for theory of mind during childhood and adolescence.}}
+      \field{volume}{61}
+      \field{year}{2007}
+      \field{pages}{355\bibrangedash 363}
+      \verb{doi}
+      \verb 10.1111/j.1440-1819.2007.01687.x
+      \endverb
+      \verb{url}
+      \verb http://www.ncbi.nlm.nih.gov/pubmed/17610659
+      \endverb
+      \keyw{Adolescent,Adolescente,Aging,Aging: physiology,Brain,Brain: physiology,Child,Data Interpretation,Female,Humans,Magnetic Resonance Imaging,Male,Photic Stimulation,Positron-Emission Tomography,Psychophysiology,Social,Statistical}
+    \endentry
+    \entry{Neirotti2006}{misc}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=2,hash=f3aaa9e3ad53305d2ccafebc5d5e5b42}{Neirotti}{N\bibinitperiod}{Juan\bibnamedelima P}{J\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=76887c21360351ee66d8a702ce63c0b8}{Caticha}{C\bibinitperiod}{Nestor}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=2,hash=f3aaa9e3ad53305d2ccafebc5d5e5b42}{Neirotti}{N\bibinitperiod}{Juan\bibnamedelima P}{J\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=76887c21360351ee66d8a702ce63c0b8}{Caticha}{C\bibinitperiod}{Nestor}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{92c08dc17f0d5bb2a0f3817ef14e332c}
+      \strng{fullhash}{92c08dc17f0d5bb2a0f3817ef14e332c}
+      \field{sortinit}{N}
+      \field{sortinithash}{a52ecf374d1aa02cdea5f29be4dad56c}
+      \field{labelyear}{2006}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Statistical mechanics of program systems}}
+      \field{abstract}{We discuss the collective behaviour of a set of$\backslash$noperators and variables that constitute a program and$\backslash$nthe emergence of meaningful computational properties in$\backslash$nthe language of statistical mechanics. This is done by$\backslash$nappropriately modifying available Monte Carlo methods$\backslash$nto deal with hierarchical structures. The study$\backslash$nsuggests, in analogy with simulated annealing, a method$\backslash$nto automatically design programs. Reasonable solutions$\backslash$ncan be found, at low temperatures, when the method is$\backslash$napplied to simple toy problems such as finding an$\backslash$nalgorithm that determines the roots of a function or$\backslash$none that makes a nonlinear regression. Peaks in the$\backslash$nspecific heat are interpreted as signalling phase$\backslash$ntransitions which separate regions where different$\backslash$nalgorithmic strategies are used to solve the problem.}
+      \field{booktitle}{Journal of Physics A: Mathematical and General}
+      \field{isbn}{0305-4470}
+      \field{issn}{0305-4470}
+      \field{title}{{Statistical mechanics of program systems}}
+      \field{volume}{39}
+      \field{year}{2006}
+      \field{pages}{10355\bibrangedash 10361}
+      \verb{doi}
+      \verb 10.1088/0305-4470/39/33/006
+      \endverb
+    \endentry
+    \entry{Neirotti2003}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=2,hash=19aee36f3c20dc91a0f4914ad14d1dc7}{Neirotti}{N\bibinitperiod}{Juan\bibnamedelima Pablo}{J\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=76887c21360351ee66d8a702ce63c0b8}{Caticha}{C\bibinitperiod}{Nestor}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=2,hash=19aee36f3c20dc91a0f4914ad14d1dc7}{Neirotti}{N\bibinitperiod}{Juan\bibnamedelima Pablo}{J\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=76887c21360351ee66d8a702ce63c0b8}{Caticha}{C\bibinitperiod}{Nestor}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{f8ca0dd1b721cb995106fd9c1ef5c4e6}
+      \strng{fullhash}{f8ca0dd1b721cb995106fd9c1ef5c4e6}
+      \field{sortinit}{N}
+      \field{sortinithash}{a52ecf374d1aa02cdea5f29be4dad56c}
+      \field{labelyear}{2003}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Dynamics of the evolution of learning algorithms by selection.}}
+      \field{abstract}{We study the evolution of artificial learning systems by means of selection. Genetic programming is used to generate populations of programs that implement algorithms used by neural network classifiers to learn a rule in a supervised learning scenario. In contrast to concentrating on final results, which would be the natural aim while designing good learning algorithms, we study the evolution process. Phenotypic and genotypic entropies, which describe the distribution of fitness and of symbols, respectively, are used to monitor the dynamics. We identify significant functional structures responsible for the improvements in the learning process. In particular, some combinations of variables and operators are useful in assessing performance in rule extraction and can thus implement annealing of the learning schedule. We also find combinations that can signal surprise, measured on a single example, by the difference between predicted and correct classification. When such favorable structures appear, they are disseminated on very short time scales throughout the population. Due to such abruptness they can be thought of as dynamical transitions. But foremost, we find a strict temporal order of such discoveries. Structures that measure performance are never useful before those for measuring surprise. Invasions of the population by such structures in the reverse order were never observed. Asymptotically, the generalization ability approaches Bayesian results.}
+      \field{issn}{1539-3755}
+      \field{journaltitle}{Physical review. E, Statistical, nonlinear, and soft matter physics}
+      \field{title}{{Dynamics of the evolution of learning algorithms by selection.}}
+      \field{volume}{67}
+      \field{year}{2003}
+      \field{pages}{041912}
+      \verb{url}
+      \verb http://www.ncbi.nlm.nih.gov/pubmed/12786401
+      \endverb
+      \keyw{Algorithms,Humans,Learning,Models,Genetic,Models,Statistical,Neural Networks (Computer),Time Factors}
+    \endentry
+    \entry{Caticha2011}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=493bda0958ff192d11a711953b24605d}{{Nestor\bibnamedelimb Caticha}}{N\bibinitperiod}{}{}{}{}{}{}}%
+        {{uniquename=0,hash=cf46a1d31bad3f20e06511325cb794d1}{{Renato\bibnamedelimb Vicente}}{R\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=493bda0958ff192d11a711953b24605d}{{Nestor\bibnamedelimb Caticha}}{N\bibinitperiod}{}{}{}{}{}{}}%
+        {{uniquename=0,hash=cf46a1d31bad3f20e06511325cb794d1}{{Renato\bibnamedelimb Vicente}}{R\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {World Scientific Publishing Company}%
+      }
+      \strng{namehash}{4f3e1283abfef60cb562004a0792fe8d}
+      \strng{fullhash}{4f3e1283abfef60cb562004a0792fe8d}
+      \field{sortinit}{N}
+      \field{sortinithash}{a52ecf374d1aa02cdea5f29be4dad56c}
+      \field{labelyear}{2011}
+      \field{labelmonth}{11}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Agent-Based Social Psychology: From Neurocognitive Processes To Social Data}}
+      \field{abstract}{Moral Foundation Theory states that groups of different observers may rely on partially dissimilar sets of moral foundations, thereby reaching different moral valuations. The use of functional imaging techniques has revealed a spectrum of cognitive styles with respect to the differential handling of novel or corroborating information that is correlated to political affiliation. Here we characterize the collective behavior of an agent-based model whose inter individual interactions due to information exchange in the form of opinions are in qualitative agreement with experimental neuroscience data. The main conclusion derived connects the existence of diversity in the cognitive strategies and statistics of the sets of moral foundations and suggests that this connection arises from interactions between agents. Thus a simple interacting agent model, whose interactions are in accord with empirical data on conformity and learning processes, presents statistical signatures consistent with moral judgment patterns...}
+      \field{isbn}{10.1142/S0219525911003190}
+      \field{month}{11}
+      \field{title}{{Agent-Based Social Psychology: From Neurocognitive Processes To Social Data}}
+      \field{year}{2011}
+      \verb{url}
+      \verb http://www.worldscientific.com/doi/abs/10.1142/S0219525911003190?queryID=18/1262402
+      \endverb
+      \keyw{Agent-based model,neurosociology,opinion dynamics,reinforcement learning,sociophysics,statistical mechanics}
+    \endentry
+    \entry{NewmanBook}{book}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=2,hash=51901ebc33b9fcc631964f9ff70a6abd}{Newman}{N\bibinitperiod}{M.E.J.}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=2,hash=51901ebc33b9fcc631964f9ff70a6abd}{Newman}{N\bibinitperiod}{M.E.J.}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{51901ebc33b9fcc631964f9ff70a6abd}
+      \strng{fullhash}{51901ebc33b9fcc631964f9ff70a6abd}
+      \field{sortinit}{N}
+      \field{sortinithash}{a52ecf374d1aa02cdea5f29be4dad56c}
+      \field{labelyear}{2010}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Networks. An introduction}}
+      \field{abstract}{Topics covered include the measurement of networks, methods for analysing networks data, including methods developed in physics, statistics, and sociology; fundamental graph theory; computer algorithms; mathematical models of networks, incluiding random graph models and generative models; and theories of dynamical processes taking place of networks}
+      \field{booktitle}{Oxford University Press}
+      \field{isbn}{978-0-19-920665-0 (Hbk)}
+      \field{title}{{Networks. An introduction}}
+      \field{year}{2010}
+      \field{pages}{772}
+      \keyw{Newman}
+    \endentry
+    \entry{Newman1999}{book}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=2,hash=4bf3b98e94373b42e6f6e6dfddaf4daa}{Newman}{N\bibinitperiod}{MEJ}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2c2094862308698efe884f9b49c931c9}{Barkema}{B\bibinitperiod}{GT}{G\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=2,hash=4bf3b98e94373b42e6f6e6dfddaf4daa}{Newman}{N\bibinitperiod}{MEJ}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2c2094862308698efe884f9b49c931c9}{Barkema}{B\bibinitperiod}{GT}{G\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{85bd08d0eebdfe6bfc545c6d28c5602e}
+      \strng{fullhash}{85bd08d0eebdfe6bfc545c6d28c5602e}
+      \field{sortinit}{N}
+      \field{sortinithash}{a52ecf374d1aa02cdea5f29be4dad56c}
+      \field{labelyear}{1999}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Monte Carlo methods in statistical physics}}
+      \field{abstract}{This book provides an introduction to Monte Carlo simulations in classical statistical physics and is aimed both at students beginning work in the field and at more experienced researchers who wish to learn more about Monte Carlo methods. It includes methods for both equilibrium and out of equilibrium systems, and discusses in detail such common algorithms as the Metropolis and heat-bath algorithms, as well as more sophisticated ones such as continuous time Monte Carlo, cluster algorithms, multigrid methods, entropic sampling and simulated tempering. Data analysis techniques are also explained starting with straightforward measurement and error-estimation techniques and progressing to topics such as the single and multiple histogram methods and finite size scaling. The last few chapters of the book are devoted to implementation issues, including lattice representations, efficient implementation of data structures, multispin coding, parallelization of Monte Carlo algorithms, and random number generation. The book also includes example programs which show how to apply these techniques to a variety of well-known models.}
+      \field{booktitle}{Monte Carlo methods in statistical \ldots}
+      \field{isbn}{0198517971}
+      \field{title}{{Monte Carlo methods in statistical physics}}
+      \field{year}{1999}
+      \field{pages}{475}
+      \verb{url}
+      \verb http://adsabs.harvard.edu/abs/1999mcms.book.....N
+      \endverb
+    \endentry
+    \entry{Opper1996}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=220178a163f8a2654116239dcb608649}{Opper}{O\bibinitperiod}{Manfred}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=220178a163f8a2654116239dcb608649}{Opper}{O\bibinitperiod}{Manfred}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{220178a163f8a2654116239dcb608649}
+      \strng{fullhash}{220178a163f8a2654116239dcb608649}
+      \field{sortinit}{O}
+      \field{sortinithash}{59512cfd31be1dcef4def024230bdc1d}
+      \field{labelyear}{1996}
+      \field{labelmonth}{11}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{On-line versus Off-line Learning from Random Examples: General Results}}
+      \field{annotation}{bayesian learning deduction}
+      \field{issn}{0031-9007}
+      \field{journaltitle}{Physical Review Letters}
+      \field{month}{11}
+      \field{number}{22}
+      \field{title}{{On-line versus Off-line Learning from Random Examples: General Results}}
+      \field{volume}{77}
+      \field{year}{1996}
+      \field{pages}{4671\bibrangedash 4674}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.77.4671
+      \endverb
+      \verb{url}
+      \verb http://link.aps.org/doi/10.1103/PhysRevLett.77.4671
+      \endverb
+      \keyw{Opper1996}
+    \endentry
+    \entry{Papa2014}{thesis}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=8a47a20830332cde2847a14b73620d82}{Papa}{P\bibinitperiod}{Bruno\bibnamedelima Del}{B\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=8a47a20830332cde2847a14b73620d82}{Papa}{P\bibinitperiod}{Bruno\bibnamedelima Del}{B\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{8a47a20830332cde2847a14b73620d82}
+      \strng{fullhash}{8a47a20830332cde2847a14b73620d82}
+      \field{sortinit}{P}
+      \field{sortinithash}{b8af9282ac256b81613dc9012a0ac921}
+      \field{labelyear}{2014}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{A study of social and economic evolution of human societies using methods of Statistical Mechanics and Information Theory}}
+      \field{title}{{A study of social and economic evolution of human societies using methods of Statistical Mechanics and Information Theory}}
+      \field{type}{phdthesis}
+      \field{year}{2014}
+    \endentry
+    \entry{Reichardt2008}{book}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=7d302305c2e2a1906e33540b16b95b16}{Reichardt}{R\bibinitperiod}{Jörg}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=7d302305c2e2a1906e33540b16b95b16}{Reichardt}{R\bibinitperiod}{Jörg}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7d302305c2e2a1906e33540b16b95b16}
+      \strng{fullhash}{7d302305c2e2a1906e33540b16b95b16}
+      \field{sortinit}{R}
+      \field{sortinithash}{ff5a3533ecf9d5a03ff60b1e1389b63d}
+      \field{labelyear}{2008}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Structure in Complex Networks}}
+      \field{abstract}{In the modern world of gigantic datasets, which scientists and practioners of all fields of learning are confronted with, the availability of robust, scalable and easy-to-use methods for pattern recognition and data mining are of paramount importance, so as to be able to cope with the avalanche of data in a meaningful way. This concise and pedagogical research monograph introduces the reader to two specific aspects - clustering techniques and dimensionality reduction - in the context of complex network analysis. The first chapter provides a short introduction into relevant graph theoretical notation; chapter 2 then reviews and compares a number of cluster definitions from different fields of science. In the subsequent chapters, a first-principles approach to graph clustering in complex networks is developed using methods from statistical physics and the reader will learn, that even today, this field significantly contributes to the understanding and resolution of the related statistical inference issues. Finally, an application chapter examines real-world networks from the economic realm to show how the network clustering process can be used to deal with large, sparse datasets where conventional analyses fail.}
+      \field{isbn}{3540878327}
+      \field{title}{{Structure in Complex Networks}}
+      \field{year}{2008}
+      \verb{url}
+      \verb http://books.google.com.br/books/about/Structure%5C_in%5C_complex%5C_networks.html?id=Vmlp2us0R-gC%5C&pgis=1
+      \endverb
+    \endentry
+    \entry{Sherif1937}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=7cfdebf1ef9d0dbe7eb70033425f94c2}{Sherif}{S\bibinitperiod}{Muzafer}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=7cfdebf1ef9d0dbe7eb70033425f94c2}{Sherif}{S\bibinitperiod}{Muzafer}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7cfdebf1ef9d0dbe7eb70033425f94c2}
+      \strng{fullhash}{7cfdebf1ef9d0dbe7eb70033425f94c2}
+      \field{sortinit}{S}
+      \field{sortinithash}{4125bb4c3a0eb3eaee3ea6da32eb70c8}
+      \field{labelyear}{1937}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{An Experimental Approach to the Study of Attitudes}}
+      \field{abstract}{This article focuses on an experimental approach to the study of the psychology of attitudes. The experiment reported in this article was carried out in the conviction that one need not leave the main field of experimental psychology to find concepts adequate for the psychology of attitudes. The aim of this study is to show how an indefinite stimulus field can be organized or determined by one kind of social influence. Autokinetic movement is a very convenient phenomenon which can be utilized to investigate in the laboratory various kinds of social influence. Experimentally it is easy to produce autokinetic movements. When an individual perceives autokinetic movement which lacks an objective standard of comparison, and is asked during repeated stimulation to report in terms of the extent of movement, he subjectively establishes a range of extent and a standard within that range which is peculiar to himself, differing from the range and standard established by other individuals. Different kinds of social influences may be experimentally utilized to define certain prescribed ranges and norms.}
+      \field{isbn}{00380431}
+      \field{issn}{00380431}
+      \field{journaltitle}{Sociometry}
+      \field{title}{{An Experimental Approach to the Study of Attitudes}}
+      \field{volume}{1}
+      \field{year}{1937}
+      \field{pages}{90\bibrangedash 98}
+      \verb{url}
+      \verb http://search.ebscohost.com/login.aspx?direct=true%5C&db=sih%5C&AN=18041645%5C&site=ehost-live
+      \endverb
+    \endentry
+    \entry{Solla1999}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=920b205f35e78671ab4d18f203e692f9}{Solla}{S\bibinitperiod}{Sara}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=7862b9aae6d622aee37d7b62ba9450e7}{Winther}{W\bibinitperiod}{Ole}{O\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=920b205f35e78671ab4d18f203e692f9}{Solla}{S\bibinitperiod}{Sara}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=7862b9aae6d622aee37d7b62ba9450e7}{Winther}{W\bibinitperiod}{Ole}{O\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{738c694294880bd9da1de14c89894293}
+      \strng{fullhash}{738c694294880bd9da1de14c89894293}
+      \field{sortinit}{S}
+      \field{sortinithash}{4125bb4c3a0eb3eaee3ea6da32eb70c8}
+      \field{labelyear}{1999}
+      \field{labelmonth}{05}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Optimal perceptron learning: as online Bayesian approach}}
+      \field{isbn}{0-521-65263-4}
+      \field{month}{05}
+      \field{title}{{Optimal perceptron learning: as online Bayesian approach}}
+      \field{year}{1999}
+      \field{pages}{379\bibrangedash 398}
+      \verb{url}
+      \verb http://dl.acm.org/citation.cfm?id=304710.304758
+      \endverb
+      \keyw{Solla1999}
+    \endentry
+    \entry{Somerville2006}{article}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=0,hash=06a4314796a26711f57b2e6669d75b1e}{Somerville}{S\bibinitperiod}{Leah\bibnamedelima H}{L\bibinitperiod\bibinitdelim H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2d87f80a63cd5d0d645b66b8e4cfa3c4}{Heatherton}{H\bibinitperiod}{Todd\bibnamedelima F}{T\bibinitperiod\bibinitdelim F\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=bede318db2e0d4e7d4e5f4ca1626e659}{Kelley}{K\bibinitperiod}{William\bibnamedelima M}{W\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=06a4314796a26711f57b2e6669d75b1e}{Somerville}{S\bibinitperiod}{Leah\bibnamedelima H}{L\bibinitperiod\bibinitdelim H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2d87f80a63cd5d0d645b66b8e4cfa3c4}{Heatherton}{H\bibinitperiod}{Todd\bibnamedelima F}{T\bibinitperiod\bibinitdelim F\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=bede318db2e0d4e7d4e5f4ca1626e659}{Kelley}{K\bibinitperiod}{William\bibnamedelima M}{W\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{040126a9caa994b3c142d530d5e591f2}
+      \strng{fullhash}{040126a9caa994b3c142d530d5e591f2}
+      \field{sortinit}{S}
+      \field{sortinithash}{4125bb4c3a0eb3eaee3ea6da32eb70c8}
+      \field{labelyear}{2006}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Anterior cingulate cortex responds differentially to expectancy violation and social rejection.}}
+      \field{abstract}{This study investigated human anterior cingulate cortex (ACC) involvement during a task that dissociated expectancy violation from social rejection. Across two studies, participants underwent functional magnetic resonance imaging while making social judgments and receiving fictitious feedback that was either positive or negative and consistent or inconsistent with their expectations. The results demonstrate that the dorsal ACC is sensitive to expectancy violations, whereas the ventral ACC is differentially responsive to social feedback.}
+      \field{isbn}{1097-6256 (Print) 1097-6256 (Linking)}
+      \field{issn}{1097-6256}
+      \field{journaltitle}{Nature neuroscience}
+      \field{title}{{Anterior cingulate cortex responds differentially to expectancy violation and social rejection.}}
+      \field{volume}{9}
+      \field{year}{2006}
+      \field{pages}{1007\bibrangedash 1008}
+      \verb{doi}
+      \verb 10.1038/nn1728
+      \endverb
+    \endentry
+    \entry{Tsafrir2005}{article}{}
+      \name{labelname}{6}{}{%
+        {{uniquename=0,hash=d18677ae8e54c595a2cdfd4ba1a533a8}{Tsafrir}{T\bibinitperiod}{D.}{D\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=ab076541373dfb561a87039603f84731}{Tsafrir}{T\bibinitperiod}{I.}{I\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=912d67b6a2c5fd25c9b4d8e0c000e23f}{Ein-Dor}{E\bibinithyphendelim D\bibinitperiod}{L.}{L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=1b6cc779685fa9faf6fff6e5b5400568}{Zuk}{Z\bibinitperiod}{O.}{O\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=5baa2e521e9eaf5ebba82119e99fcb6d}{Notterman}{N\bibinitperiod}{D.\bibnamedelimi A.}{D\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=79b70b52e0683826475257189ddd3c45}{Domany}{D\bibinitperiod}{E.}{E\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{6}{}{%
+        {{uniquename=0,hash=d18677ae8e54c595a2cdfd4ba1a533a8}{Tsafrir}{T\bibinitperiod}{D.}{D\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=ab076541373dfb561a87039603f84731}{Tsafrir}{T\bibinitperiod}{I.}{I\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=912d67b6a2c5fd25c9b4d8e0c000e23f}{Ein-Dor}{E\bibinithyphendelim D\bibinitperiod}{L.}{L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=1b6cc779685fa9faf6fff6e5b5400568}{Zuk}{Z\bibinitperiod}{O.}{O\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=5baa2e521e9eaf5ebba82119e99fcb6d}{Notterman}{N\bibinitperiod}{D.\bibnamedelimi A.}{D\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=79b70b52e0683826475257189ddd3c45}{Domany}{D\bibinitperiod}{E.}{E\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{9327e37eacb0a33cbd9744748f8134f8}
+      \strng{fullhash}{26c3694078f3cfcf3456a00f7733be3d}
+      \field{sortinit}{T}
+      \field{sortinithash}{9378dd666f3c24d81538df53aa99e23d}
+      \field{labelyear}{2005}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Sorting points into neighborhoods (SPIN): Data analysis and visualization by ordering distance matrices}}
+      \field{abstract}{SUMMARY: We introduce a novel unsupervised approach for the organization and visualization of multidimensional data. At the heart of the method is a presentation of the full pairwise distance matrix of the data points, viewed in pseudocolor. The ordering of points is iteratively permuted in search of a linear ordering, which can be used to study embedded shapes. Several examples indicate how the shapes of certain structures in the data (elongated, circular and compact) manifest themselves visually in our permuted distance matrix. It is important to identify the elongated objects since they are often associated with a set of hidden variables, underlying continuous variation in the data. The problem of determining an optimal linear ordering is shown to be NP-Complete, and therefore an iterative search algorithm with O(n3) step-complexity is suggested. By using sorting points into neighborhoods, i.e. SPIN to analyze colon cancer expression data we were able to address the serious problem of sample heterogeneity, which hinders identification of metastasis related genes in our data. Our methodology brings to light the continuous variation of heterogeneity--starting with homogeneous tumor samples and gradually increasing the amount of another tissue. Ordering the samples according to their degree of contamination by unrelated tissue allows the separation of genes associated with irrelevant contamination from those related to cancer progression. AVAILABILITY: Software package will be available for academic users upon request.}
+      \field{isbn}{1367-4803 (Print)}
+      \field{issn}{13674803}
+      \field{journaltitle}{Bioinformatics}
+      \field{title}{{Sorting points into neighborhoods (SPIN): Data analysis and visualization by ordering distance matrices}}
+      \field{volume}{21}
+      \field{year}{2005}
+      \field{pages}{2301\bibrangedash 2308}
+      \verb{doi}
+      \verb 10.1093/bioinformatics/bti329
+      \endverb
+    \endentry
+    \entry{Vicente1998}{inproceedings}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=2,hash=c4f10486bd606e68e171401c0d32f7f5}{Vicente}{V\bibinitperiod}{Renato}{R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=caf6f072344ed2b231219a00a2bf7974}{Kinouchi}{K\bibinitperiod}{Osame}{O\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=76887c21360351ee66d8a702ce63c0b8}{Caticha}{C\bibinitperiod}{Nestor}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=2,hash=c4f10486bd606e68e171401c0d32f7f5}{Vicente}{V\bibinitperiod}{Renato}{R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=caf6f072344ed2b231219a00a2bf7974}{Kinouchi}{K\bibinitperiod}{Osame}{O\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=76887c21360351ee66d8a702ce63c0b8}{Caticha}{C\bibinitperiod}{Nestor}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{c075cfb1cc67111c1f836794d7f95f8f}
+      \strng{fullhash}{c075cfb1cc67111c1f836794d7f95f8f}
+      \field{sortinit}{V}
+      \field{sortinithash}{63562d1af2cd68fb37e2e14e0c6d5c96}
+      \field{labelyear}{1998}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Statistical mechanics of online learning of drifting concepts: A variational approach}}
+      \field{abstract}{We review the application of Statistical Mechanics methods to the study of online learning of a drifting concept in the limit of large systems. The model where a feed-forward network learns from examples generated by a time dependent teacher of the same architecture is analyzed. The best possible generalization ability is determined exactly, through the use of a variational method. The constructive variational method also suggests a learning algorithm. It depends, however, on some unavailable quantities, such as the present performance of the student. The construction of estimators for these quantities permits the implementation of a very effective, highly adaptive algorithm. Several other algorithms are also studied for comparison with the optimal bound and the adaptive algorithm, for different types of time evolution of the rule.}
+      \field{booktitle}{Machine Learning}
+      \field{eprintclass}{cond-mat}
+      \field{eprinttype}{arXiv}
+      \field{issn}{08856125}
+      \field{title}{{Statistical mechanics of online learning of drifting concepts: A variational approach}}
+      \field{volume}{32}
+      \field{year}{1998}
+      \field{pages}{179\bibrangedash 201}
+      \verb{doi}
+      \verb 10.1023/A:1007428731714
+      \endverb
+      \verb{eprint}
+      \verb 9801297
+      \endverb
+      \keyw{Concept learning,Neural networks,Online algorithms,Variational optimization}
+    \endentry
+    \entry{Vicente2014}{article}{}
+      \name{labelname}{4}{}{%
+        {{uniquename=2,hash=1052d8e177b1128c018d721d7ef0a65e}{Vicente}{V\bibinitperiod}{R.}{R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=e272e15365ed8015edc76593d7625ce3}{Susemihl}{S\bibinitperiod}{A.}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=222cca1ab674cc4f59b11dbe10c7a307}{Jericó}{J\bibinitperiod}{J.P.}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=6002c7c9e3f67b43eff661be6c39948a}{Caticha}{C\bibinitperiod}{N.}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{uniquename=2,hash=1052d8e177b1128c018d721d7ef0a65e}{Vicente}{V\bibinitperiod}{R.}{R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=e272e15365ed8015edc76593d7625ce3}{Susemihl}{S\bibinitperiod}{A.}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=222cca1ab674cc4f59b11dbe10c7a307}{Jericó}{J\bibinitperiod}{J.P.}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=6002c7c9e3f67b43eff661be6c39948a}{Caticha}{C\bibinitperiod}{N.}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{81efce5621557c097f6f7ec18328d3bc}
+      \strng{fullhash}{ef1320a30c24d393789fa9efbf978b97}
+      \field{sortinit}{V}
+      \field{sortinithash}{63562d1af2cd68fb37e2e14e0c6d5c96}
+      \field{labelyear}{2014}
+      \field{labelmonth}{04}
+      \field{datelabelsource}{}
+      \field{labeltitle}{{Moral foundations in an interacting neural networks society: A statistical mechanics analysis}}
+      \field{abstract}{The moral foundations theory supports that people, across cultures, tend to consider a small number of dimensions when classifying issues on a moral basis. The data also show that the statistics of weights attributed to each moral dimension is related to self-declared political affiliation, which in turn has been connected to cognitive learning styles by the recent literature in neuroscience and psychology. Inspired by these data, we propose a simple statistical mechanics model with interacting neural networks classifying vectors and learning from members of their social neighbourhood about their average opinion on a large set of issues. The purpose of learning is to reduce dissension among agents when disagreeing. We consider a family of learning algorithms parametrized by $\delta$, that represents the importance given to corroborating (same sign) opinions. We define an order parameter that quantifies the diversity of opinions in a group with homogeneous learning style. Using Monte Carlo simulations and a mean field approximation we find the relation between the order parameter and the learning parameter $\delta$ at a temperature we associate with the importance of social influence in a given group. In concordance with data, groups that rely more strongly on corroborating evidence sustain less opinion diversity. We discuss predictions of the model and propose possible experimental tests.}
+      \field{issn}{03784371}
+      \field{journaltitle}{Physica A: Statistical Mechanics and its Applications}
+      \field{month}{04}
+      \field{title}{{Moral foundations in an interacting neural networks society: A statistical mechanics analysis}}
+      \field{volume}{400}
+      \field{year}{2014}
+      \field{pages}{124\bibrangedash 138}
+      \verb{doi}
+      \verb 10.1016/j.physa.2014.01.013
+      \endverb
+      \verb{file}
+      \verb :home/felippe/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Vicente et al. - 2014 - Moral foundations in an interacting neural networks society A statistical mechanics analysis.pdf:pdf
+      \endverb
+      \verb{url}
+      \verb http://www.sciencedirect.com/science/article/pii/S037843711400017X
+      \endverb
+      \keyw{Moral foundations theory,Neural networks,Opinion dynamics,Social interactions,Sociophysics}
+    \endentry
+  \endsortlist
+  \missing{Hastie1993}
+\endrefsection
+\endinput
+
