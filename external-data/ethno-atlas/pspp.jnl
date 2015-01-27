@@ -1,0 +1,8 @@
+GET FILE="/home/felippe/Documents/mestrado/references/etno2008.sav".
+
+SAVE OUTFILE="/home/felippe/Documents/mestrado/references/etno2008.sav".
+
+GET FILE="etno2008.sav".
+
+GET FILE="/home/felippe/Documents/mestrado/references/etno2008.sav".
+
